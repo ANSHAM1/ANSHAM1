@@ -9,9 +9,9 @@
 - 📫 You can reach out to me via email: [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com), [ansham.maurya_cs.h23@gla.ac.in](mailto:ansham.maurya_cs.h23@gla.ac.in)
 
 ## Skills
-- **Programming Languages:** Python, JavaScript, C++, HTML, CSS
-- **Frameworks & Libraries:** MERN Stack (MongoDB, Express.js, React.js, Node.js)
-- **Tools & Technologies:** Git, VS Code, Figma
+- **Programming Languages:** Python, JavaScript, C++, HTML, CSS, Sql
+- **Frameworks & Libraries:** MERN Stack (MongoDB, Express.js, React.js, Node.js),Python (Django, tKinter, Pandas, Numpy)  
+- **Tools & Technologies:** Git, VS Code, Figma, Docker.MySql,Oracle,MongoDB Compass and Atlas
 
 
 <h3 align="left">Languages and Tools:</h3>
