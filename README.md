@@ -1,4 +1,4 @@
- <h1 align="center"> ANSHAM MAURYA - Developer & Designer</h1>
+ <h1 align="center"> ANSHAM MAURYA </h1>
 
 👋 Welcome to my GitHub profile! I'm ANSHAM MAURYA, a passionate developer and UI designer with interests in coding, web development, Android development, and creating intuitive user interfaces.
 
