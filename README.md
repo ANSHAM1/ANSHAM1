@@ -9,7 +9,7 @@
 
 - 🔭 Currently working with **.NET Framework**, exploring **ML.NET** and integrating AI into production systems.
 - 🧠 I specialize in **Machine Learning**, **Deep Learning**, and also have experience in **full-stack web development**.
-- 🌱 I'm improving my knowledge of **Data Structures & Algorithms** using **C++** and **Python**.
+- 🌱 I'm improving my knowledge of **Data Structures & Algorithms** using **C++**.
 - 💬 Ask me about **ML.NET**, **PyTorch**, **TensorFlow**, **MERN stack**, or **low-level AI implementation**.
 - 📫 Reach me at:  
   📧 [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com)  
@@ -60,27 +60,14 @@
 
 ## 📈 GitHub Insights
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=radical" alt="GitHub Stats" />
-  <br />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=radical" alt="Top Languages" />
-</p>
+<div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_title=false&hide_border=true&include_all_commits=true" width="47%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true" width="47%" />
+</div>
 
-<p align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=ansham1&theme=dark&hide_border=true" alt="GitHub Streak" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ansham1&theme=algolia&no-bg=true&margin-w=15" alt="Trophies">
-</p>
-
----
-
-## 🐍 Contribution Graph
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ansham1/ansham1/output/github-contribution-grid-snake.svg" alt="snake gif" />
-</p>
+<div align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com?user=ansham1&theme=react&hide_border=true" width="95%"/>
+</div>
 
 ---
 
