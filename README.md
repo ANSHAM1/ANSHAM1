@@ -61,12 +61,12 @@
 ## 📈 GitHub Insights
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_title=false&hide_border=true&include_all_commits=true" width="47%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true" width="47%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_title=false&hide_border=true&include_all_commits=true&cache_seconds=1800" width="47%" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true&cache_seconds=1800" width="47%" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com?user=ansham1&theme=react&hide_border=true" width="95%"/>
+  <img src="https://github-readme-streak-stats.demolab.com?user=ansham1&theme=react&hide_border=true" width="95%" />
 </div>
 
 ---
