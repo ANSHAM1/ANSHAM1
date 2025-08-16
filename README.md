@@ -61,20 +61,37 @@
 ## 📈 GitHub Insights
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_title=false&hide_border=true&include_all_commits=true&cache_seconds=1800" width="47%" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true&cache_seconds=1800" width="47%" />
-</div>
 
-<div align="center">
+  <!-- 🏆 Trophies -->
+  [![trophy](https://github-profile-trophy.vercel.app/?username=ansham1&theme=radical&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
+
+  <!-- 🔥 Streak Stats -->
   <img src="https://github-readme-streak-stats.demolab.com?user=ansham1&theme=react&hide_border=true" width="95%" />
+
+  <!-- 📊 Languages -->
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true&cache_seconds=1800" width="60%" />
+
+  <!-- 📈 Activity Graph -->
+  ![Maurya's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=ansham1&theme=react-dark&hide_border=true)
+
+  <!-- 📌 Pinned Repo Example -->
+  [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=ansham1&repo=YOUR_REPO_NAME&theme=react)](https://github.com/ansham1/YOUR_REPO_NAME)
+
+  <!-- 🛠️ Tech Stack Badges -->
+  <br/>
+  ![C++](https://img.shields.io/badge/-C++-00599C?logo=cplusplus&logoColor=white&style=for-the-badge)
+  ![CUDA](https://img.shields.io/badge/-CUDA-76B900?logo=nvidia&logoColor=white&style=for-the-badge)
+  ![Python](https://img.shields.io/badge/-Python-3776AB?logo=python&logoColor=white&style=for-the-badge)
+  ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?logo=tensorflow&logoColor=white&style=for-the-badge)
+  ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=black&style=for-the-badge)
+
+  <!-- 👀 Visitor Counter -->
+  <br/><br/>
+  ![Profile Views](https://komarev.com/ghpvc/?username=ansham1&style=flat-square&color=blue)
+
 </div>
 
 ---
 
-## 🌐 Connect with Me
-
-<p align="left">
-  <a href="mailto:anshammaurya2291@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white"></a>
-  <a href="https://www.linkedin.com/in/anshammaurya"><img src="https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&logoColor=white"></a>
-  <a href="https://github.com/ansham1"><img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white"></a>
-</p>
+<!-- 🐍 Contribution Snake -->
+![Snake animation](https://github.com/ansham1/ansham1/blob/output/github-contribution-grid-snake.svg)
