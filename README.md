@@ -62,9 +62,6 @@
 
 <div align="center">
 
-  <!-- 🏆 Trophies -->
-  [![trophy](https://github-profile-trophy.vercel.app/?username=ansham1&theme=radical&margin-w=15&margin-h=15)](https://github.com/ryo-ma/github-profile-trophy)
-
   <!-- 📊 Languages -->
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&theme=react&hide_border=true&cache_seconds=1800" width="60%" />
 
