@@ -85,10 +85,10 @@
 <table>
   <tr>
     <td width="50%" valign="top">
-      <h3 align="center">Weekly Coding Activity</h3>
-      <a href="https://wakatime.com/@ANSHAM1">
-        <img src="https://github-readme-stats.vercel.app/api/wakatime?username=ansham1&theme=react&hide_border=true&layout=compact" />
-      </a>
+      <h3 align="center">Contribution Graph</h3>
+      <p align="center">
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=ansham1&theme=react-dark&hide_border=true&bg_color=0D1117&line=00FF99&point=FFFFFF&area=true" />
+      </p>
     </td>
     <td width="50%" valign="top">
       <h3 align="center">GitHub Profile Stats</h3>
