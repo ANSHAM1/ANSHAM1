@@ -58,6 +58,47 @@
 
 ---
 
+## 🚀 Featured Projects
+
+<table>
+<tr>
+<td width="50%">
+<h3 align="center">Project Name 1</h3>
+<br />
+<a href="[YOUR_PROJECT_REPO_LINK]">
+<img src="[LINK_TO_PROJECT_IMAGE_OR_GIF]" alt="Project Demo"/>
+</a>
+<br />
+<p align="center">
+<a href="[YOUR_PROJECT_REPO_LINK]" target="_blank">
+<img src="https://img.shields.io/badge/Code-000000?style=for-the-badge&logo=github&logoColor=white" alt="Code"/>
+</a>
+<a href="[YOUR_PROJECT_LIVE_DEMO_LINK]" target="_blank">
+<img src="https://img.shields.io/badge/Live--Demo-blue?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"/>
+</a>
+</p>
+</td>
+<td width="50%">
+<h3 align="center">Project Name 2</h3>
+<br />
+<a href="[YOUR_PROJECT_REPO_LINK]">
+<img src="[LINK_TO_PROJECT_IMAGE_OR_GIF]" alt="Project Demo"/>
+</a>
+<br />
+<p align="center">
+<a href="[YOUR_PROJECT_REPO_LINK]" target="_blank">
+<img src="https://img.shields.io/badge/Code-000000?style=for-the-badge&logo=github&logoColor=white" alt="Code"/>
+</a>
+<a href="[YOUR_PROJECT_LIVE_DEMO_LINK]" target="_blank">
+<img src="https://img.shields.io/badge/Live--Demo-blue?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo"/>
+</a>
+</p>
+</td>
+</tr>
+</table>
+
+---
+
 ## 📈 GitHub Insights
 
 <div align="center">
