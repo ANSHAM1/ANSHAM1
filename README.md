@@ -63,35 +63,19 @@
   </tr>
 </table>
 
-### 📚 Core Concepts
-- Relational Database Management Systems (RDBMS)
-- Operating Systems & Concurrency
-- Computer Networks & Protocols
-- System Design & Scalability
-
-
 ---
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/Tech%20Stack/coding.gif" width="500px"/>
-</p>
-
----
-
-
-## 🏆 Achievements
+## 🏆 Self Achievements
 - 🚀 **Created a fully Convolutional Neural Network (CNN) from scratch in C++ and CUDA**  
   🔗 [Check out the repo](https://github.com/ANSHAM1/TOrchLessCUDA)  
 
 ---
 
-## 📈 GitHub Insights
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" />
-</p>
+## 📈 GitHub Insights  
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&hide=HTML,CSS&theme=react&hide_border=true" width="50%" />
+  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" />
+   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&hide=html,css,shell,batchfile,scss,makefile&theme=react&hide_border=true&count_private=true" width="50%" />
 </p>
 
 ---
