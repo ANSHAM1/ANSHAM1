@@ -7,10 +7,6 @@
 
 ## 👨‍💻 About Me  
 
-<p align="center">
-  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300" alt="Coding GIF"/>
-</p>
-
 - 🚀 Currently diving deep into **Rust** ⚙️ and **System-Level Programming**, while also exploring how to **bring AI models into real-world production systems**.  
 - 🧠 My core expertise lies in **Machine Learning** & **Deep Learning**, but I’m equally fascinated by **low-level systems work** — I enjoy blending performance with intelligence.  
 - 🌱 Always sharpening my problem-solving mindset: right now I’m practicing **Data Structures & Algorithms** using **C++** and **Java** (yes, I love challenging myself 💪).  
@@ -19,59 +15,66 @@
   📧 [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com)  
 - ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — kind of like trying to peek into how “thinking” works 🧩🤯.  
 
+---
+
+## 🧠 Tech Stack  
+
 <p align="center">
-  <img src="https://media.giphy.com/media/coxQHKASG60HrHtvkt/giphy.gif" width="250" alt="AI GIF"/>
+  <img src="https://media.giphy.com/media/SvFocn0wNMx0iv2rYz/giphy.gif" width="70"/>  
+  <img src="https://media.giphy.com/media/LMt9638dO8dftAjtco/giphy.gif" width="70"/>  
+  <img src="https://media.giphy.com/media/kdFc8fubgS31b8DsVu/giphy.gif" width="70"/>  
+  <img src="https://media.giphy.com/media/XAxylRMCdpbEWUAvr8/giphy.gif" width="70"/>  
+  <img src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" width="70"/>  
 </p>
 
 ---
 
-## 🧠 Tech Stack
+### 🔤 Languages  
 
-### 🔤 Languages
 - **Advanced**  
-  ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
-  ![Rust](https://img.shields.io/badge/Rust-000000?style=for-the-badge&logo=rust&logoColor=white)
-  ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="50"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-plain.svg" width="50"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="50"/>  
 
 - **Intermediate**  
-  ![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="50"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50"/>  
 
 ---
 
-### 🌐 Web Development
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+### 🌐 Web Development  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" width="50"/>  
 
 ---
 
-### 🗄️ Databases
-![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+### 🗄️ Databases  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" width="50"/>  
 
 ---
 
-### 🤖 Machine Learning / Deep Learning
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+### 🤖 Machine Learning / Deep Learning  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" width="50"/>  
 
 ---
 
-### 📊 Python Libraries
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
-![NumPy](https://img.shields.io/badge/Numpy-013243?style=for-the-badge&logo=numpy)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=matplotlib)
-![Seaborn](https://img.shields.io/badge/Seaborn-004D61?style=for-the-badge)
+### 📊 Python Libraries  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="50"/>  
+<img src="https://matplotlib.org/stable/_static/logo2.svg" width="50"/>  
+<img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" width="90"/>  
 
 ---
 
-### 🛠️ Tools
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Visual Studio](https://img.shields.io/badge/Visual%20Studio-5C2D91?style=for-the-badge&logo=visual-studio&logoColor=white)
-![Nsight Systems](https://img.shields.io/badge/Nsight-76B900?style=for-the-badge&logo=nvidia&logoColor=white)
-![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white)
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+### 🛠️ Tools  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg" width="50"/>  
+<img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/nvidia_logo_icon_170697.png" width="50"/>  
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="50"/>  
+<img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" width="50"/>  
+<img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width="50"/>  
 
 ---
 
