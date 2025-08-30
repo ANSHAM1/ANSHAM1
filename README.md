@@ -18,6 +18,10 @@
 
 ---
 
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=ansham1&theme=dracula&column=7&no-frame=true&no-bg=true" />
+</p>
+
 ## 🧠 Tech Stack
 
 ### 🚀 Programming Languages
