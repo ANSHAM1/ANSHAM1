@@ -20,48 +20,48 @@
 ## 🧠 Tech Stack  
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=cpp&theme=dark" width="30"/> C++  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=rust&theme=dark" width="30"/> Rust  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=python&theme=dark" width="30"/> Python  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=java&theme=dark" width="30"/> Java  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=javascript&theme=dark" width="30"/> JavaScript  
+  <img src="https://skillicons.dev/icons?i=cpp&theme=dark" width="30"/> 
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=rust&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=python&theme=dark" width="30"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=java&theme=dark" width="30"/>
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=javascript&theme=dark" width="30"/>
   <br/><br/>
 
-  <img src="https://skillicons.dev/icons?i=react&theme=dark" width="30"/> React  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=express&theme=dark" width="30"/> Express  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=mysql&theme=dark" width="30"/> MySQL  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=mongodb&theme=dark" width="30"/> MongoDB  
+  <img src="https://skillicons.dev/icons?i=react&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=express&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=mysql&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=mongodb&theme=dark" width="30"/> 
   <br/><br/>
 
-  <img src="https://skillicons.dev/icons?i=pytorch&theme=dark" width="30"/> PyTorch  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=tensorflow&theme=dark" width="30"/> TensorFlow  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=pandas&theme=dark" width="30"/> Pandas  
-  <br/>
+  <img src="https://skillicons.dev/icons?i=pytorch&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=tensorflow&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=pandas&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
   <img src="https://skillicons.dev/icons?i=numpy&theme=dark" width="30"/> NumPy  
-  <br/>
+  &nbsp;&nbsp;&nbsp;
   <img src="https://skillicons.dev/icons?i=matplotlib&theme=dark" width="30"/> Matplotlib  
-  <br/>
+  &nbsp;&nbsp;&nbsp;
   <img src="https://skillicons.dev/icons?i=seaborn&theme=dark" width="30"/> Seaborn  
   <br/><br/>
 
-  <img src="https://skillicons.dev/icons?i=git&theme=dark" width="30"/> Git  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=visualstudio&theme=dark" width="30"/> Visual Studio  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=vscode&theme=dark" width="30"/> VS Code  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=postman&theme=dark" width="30"/> Postman  
-  <br/>
-  <img src="https://skillicons.dev/icons?i=figma&theme=dark" width="30"/> Figma  
+  <img src="https://skillicons.dev/icons?i=git&theme=dark" width="30"/> 
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=visualstudio&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=vscode&theme=dark" width="30"/>  
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=postman&theme=dark" width="30"/> 
+  &nbsp;&nbsp;&nbsp;
+  <img src="https://skillicons.dev/icons?i=figma&theme=dark" width="30"/>  
 </p>
 
 
