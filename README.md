@@ -21,21 +21,13 @@
 
 <table align="center" width="100%">
   <tr>
-    <td align="left" width="20%">
-      <b><span style="font-size:18px; color:#ff9800;">🔤 Languages</span></b><br/>
-      <span style="color:gray;">Advanced</span><br/>
-      <span style="color:gray;">Intermediate</span>
-    </td>
     <td align="left" width="80%">
-      <img src="https://skillicons.dev/icons?i=cpp,rust,python&theme=dark&perline=6" /><br/>
+      <img src="https://skillicons.dev/icons?i=cpp,rust,python&theme=dark&perline=6" />
       <img src="https://skillicons.dev/icons?i=java,javascript&theme=dark&perline=6" />
     </td>
   </tr>
 
   <tr>
-    <td align="left">
-      <b><span style="font-size:18px; color:#4caf50;">🌐 Web Dev & Databases</span></b>
-    </td>
     <td align="left">
       <img src="https://skillicons.dev/icons?i=react,express,mysql,mongodb&theme=dark&perline=6" />
     </td>
@@ -43,17 +35,11 @@
 
   <tr>
     <td align="left">
-      <b><span style="font-size:18px; color:#2196f3;">🤖 ML / DL & 📊 Python</span></b>
-    </td>
-    <td align="left">
       <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,pandas,numpy,matplotlib,seaborn&theme=dark&perline=6" />
     </td>
   </tr>
 
   <tr>
-    <td align="left">
-      <b><span style="font-size:18px; color:#e91e63;">🛠️ Tools</span></b>
-    </td>
     <td align="left">
       <img src="https://skillicons.dev/icons?i=git,visualstudio,vscode,postman,figma&theme=dark&perline=6" />
     </td>
