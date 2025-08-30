@@ -17,37 +17,39 @@
 
 ---
 
-## 🧠 Tech Stack
+## 🧠 Tech Stack  
 
-### 🔤 Languages
-<p align="center">
-  <b>Advanced</b><br/>
-  <img src="https://skillicons.dev/icons?i=cpp,rust,python&theme=dark&perline=6" />
-  <br/>
-  <b>Intermediate</b><br/>
-  <img src="https://skillicons.dev/icons?i=java,javascript&theme=dark&perline=6" />
-</p>
-
----
-
-### 🌐 Web Development | 🗄️ Databases
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=react,express,mysql,mongodb&theme=dark&perline=4" />
-</p>
-
----
-
-### 🤖 Machine Learning / Deep Learning | 📊 Python Libraries
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,pandas,numpy,matplotlib,seaborn&theme=dark&perline=6" />
-</p>
-
----
-
-### 🛠️ Tools
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=git,visualstudio,vscode,postman,figma&theme=dark&perline=6" />
-</p>
+<table align="center">
+  <tr>
+    <td align="center" colspan="2"><b>🔤 Languages</b></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Advanced</b><br/>
+      <img src="https://skillicons.dev/icons?i=cpp,rust,python&theme=dark&perline=3" />
+    </td>
+    <td align="center"><b>Intermediate</b><br/>
+      <img src="https://skillicons.dev/icons?i=java,javascript&theme=dark&perline=2" />
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center" colspan="2"><b>🌐 Web Development | 🗄️ Databases</b><br/>
+      <img src="https://skillicons.dev/icons?i=react,express,mysql,mongodb&theme=dark&perline=4" />
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center" colspan="2"><b>🤖 Machine Learning / Deep Learning <br/>📊 Python Libraries</b><br/>
+      <img src="https://skillicons.dev/icons?i=pytorch,tensorflow,pandas,numpy,matplotlib,seaborn&theme=dark&perline=6" />
+    </td>
+  </tr>
+  
+  <tr>
+    <td align="center" colspan="2"><b>🛠️ Tools</b><br/>
+      <img src="https://skillicons.dev/icons?i=git,visualstudio,vscode,postman,figma&theme=dark&perline=6" />
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -55,6 +57,7 @@
   <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/Tech%20Stack/coding.gif" width="500px"/>
 </p>
 
+---
 
 
 ## 🏆 Achievements
