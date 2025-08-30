@@ -74,7 +74,7 @@
 ## 📈 GitHub Insights  
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" width="48%" height="200px"/>
+  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" width="48%" height="200px"/>
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&hide=html,css,shell,batchfile,scss,makefile&theme=react&hide_border=true&count_private=true" width="48%" height="200px"/>
 </div>
 
