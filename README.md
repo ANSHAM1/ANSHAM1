@@ -17,51 +17,57 @@
 
 ---
 
-## 🧠 Tech Stack  
+## 🧠 Tech Stack
 
-### 🔥 Advanced
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=cpp&theme=dark" width="30"/> &nbsp; C++ &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=rust&theme=dark" width="30"/> &nbsp; Rust &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=python&theme=dark" width="30"/> &nbsp; Python
-</p>
+<table>
+  <tr>
+    <td align="right" valign="top"><strong>Languages:</strong></td>
+    <td>
+      <a href="https://isocpp.org/" target="_blank"><img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white"></a>
+      <a href="https://www.rust-lang.org/" target="_blank"><img src="https://img.shields.io/badge/Rust-DEA584?style=for-the-badge&logo=rust&logoColor=black"></a>
+      <a href="https://www.python.org/" target="_blank"><img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"></a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"><img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"></a>
+      <a href="https://www.java.com/" target="_blank"><img src="https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=openjdk&logoColor=white"></a>
+      <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank"><img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white"></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" valign="top"><strong>ML / Data Science:</strong></td>
+    <td>
+      <a href="https://pytorch.org/" target="_blank"><img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white"></a>
+      <a href="https://www.tensorflow.org/" target="_blank"><img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white"></a>
+      <a href="https://pandas.pydata.org/" target="_blank"><img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"></a>
+      <a href="https://numpy.org/" target="_blank"><img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"></a>
+      <a href="https://matplotlib.org/" target="_blank"><img src="https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge&logo=matplotlib&logoColor=white"></a>
+      <a href="https://seaborn.pydata.org/" target="_blank"><img src="https://img.shields.io/badge/Seaborn-3776ab?style=for-the-badge&logo=seaborn&logoColor=white"></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" valign="top"><strong>Frameworks & DBs:</strong></td>
+    <td>
+      <a href="https://reactjs.org/" target="_blank"><img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black"></a>
+      <a href="https://expressjs.com/" target="_blank"><img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white"></a>
+      <a href="https://www.mysql.com/" target="_blank"><img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white"></a>
+      <a href="https://www.mongodb.com/" target="_blank"><img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white"></a>
+    </td>
+  </tr>
+  <tr>
+    <td align="right" valign="top"><strong>Tools & Platforms:</strong></td>
+    <td>
+      <a href="https://git-scm.com/" target="_blank"><img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white"></a>
+      <a href="https://visualstudio.microsoft.com/" target="_blank"><img src="https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white"></a>
+      <a href="https://code.visualstudio.com/" target="_blank"><img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white"></a>
+      <a href="https://www.postman.com/" target="_blank"><img src="https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white"></a>
+      <a href="https://www.figma.com/" target="_blank"><img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white"></a>
+    </td>
+  </tr>
+</table>
 
-### ⚡ Intermediate
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=javascript&theme=dark" width="30"/> &nbsp; JavaScript &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=java&theme=dark" width="30"/> &nbsp; Java &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=cs&theme=dark" width="30"/> &nbsp; C#
-</p>
-
-### 🛠️ Tools & Frameworks
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=react&theme=dark" width="30"/> &nbsp; React &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=express&theme=dark" width="30"/> &nbsp; Express &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=mysql&theme=dark" width="30"/> &nbsp; MySQL &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=mongodb&theme=dark" width="30"/> &nbsp; MongoDB
-  <br/><br/>
-  <img src="https://skillicons.dev/icons?i=pytorch&theme=dark" width="30"/> &nbsp; PyTorch &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=tensorflow&theme=dark" width="30"/> &nbsp; TensorFlow &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=pandas&theme=dark" width="30"/> &nbsp; Pandas &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=numpy&theme=dark" width="30"/> &nbsp; NumPy
-  <br/><br/>
-  <img src="https://skillicons.dev/icons?i=matplotlib&theme=dark" width="30"/> &nbsp; Matplotlib &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=seaborn&theme=dark" width="30"/> &nbsp; Seaborn &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=git&theme=dark" width="30"/> &nbsp; Git
-  <br/><br/>
-  <img src="https://skillicons.dev/icons?i=visualstudio&theme=dark" width="30"/> &nbsp; Visual Studio &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=vscode&theme=dark" width="30"/> &nbsp; VS Code &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=postman&theme=dark" width="30"/> &nbsp; Postman &nbsp;&nbsp;&nbsp;
-  <img src="https://skillicons.dev/icons?i=figma&theme=dark" width="30"/> &nbsp; Figma
-</p>
-
-### 📚 Concepts
-<p align="left">
-  🔹 RDBMS &nbsp;&nbsp;&nbsp;
-  🔹 Operating Systems &nbsp;&nbsp;&nbsp;
-  🔹 Computer Networks &nbsp;&nbsp;&nbsp;
-  🔹 System Design
-</p>
+### 📚 Core Concepts
+- Relational Database Management Systems (RDBMS)
+- Operating Systems & Concurrency
+- Computer Networks & Protocols
+- System Design & Scalability
 
 
 ---
