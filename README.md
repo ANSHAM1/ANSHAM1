@@ -17,65 +17,55 @@
 
 ---
 
-## 🧠 Tech Stack  
+## 🧠 Tech Stack
 
 <p align="center">
-  <img src="https://media.giphy.com/media/SvFocn0wNMx0iv2rYz/giphy.gif" width="70"/>  
-  <img src="https://media.giphy.com/media/LMt9638dO8dftAjtco/giphy.gif" width="70"/>  
-  <img src="https://media.giphy.com/media/kdFc8fubgS31b8DsVu/giphy.gif" width="70"/>  
-  <img src="https://media.giphy.com/media/XAxylRMCdpbEWUAvr8/giphy.gif" width="70"/>  
-  <img src="https://media.giphy.com/media/ln7z2eWriiQAllfVcn/giphy.gif" width="70"/>  
+  <!-- Animated icon header -->
+  <img src="assets/tech-animated.gif" alt="Animated Tech Stack" width="200"/>
 </p>
-
----
 
 ### 🔤 Languages  
 
-- **Advanced**  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="50"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-plain.svg" width="50"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="50"/>  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="50" title="C++" alt="C++"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-plain.svg" width="50" title="Rust" alt="Rust"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="50" title="Python" alt="Python"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="50" title="Java" alt="Java"/>  
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50" title="JavaScript" alt="JavaScript"/>
+</p>
 
-- **Intermediate**  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="50"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50"/>  
+###  Web Development  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="50" title="React" alt="React"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" width="50" title="Express" alt="Express"/>
+</p>
 
----
+###  Databases  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="50" title="MySQL" alt="MySQL"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" width="50" title="MongoDB" alt="MongoDB"/>
+</p>
 
-### 🌐 Web Development  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" width="50"/>  
+###  ML / DL  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" width="50" title="PyTorch" alt="PyTorch"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" width="50" title="TensorFlow" alt="TensorFlow"/>
+</p>
 
----
+###  Python Libraries  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="50" title="Pandas" alt="Pandas"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="50" title="NumPy" alt="NumPy"/>
+  <!-- Matplotlib & Seaborn may need external SVG hosts -->
+</p>
 
-### 🗄️ Databases  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" width="50"/>  
-
----
-
-### 🤖 Machine Learning / Deep Learning  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" width="50"/>  
-
----
-
-### 📊 Python Libraries  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="50"/>  
-<img src="https://matplotlib.org/stable/_static/logo2.svg" width="50"/>  
-<img src="https://seaborn.pydata.org/_static/logo-wide-lightbg.svg" width="90"/>  
-
----
-
-### 🛠️ Tools  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg" width="50"/>  
-<img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/nvidia_logo_icon_170697.png" width="50"/>  
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="50"/>  
-<img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" width="50"/>  
-<img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" width="50"/>  
-
+###  Tools  
+<p align="center">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="50" title="Git" alt="Git"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg" width="50" title="Visual Studio" alt="Visual Studio"/>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="50" title="VS Code" alt="VS Code"/>
+  <!-- Add Nsight, Postman, Figma similarly via hosted SVGs -->
+</p>
 ---
 
 ## 🏆 Achievements
