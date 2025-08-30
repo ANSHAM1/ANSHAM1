@@ -58,6 +58,10 @@
 
 ---
 
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" />
+</p>
+
 ## 🚀 Featured Projects
 
 <table>
