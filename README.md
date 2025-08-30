@@ -1,8 +1,3 @@
-<!-- 🎯 Banner -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/ANSHM1/ANSHAM1//banner.jpg" alt="banner" width="100%"/>
-</p>
-
 <h1 align="center">Hi 👋, I'm ANSHAM MAURYA</h1>
 <p align="center">
   <i>Machine Learning / Deep Learning Developer | Passionate about intelligent systems and applied AI.</i>
@@ -10,15 +5,23 @@
 
 ---
 
-## 👨‍💻 About Me
-- 🔭 Currently working with **.NET Framework**, exploring **ML.NET** and integrating AI into production systems.  
-- 🧠 Specializing in **Machine Learning** & **Deep Learning**, with experience in **full-stack development**.  
-- 🌱 Improving my **Data Structures & Algorithms** using **C++**.  
-- 💬 Ask me about **ML.NET**, **PyTorch**, **TensorFlow**, **MERN stack**, or **low-level AI implementation**.  
-- 📫 Reach me at:  
+## 👨‍💻 About Me  
+
+<p align="center">
+  <img src="https://media.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif" width="300" alt="Coding GIF"/>
+</p>
+
+- 🚀 Currently diving deep into **Rust** ⚙️ and **System-Level Programming**, while also exploring how to **bring AI models into real-world production systems**.  
+- 🧠 My core expertise lies in **Machine Learning** & **Deep Learning**, but I’m equally fascinated by **low-level systems work** — I enjoy blending performance with intelligence.  
+- 🌱 Always sharpening my problem-solving mindset: right now I’m practicing **Data Structures & Algorithms** using **C++** and **Java** (yes, I love challenging myself 💪).  
+- 💬 I love nerding out about **C++**, **Rust**, **PyTorch**, **TensorFlow**, or even chatting about the **MERN stack**. If it’s about building, breaking, or optimizing AI systems — count me in.  
+- 📫 Let’s connect!  
   📧 [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com)  
-  🎓 [ansham.maurya_cs.h23@gla.ac.in](mailto:ansham.maurya_cs.h23@gla.ac.in)  
-- ⚡ Fun fact: I like reverse-engineering intelligent behavior in code.  
+- ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — kind of like trying to peek into how “thinking” works 🧩🤯.  
+
+<p align="center">
+  <img src="https://media.giphy.com/media/coxQHKASG60HrHtvkt/giphy.gif" width="250" alt="AI GIF"/>
+</p>
 
 ---
 
@@ -74,7 +77,7 @@
 
 ## 🏆 Achievements
 - 🚀 **Created a fully Convolutional Neural Network (CNN) from scratch in C++ and CUDA**  
-  🔗 [Check out the repo](///)  
+  🔗 [Check out the repo](https://github.com/ANSHAM1/TOrchLessCUDA)  
 
 ---
 
