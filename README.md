@@ -17,6 +17,15 @@
 
 ---
 
+<p align="center">
+  <a href="https://www.linkedin.com/in/[your-linkedin-id]" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
+  <a href="https://www.kaggle.com/[your-kaggle-id]" target="_blank"><img src="https://img.shields.io/badge/Kaggle-20BEFF?style=for-the-badge&logo=Kaggle&logoColor=white" /></a>
+  <a href="[your-portfolio-website-url]" target="_blank"><img src="https://img.shields.io/badge/Portfolio-343434?style=for-the-badge&logo=google-chrome&logoColor=white" /></a>
+  <a href="mailto:anshammaurya2291@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" /></a>
+</p>
+
+---
+
 ## 🧠 Tech Stack
 
 <table>
@@ -65,9 +74,50 @@
 
 ---
 
-## 🏆 Self Achievements
-- 🚀 **Created a fully Convolutional Neural Network (CNN) from scratch in C++ and CUDA**  
-  🔗 [Check out the repo](https://github.com/ANSHAM1/TOrchLessCUDA)  
+## 🚀 Featured Projects
+
+<table>
+<tr>
+
+<td width="50%" valign="top">
+<h3 align="center">TorchLessCUDA: CNN from Scratch</h3>
+<div align="center">
+  <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank">
+    <img src="[LINK_TO_A_PROJECT_IMAGE_OR_GIF]" alt="Project Screenshot/GIF">
+  </a>
+  <p>
+    A fully functional Convolutional Neural Network (CNN) built from the ground up using only C++ and CUDA. This project demonstrates deep understanding of low-level GPU programming and neural network architecture.
+  </p>
+  <p>
+    <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank">
+      <img src="https://img.shields.io/badge/View%20Code-000000?style=for-the-badge&logo=github&logoColor=white">
+    </a>
+  </p>
+</div>
+</td>
+
+<td width="50%" valign="top">
+<h3 align="center">Your Second Best Project</h3>
+<div align="center">
+  <a href="[LINK_TO_REPO]" target="_blank">
+    <img src="[LINK_TO_A_PROJECT_IMAGE_OR_GIF]" alt="Project Screenshot/GIF">
+  </a>
+  <p>
+    A brief, compelling description of what this project does and the technologies used. Highlight your key contributions and what you learned.
+  </p>
+  <p>
+    <a href="[LINK_TO_REPO]" target="_blank">
+      <img src="https://img.shields.io/badge/View%20Code-000000?style=for-the-badge&logo=github&logoColor=white">
+    </a>
+    <a href="[LINK_TO_LIVE_DEMO]" target="_blank">
+      <img src="https://img.shields.io/badge/Live%20Demo-007ACC?style=for-the-badge&logo=vercel&logoColor=white">
+    </a>
+  </p>
+</div>
+</td>
+
+</tr>
+</table>
 
 ---
 
@@ -86,42 +136,3 @@
 </p>
 
 ---
-
-## 🚀 Featured Projects
-<table>
-<tr>
-<td width="50%">
-<h3 align="center">Project Name 1</h3>
-<a href="[YOUR_PROJECT_REPO_LINK]">
-<img src="[LINK_TO_PROJECT_IMAGE_OR_GIF]" alt="Project Demo"/>
-</a>
-<p align="center">
-<a href="[YOUR_PROJECT_REPO_LINK]"><img src="https://img.shields.io/badge/Code-000000?style=for-the-badge&logo=github&logoColor=white"/></a>
-<a href="[YOUR_PROJECT_LIVE_DEMO_LINK]"><img src="https://img.shields.io/badge/Live--Demo-blue?style=for-the-badge&logo=vercel&logoColor=white"/></a>
-</p>
-</td>
-<td width="50%">
-<h3 align="center">Project Name 2</h3>
-<a href="[YOUR_PROJECT_REPO_LINK]">
-<img src="[LINK_TO_PROJECT_IMAGE_OR_GIF]" alt="Project Demo"/>
-</a>
-<p align="center">
-<a href="[YOUR_PROJECT_REPO_LINK]"><img src="https://img.shields.io/badge/Code-000000?style=for-the-badge&logo=github&logoColor=white"/></a>
-<a href="[YOUR_PROJECT_LIVE_DEMO_LINK]"><img src="https://img.shields.io/badge/Live--Demo-blue?style=for-the-badge&logo=vercel&logoColor=white"/></a>
-</p>
-</td>
-</tr>
-</table>
-
----
-
-## 🎧 Extras
-- 🏆 Competitive coding, Hackathons, and LeetCode badges  
-- 🎶 Currently vibing to: [![Spotify](https://img.shields.io/badge/Spotify-Listening-green?style=flat&logo=spotify)](https://open.spotify.com/)  
-- 📂 Check my pinned repositories for more projects!  
-
----
-
-<p align="center">
-  <sub>Built with ❤️ by Ansham Maurya • Keep shipping 🚀</sub>
-</p>
