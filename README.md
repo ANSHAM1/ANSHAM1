@@ -80,28 +80,9 @@
 
 ---
 
-## 📊 My Activity Dashboard
-
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <h3 align="center">Contribution Graph</h3>
-      <p align="center">
-        <img src="https://github-readme-activity-graph.vercel.app/graph?username=ansham1&theme=react-dark&hide_border=true&bg_color=0D1117&line=00FF99&point=FFFFFF&area=true" />
-      </p>
-    </td>
-    <td width="50%" valign="top">
-      <h3 align="center">GitHub Profile Stats</h3>
-      <a href="https://github.com/anuraghazra/github-readme-stats">
-        <img src="https://github-readme-stats.vercel.app/api?username=ansham1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" />
-      </a>
-    </td>
-  </tr>
-</table>
-
 <h3 align="center">Contribution Graph</h3>
 <p align="center">
-  <img src="https://github.com/ansham1/ansham1/blob/output/github-contribution-grid-snake-dark.svg" alt="Snake animation" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ansham1&theme=react-dark&hide_border=true&bg_color=0D1117&line=00FF99&point=FFFFFF&area=true" />
 </p>
 
 ---
