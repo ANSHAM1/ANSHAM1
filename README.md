@@ -19,54 +19,61 @@
 
 ## 🧠 Tech Stack
 
+<!-- 🌟 Languages -->
+### 🔤 Languages
 <p align="center">
-  <!-- Animated icon header -->
-  <img src="assets/tech-animated.gif" alt="Animated Tech Stack" width="200"/>
+  <img src="https://skillicons.dev/icons?i=cpp,rust,python&theme=dark&perline=3" />
+  <br/>
+  <img src="https://skillicons.dev/icons?i=java,javascript&theme=dark&perline=2" />
 </p>
 
-### 🔤 Languages  
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" width="50" title="C++" alt="C++"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/rust/rust-plain.svg" width="50" title="Rust" alt="Rust"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" width="50" title="Python" alt="Python"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" width="50" title="Java" alt="Java"/>  
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="50" title="JavaScript" alt="JavaScript"/>
-</p>
-
-###  Web Development  
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" width="50" title="React" alt="React"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" width="50" title="Express" alt="Express"/>
-</p>
-
-###  Databases  
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" width="50" title="MySQL" alt="MySQL"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" width="50" title="MongoDB" alt="MongoDB"/>
-</p>
-
-###  ML / DL  
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pytorch/pytorch-original.svg" width="50" title="PyTorch" alt="PyTorch"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tensorflow/tensorflow-original.svg" width="50" title="TensorFlow" alt="TensorFlow"/>
-</p>
-
-###  Python Libraries  
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pandas/pandas-original.svg" width="50" title="Pandas" alt="Pandas"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/numpy/numpy-original.svg" width="50" title="NumPy" alt="NumPy"/>
-  <!-- Matplotlib & Seaborn may need external SVG hosts -->
-</p>
-
-###  Tools  
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" width="50" title="Git" alt="Git"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg" width="50" title="Visual Studio" alt="Visual Studio"/>
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" width="50" title="VS Code" alt="VS Code"/>
-  <!-- Add Nsight, Postman, Figma similarly via hosted SVGs -->
-</p>
 ---
+
+<!-- 🌐 Web Development -->
+### 🌐 Web Development
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=react,express&theme=dark&perline=2" />
+</p>
+
+---
+
+<!-- 🗄️ Databases -->
+### 🗄️ Databases
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=mysql,mongodb&theme=dark&perline=2" />
+</p>
+
+---
+
+<!-- 🤖 Machine Learning / Deep Learning -->
+### 🤖 Machine Learning / Deep Learning
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=pytorch,tensorflow&theme=dark&perline=2" />
+</p>
+
+---
+
+<!-- 📊 Python Libraries -->
+### 📊 Python Libraries
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=pandas,numpy,matplotlib,seaborn&theme=dark&perline=4" />
+</p>
+
+---
+
+<!-- 🛠️ Tools -->
+### 🛠️ Tools
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=git,visualstudio,vscode,postman,figma&theme=dark&perline=5" />
+</p>
+
+---
+
+<!-- 🌟 Extra Animated Flair -->
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Anmol-Baranwal/Cool-GIFs-For-GitHub/main/Tech%20Stack/coding.gif" width="500px"/>
+</p>
+
 
 ## 🏆 Achievements
 - 🚀 **Created a fully Convolutional Neural Network (CNN) from scratch in C++ and CUDA**  
