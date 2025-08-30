@@ -86,7 +86,7 @@
   <tr>
     <td width="50%" valign="top">
       <h3 align="center">Weekly Coding Activity</h3>
-      <a href="https://wakatime.com/@ansham1">
+      <a href="https://wakatime.com/@ANSHAM1">
         <img src="https://github-readme-stats.vercel.app/api/wakatime?username=ansham1&theme=react&hide_border=true&layout=compact" />
       </a>
     </td>
