@@ -16,7 +16,6 @@
 - ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — kind of like trying to peek into how “thinking” works 🧩🤯.  
 
 ---
-###
 
 <div align="center">
   <img src="https://cdn.simpleicons.org/c++/00599C" height="60" alt="cplusplus logo"  />
@@ -52,7 +51,7 @@
   <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo"  />
 </div>
 
-###
+---
 
 <br clear="both">
 
@@ -66,7 +65,7 @@
   <img src="https://skillicons.dev/icons?i=postman" height="40" alt="postman logo"  />
 </div>
 
-###
+---
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ANSHAM1/ANSHAM1/output/pacman-contribution-graph-dark.svg">
