@@ -16,9 +16,6 @@
 - ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — kind of like trying to peek into how “thinking” works 🧩🤯.  
 
 ---
-
-<h1 align="center">Hey 👋What's Up?</h1>
-
 ###
 
 <div align="center">
@@ -140,21 +137,3 @@
 
 </tr>
 </table>
-
----
-
-## 📈 GitHub Insights  
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&theme=react&hide_border=true&include_all_commits=true&count_private=true" width="48%" height="200px"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ansham1&layout=compact&hide=html,css,shell,batchfile,scss,makefile&theme=react&hide_border=true&count_private=true" width="48%" height="200px"/>
-</div>
-
----
-
-<h3 align="center">Contribution Graph</h3>
-<p align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ansham1&theme=react-dark&hide_border=true&bg_color=0D1117&line=00FF99&point=FFFFFF&area=true" />
-</p>
-
----
