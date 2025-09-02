@@ -51,7 +51,6 @@
   <img src="https://skillicons.dev/icons?i=vscode" height="40" alt="vscode logo" />
   <img src="https://skillicons.dev/icons?i=visualstudio" height="40" alt="visual studio logo" />
   <img src="https://skillicons.dev/icons?i=postman" height="40" alt="postman logo" />
-  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nvidia/nvidia-original.svg" height="40" alt="nsight systems logo" />
 </div>
 
 ---
