@@ -53,8 +53,6 @@
 
 ---
 
-<br clear="both">
-
 <div align="center">
   <img src="https://skillicons.dev/icons?i=git" height="40" alt="git logo"  />
   <img width="12" />
@@ -66,14 +64,6 @@
 </div>
 
 ---
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/ANSHAM1/ANSHAM1/output/pacman-contribution-graph-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/ANSHAM1/ANSHAM1/output/pacman-contribution-graph.svg">
-  <img alt="pacman contribution graph" src="https://raw.githubusercontent.com/ANSHAM1/ANSHAM1/output/pacman-contribution-graph.svg">
-</picture>
-
-###
 
 <div align="center">
   <img src="https://streak-stats.demolab.com?user=ANSHAM1&locale=en&mode=weekly&theme=tokyonight&hide_border=true&border_radius=5&date_format=j%20M%5B%20Y%5D&order=3" height="150" alt="streak graph"  />
@@ -87,8 +77,6 @@
   <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=6&theme=nightowl&hide_border=true&order=2&custom_title=Languages" height="200" alt="languages graph"  />
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&radius=16&theme=redical&area=true&order=5&custom_title=Contribution%20Graph&hide_border=true&hide_title=false" height="300" alt="activity-graph graph"  />
 </div>
-
-###
 
 ---
 
