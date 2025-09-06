@@ -121,6 +121,19 @@
 
 ---
 
+## Competitive Programming Profiles
+
+### 📊 LeetCode
+![LeetCode Stats](https://leetcard.jacoblin.cool/Ansham_Maurya?theme=dark&font=baloo&ext=activity)
+
+### 🏆 Codeforces
+![Codeforces Stats](https://codeforces-readme-stats.vercel.app/api/card?username=Ansham&theme=dark)
+
+### 🚀 Coding Ninjas
+[![Coding Ninjas](https://img.shields.io/badge/Coding%20Ninjas-Profile-orange)](https://www.codingninjas.com/codestudio/profile/246e2fcf-ab28-4c90-9c82-07aecdf3b66a)
+
+---
+
 <div align="center">
   <i>“Code is the closest thing we have to magic ✨”</i>
 </div>
