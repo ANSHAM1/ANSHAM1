@@ -144,28 +144,21 @@
 
 ---
 
-## Competitive Programming Profiles
+## 🏆 Competitive Programming Profile
 
-<table align="center">
+<table align="center" width="100%">
   <tr>
-    <td align="center">
-      <b>LeetCode</b><br>
-      <img src="https://leetcard.jacoblin.cool/ansham_maurya?theme=dark&font=baloo&ext=activity" alt="LeetCode Stats">
-    </td>
-    <td align="center">
-      <b>Codeforces</b><br>
-      <img src="https://codeforces-readme-stats.vercel.app/api/card?username=ansham&theme=dark" alt="Codeforces Stats">
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" align="center">
-      <b>Coding Ninjas</b><br>
-      <a href="https://www.codingninjas.com/codestudio/profile/246e2fcf-ab28-4c90-9c82-07aecdf3b66a">
-        <img src="https://img.shields.io/badge/Coding%20Ninjas-Profile-orange" alt="Coding Ninjas Profile">
-      </a>
+    <td align="center" width="100%">
+      <h3>LeetCode</h3>
+      <img 
+        src="https://leetcard.jacoblin.cool/ansham_maurya?theme=dark&font=baloo&ext=activity" 
+        alt="LeetCode Stats"
+        width="100%"
+      >
     </td>
   </tr>
 </table>
+
 
 ---
 
