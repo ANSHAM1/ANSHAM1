@@ -78,42 +78,65 @@
 <table>
 <tr>
 
+<!-- TorchLessCUDA -->
 <td width="50%" valign="top">
-<h3 align="center">TorchLessCUDA: CNN from Scratch</h3>
-<div align="center">
-  <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank">
-    <img src="https://raw.githubusercontent.com/ANSHAM1/TOrchLessCUDA/main/demo.gif" alt="TorchLessCUDA Demo" width="100%" />
-  </a>
+  <h3 align="center">TorchLessCUDA: CNN from Scratch</h3>
+  <div align="center" style="padding: 10px;">
+
   <p>
-    ⚡ A fully functional Convolutional Neural Network (CNN) built from scratch using **C++** and **CUDA**.  
-    🔧 Demonstrates deep understanding of **low-level GPU programming** and **neural network architecture**.  
-    📈 Optimized for performance with custom CUDA kernels.
+    ⚡ <strong>TorchLessCUDA</strong> is a fully custom-built  
+    <strong>Convolutional Neural Network (CNN)</strong> implemented from the ground up using  
+    <strong>C++</strong> and <strong>CUDA</strong>.
   </p>
+
+  <p>
+    🔧 Designed to demonstrate mastery of <strong>low-level GPU computing</strong>,  
+    <strong>memory optimization</strong>, and <strong>neural network internals</strong>.
+  </p>
+
+  <p>
+    📈 Features hand-written CUDA kernels for efficient forward and backward passes  
+    without relying on external deep learning frameworks.
+  </p>
+
   <p>
     <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank">
-      <img src="https://img.shields.io/badge/View%20Code-000000?style=for-the-badge&logo=github&logoColor=white">
+      <strong>🔗 View Repository</strong>
     </a>
   </p>
-</div>
+
+  </div>
 </td>
 
+<!-- SentinelAI -->
 <td width="50%" valign="top">
-<h3 align="center">SentinelAI NIDS</h3>
-<div align="center">
-  <a href="https://github.com/ANSHAM1/SentinelAI" target="_blank">
-    <img src="https://raw.githubusercontent.com/ANSHAM1/SentinelAI/main/demo.png" alt="SentinelAI Screenshot" width="100%" />
-  </a>
+  <h3 align="center">SentinelAI NIDS</h3>
+
+  <div align="center" style="padding: 10px;">
+
   <p>
-    🛡️ A **Network Intrusion Detection System** (NIDS) powered by AI.  
-    ⚙️ Built with **Rust + Tauri** for system-level security.  
-    📊 Detects anomalies in real time with intelligent monitoring.
+    🛡️ <strong>SentinelAI</strong> is an advanced  
+    <strong>Network Intrusion Detection System (NIDS)</strong> that monitors, detects, and  
+    responds to anomalous network behaviors in real time.
   </p>
+
   <p>
-    <a href="https://github.com/ANSHAM1/SentinelAI" target="_blank">
-      <img src="https://img.shields.io/badge/View%20Code-000000?style=for-the-badge&logo=github&logoColor=white">
+    ⚙️ Built with <strong>Rust</strong> and <strong>Tauri</strong> to ensure  
+    high performance, system-level security, and smooth cross-platform support.
+  </p>
+
+  <p>
+    📊 Powered by intelligent anomaly detection algorithms, offering  
+    deep visibility into network traffic with minimal overhead.
+  </p>
+
+  <p>
+    <a href="https://github.com/ANSHAM1/SentinelAI_Nids" target="_blank">
+      <strong>🔗 View Repository</strong>
     </a>
   </p>
-</div>
+
+  </div>
 </td>
 
 </tr>
