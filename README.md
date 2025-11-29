@@ -4,8 +4,6 @@
 </p>
 
 ---
-## Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
----
 
 ## 👨‍💻 About Me  
 
@@ -14,7 +12,9 @@
 - 🌱 Practicing **Data Structures & Algorithms** in **C++** and **Java** to keep sharpening problem-solving skills.  
 - 💬 Always open to chat about **C++**, **Rust**, **CUDA**, **PyTorch**, **TensorFlow**, or even **MERN stack** development.  
 - 📫 Reach me at: [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com)  
-- ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — like peeking into how “thinking” works 🧩🤯.  
+- ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — like peeking into how “thinking” works 🧩🤯.
+
+Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 ---
 
