@@ -54,7 +54,6 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
   <img src="https://skillicons.dev/icons?i=visualstudio" height="40" alt="visual studio logo" />
   <img src="https://skillicons.dev/icons?i=postman" height="40" alt="postman logo" />
   <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo" />
-  <img src="https://skillicons.dev/icons?i=docker" height="40" alt="dockerhub logo" />
   <img src="https://skillicons.dev/icons?i=kubernetes" height="40" alt="kubernetes logo" />
   <img src="https://skillicons.dev/icons?i=githubactions" height="40" alt="ci/cd pipeline logo" />
 </div>
