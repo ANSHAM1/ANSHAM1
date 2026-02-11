@@ -113,11 +113,6 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
   <img src="https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=radical&column=7&margin-w=8&margin-h=8" />
 </div>
 
-## 🔝 Top Contributed Repo
-<div align="center">
-  <img src="https://github-contributor-stats.vercel.app/api?username=ANSHAM1&limit=5&theme=dark&combine_all_yearly_contributions=true" />
-</div>
-
 ---
 
 ## 🚀 Featured Projects  
