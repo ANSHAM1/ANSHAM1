@@ -21,7 +21,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 ## 🛠 Tech Stack  
 
 ### Core Languages  
-<div align="center style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px;">
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
   <img src="https://cdn.simpleicons.org/c++/00599C" height="60" alt="cplusplus logo" />
   <img src="https://skillicons.dev/icons?i=c" height="60" alt="c logo" />
   <img src="https://skillicons.dev/icons?i=rust" height="60" alt="rust logo" />
@@ -32,7 +32,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### AI / ML  
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=pytorch" height="40" alt="pytorch logo" /> 
   <img src="https://skillicons.dev/icons?i=tensorflow" height="40" alt="tensorflow logo" /> 
   <img src="https://cdn.simpleicons.org/keras/D00000" height="40" alt="keras logo" /> 
@@ -43,7 +43,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### Web Development  
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo" /> 
   <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo" /> 
   <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo" /> 
@@ -58,7 +58,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### Databases
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb logo" /> 
   <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo" /> 
   <img src="https://skillicons.dev/icons?i=postgres" height="40" alt="postgres logo" /> 
@@ -66,7 +66,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### DevOps / Cloud / Deployment 
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo" /> 
   <img src="https://skillicons.dev/icons?i=kubernetes" height="40" alt="kubernetes logo" /> 
   <img src="https://skillicons.dev/icons?i=githubactions" height="40" alt="github actions logo" /> 
@@ -76,14 +76,14 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### Systems / OS
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=linux" height="40" alt="linux logo" /> 
   <img src="https://skillicons.dev/icons?i=ubuntu" height="40" alt="ubuntu logo" /> 
   <img src="https://skillicons.dev/icons?i=bash" height="40" alt="bash logo" /> 
 </div>
 
 ### Tools & IDEs  
-<div align="center"> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
   <img src="https://skillicons.dev/icons?i=git" height="40" alt="git logo" /> 
   <img src="https://skillicons.dev/icons?i=github" height="40" alt="github logo" /> 
   <img src="https://skillicons.dev/icons?i=vscode" height="40" alt="vscode logo" /> 
