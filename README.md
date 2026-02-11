@@ -67,11 +67,11 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 ### DevOps / Cloud / Deployment 
 <div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
+  <img src="https://skillicons.dev/icons?i=git" height="40" alt="git logo" />
   <img src="https://skillicons.dev/icons?i=docker" height="40" alt="docker logo" /> 
   <img src="https://skillicons.dev/icons?i=kubernetes" height="40" alt="kubernetes logo" /> 
   <img src="https://skillicons.dev/icons?i=githubactions" height="40" alt="github actions logo" /> 
   <img src="https://skillicons.dev/icons?i=aws" height="40" alt="aws logo" /> 
-  <img src="https://skillicons.dev/icons?i=nginx" height="40" alt="nginx logo" /> 
   <img src="https://skillicons.dev/icons?i=vercel" height="40" alt="vercel logo" /> 
 </div>
 
@@ -83,8 +83,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### Tools & IDEs  
-<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;"> 
-  <img src="https://skillicons.dev/icons?i=git" height="40" alt="git logo" /> 
+<div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">  
   <img src="https://skillicons.dev/icons?i=github" height="40" alt="github logo" /> 
   <img src="https://skillicons.dev/icons?i=vscode" height="40" alt="vscode logo" /> 
   <img src="https://skillicons.dev/icons?i=visualstudio" height="40" alt="visual studio logo" /> 
@@ -97,24 +96,28 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 ## 📊 GitHub Stats  
 
 <div align="center">
-  <img src="https://streak-stats.demolab.com?user=ANSHAM1&locale=en&mode=weekly&theme=tokyonight&hide_border=true&border_radius=5&date_format=j%20M%5B%20Y%5D&order=3" height="150" alt="streak graph" />
-  <img src="https://github-profile-trophy.vercel.app?username=ANSHAM1&theme=darkhub&column=-1&row=1&margin-w=8&margin-h=8&no-bg=true&no-frame=true&order=4" height="150" alt="trophy graph" />
+  <img src="https://streak-stats.demolab.com/?user=ANSHAM1&theme=tokyonight&hide_border=true" height="150" />
+  <img src="https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=darkhub&no-bg=true&no-frame=true" height="150" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&hide_title=true&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=nightowl&locale=en&hide_border=true&order=1" height="150" alt="stats graph" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&locale=en&hide_title=false&layout=compact&card_width=320&langs_count=6&theme=nightowl&hide_border=true&order=2&custom_title=Languages&cache_seconds=1800" height="200" alt="languages graph" />
+  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&include_all_commits=true&count_private=true&theme=nightowl&hide_border=true" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&layout=compact&langs_count=6&theme=nightowl&hide_border=true" height="200" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&radius=16&theme=redical&area=true&order=5&custom_title=Contribution%20Graph&hide_border=true&hide_title=false" height="300" alt="activity graph" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&theme=react-dark&hide_border=true&area=true" height="300" />
 </div>
 
 ## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=radical&no-frame=false&no-bg=false&margin-w=4)
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=radical&column=7&margin-w=8&margin-h=8" />
+</div>
 
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username=ANSHAM1&limit=5&theme=dark&combine_all_yearly_contributions=true)
+## 🔝 Top Contributed Repo
+<div align="center">
+  <img src="https://github-contributor-stats.vercel.app/api?username=ANSHAM1&limit=5&theme=dark&combine_all_yearly_contributions=true" />
+</div>
 
 ---
 
