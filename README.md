@@ -43,15 +43,19 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### Web Development  
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo" />
-  <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo" />
-  <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo" />
-  <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo" />
-  <img src="https://skillicons.dev/icons?i=mongodb" height="40" alt="mongodb logo" />
-  <img src="https://skillicons.dev/icons?i=mysql" height="40" alt="mysql logo" />
+<div align="center"> 
+  <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo" /> 
+  <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo" /> 
+  <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo" /> 
+  <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo" /> 
+  <img src="https://skillicons.dev/icons?i=django" height="40" alt="django logo" /> 
+  <img src="https://skillicons.dev/icons?i=flask" height="40" alt="flask logo" /> 
+  <img src="https://skillicons.dev/icons?i=fastapi" height="40" alt="fastapi logo" /> 
+  <img src="https://skillicons.dev/icons?i=vite" height="40" alt="vite logo" /> 
+  <img src="https://skillicons.dev/icons?i=redux" height="40" alt="redux logo" /> 
+  <img src="https://skillicons.dev/icons?i=html" height="40" alt="html logo" />
+  <img src="https://skillicons.dev/icons?i=css" height="40" alt="css logo" />
 </div>
-<div align="center"> <img src="https://skillicons.dev/icons?i=react" height="40" alt="react logo" /> <img src="https://skillicons.dev/icons?i=express" height="40" alt="express logo" /> <img src="https://skillicons.dev/icons?i=tailwind" height="40" alt="tailwindcss logo" /> <img src="https://skillicons.dev/icons?i=nodejs" height="40" alt="nodejs logo" /> <img src="https://skillicons.dev/icons?i=django" height="40" alt="django logo" /> <img src="https://skillicons.dev/icons?i=flask" height="40" alt="flask logo" /> <img src="https://skillicons.dev/icons?i=fastapi" height="40" alt="fastapi logo" /> <img src="https://skillicons.dev/icons?i=vite" height="40" alt="vite logo" /> <img src="https://skillicons.dev/icons?i=redux" height="40" alt="redux logo" /> </div>
 
 ### Tools & IDEs  
 <div align="center">
