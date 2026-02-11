@@ -32,9 +32,16 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 </div>
 
 ### AI / ML  
-<div align="center">
-  <img src="https://skillicons.dev/icons?i=pytorch" height="40" alt="pytorch logo" />
-  <img src="https://skillicons.dev/icons?i=tensorflow" height="40" alt="tensorflow logo" />
+<div align="center"> 
+  <img src="https://skillicons.dev/icons?i=pytorch" height="40" alt="pytorch logo" /> 
+  <img src="https://skillicons.dev/icons?i=tensorflow" height="40" alt="tensorflow logo" /> 
+  <img src="https://skillicons.dev/icons?i=keras" height="40" alt="keras logo" /> 
+  <img src="https://skillicons.dev/icons?i=numpy" height="40" alt="numpy logo" /> 
+  <img src="https://skillicons.dev/icons?i=pandas" height="40" alt="pandas logo" /> 
+  <img src="https://skillicons.dev/icons?i=opencv" height="40" alt="opencv logo" /> 
+  <img src="https://skillicons.dev/icons?i=mlflow" height="40" alt="mlflow logo" /> 
+  <img src="https://skillicons.dev/icons?i=huggingface" height="40" alt="huggingface logo" /> 
+  <img src="https://cdn.simpleicons.org/nvidia/76B900" height="40" alt="cuda logo" /> 
 </div>
 
 ### Web Development  
