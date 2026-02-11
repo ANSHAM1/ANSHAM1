@@ -29,6 +29,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
   <img src="https://skillicons.dev/icons?i=cs" height="60" alt="csharp logo" />
   <img src="https://skillicons.dev/icons?i=js" height="60" alt="javascript logo" />
 </div>
+<div align="center"> <img src="https://cdn.simpleicons.org/c++/00599C" height="60" alt="cplusplus logo" /> <img src="https://skillicons.dev/icons?i=rust" height="60" alt="rust logo" /> <img src="https://skillicons.dev/icons?i=py" height="60" alt="python logo" /> <img src="https://skillicons.dev/icons?i=java" height="60" alt="java logo" /> <img src="https://skillicons.dev/icons?i=cs" height="60" alt="csharp logo" /> <img src="https://skillicons.dev/icons?i=js" height="60" alt="javascript logo" /> <img src="https://skillicons.dev/icons?i=c" height="60" alt="c logo" /> <img src="https://skillicons.dev/icons?i=html" height="60" alt="html logo" /> <img src="https://skillicons.dev/icons?i=css" height="60" alt="css logo" /> </div>
 
 ### AI / ML  
 <div align="center">
@@ -75,6 +76,12 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&radius=16&theme=redical&area=true&order=5&custom_title=Contribution%20Graph&hide_border=true&hide_title=false" height="300" alt="activity graph" />
 </div>
+
+## 🏆 GitHub Trophies
+![](https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=radical&no-frame=false&no-bg=false&margin-w=4)
+
+### 🔝 Top Contributed Repo
+![](https://github-contributor-stats.vercel.app/api?username=ANSHAM1&limit=5&theme=dark&combine_all_yearly_contributions=true)
 
 ---
 
