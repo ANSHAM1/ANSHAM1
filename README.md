@@ -23,13 +23,13 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 ### Core Languages  
 <div align="center">
   <img src="https://cdn.simpleicons.org/c++/00599C" height="60" alt="cplusplus logo" />
+  <img src="https://skillicons.dev/icons?i=c" height="60" alt="c logo" />
   <img src="https://skillicons.dev/icons?i=rust" height="60" alt="rust logo" />
   <img src="https://skillicons.dev/icons?i=py" height="60" alt="python logo" />
   <img src="https://skillicons.dev/icons?i=java" height="60" alt="java logo" />
   <img src="https://skillicons.dev/icons?i=cs" height="60" alt="csharp logo" />
   <img src="https://skillicons.dev/icons?i=js" height="60" alt="javascript logo" />
 </div>
-<div align="center"> <img src="https://cdn.simpleicons.org/c++/00599C" height="60" alt="cplusplus logo" /> <img src="https://skillicons.dev/icons?i=rust" height="60" alt="rust logo" /> <img src="https://skillicons.dev/icons?i=py" height="60" alt="python logo" /> <img src="https://skillicons.dev/icons?i=java" height="60" alt="java logo" /> <img src="https://skillicons.dev/icons?i=cs" height="60" alt="csharp logo" /> <img src="https://skillicons.dev/icons?i=js" height="60" alt="javascript logo" /> <img src="https://skillicons.dev/icons?i=c" height="60" alt="c logo" /> <img src="https://skillicons.dev/icons?i=html" height="60" alt="html logo" /> <img src="https://skillicons.dev/icons?i=css" height="60" alt="css logo" /> </div>
 
 ### AI / ML  
 <div align="center">
