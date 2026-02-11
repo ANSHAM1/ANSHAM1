@@ -96,17 +96,16 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 ## 📊 GitHub Stats  
 
 <div align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&layout=compact&theme=tokyonight&hide_border=true" height="150" />
+</div>
+
+<div align="center">
   <img src="https://streak-stats.demolab.com/?user=ANSHAM1&theme=tokyonight&hide_border=true" height="150" />
-  <img src="https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=darkhub&no-bg=true&no-frame=true" height="150" />
 </div>
 
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&include_all_commits=true&count_private=true&theme=nightowl&hide_border=true" height="150" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&layout=compact&langs_count=6&theme=nightowl&hide_border=true" height="200" />
-</div>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&theme=react-dark&hide_border=true&area=true" height="300" />
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&theme=react-dark&hide_border=true" height="300" />
 </div>
 
 ## 🏆 GitHub Trophies
