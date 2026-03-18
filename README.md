@@ -107,28 +107,6 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 ---
 
-## 📊 GitHub Stats  
-
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ANSHAM1&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="150" />
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=ANSHAM1&layout=compact&theme=tokyonight&hide_border=true" height="150" />
-</div>
-
-<div align="center">
-  <img src="https://streak-stats.demolab.com/?user=ANSHAM1&theme=tokyonight&hide_border=true" height="150" />
-</div>
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=ANSHAM1&theme=react-dark&hide_border=true" height="300" />
-</div>
-
-## 🏆 GitHub Trophies
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=ANSHAM1&theme=radical&column=7&margin-w=8&margin-h=8" />
-</div>
-
----
-
 ## 🚀 Featured Projects  
 <table>
 <tr>
