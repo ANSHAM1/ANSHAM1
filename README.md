@@ -93,6 +93,20 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 ---
 
+## 📊 GitHub Stats
+
+<div align="center">
+
+| ![Stats](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=joaocarpim&theme=radical) | ![Repos](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=joaocarpim&theme=radical) | ![Commits](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=joaocarpim&theme=radical) |
+|:-:|:-:|:-:|
+
+| ![Details](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=joaocarpim&theme=radical) | ![Streak](https://streak-stats.demolab.com?user=joaocarpim&theme=tokyonight&hide_border=false) |
+|:-:|:-:|
+
+</div>
+
+---
+
 ## 📊 GitHub Stats  
 
 <div align="center">
