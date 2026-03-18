@@ -108,62 +108,102 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 ---
 
 ## 🚀 Featured Projects  
-<table>
-<tr>
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+
 <!-- TorchLessCUDA -->
-<td width="50%" valign="top">
-  <h3 align="center">TorchLessCUDA: CNN from Scratch</h3>
-  <div align="center">
-    <p align="left" style="padding: 0 20px;">
-      A fully custom Convolutional Neural Network implemented from scratch using C++ and CUDA, 
-      featuring hand-written GPU kernels for efficient forward and backward propagation. 
-      Built to demonstrate mastery of low-level GPU computing and neural network internals 
-      without relying on external deep learning frameworks.
-    </p>
-    <p>
-      <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank">
-        <strong>🔗 View Repository</strong>
-      </a>
-    </p>
+<div style="
+  flex: 1 1 45%;
+  background: linear-gradient(145deg, #0f172a, #1e293b);
+  border-radius: 16px;
+  padding: 20px;
+  color: #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+">
+  <h3 style="
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  ">
+    ⚡ TorchLessCUDA
+  </h3>
+
+  <p style="
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5f5;
+    margin-top: 10px;
+  ">
+    A fully custom <b style="color:#38bdf8;">Convolutional Neural Network</b> built from scratch using 
+    <b>C++</b> and <b>CUDA</b>, with hand-written GPU kernels for forward & backward propagation.  
+    Designed to showcase deep understanding of <b>low-level GPU computing</b> and neural network internals.
+  </p>
+
+  <div align="center" style="margin-top: 15px;">
+    <a href="https://github.com/ANSHAM1/TOrchLessCUDA" target="_blank" style="
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    ">
+      🔗 View Repository
+    </a>
   </div>
-</td>
+</div>
 
 <!-- SentinelAI -->
-<td width="50%" valign="top">
-  <h3 align="center">SentinelAI NIDS</h3>
-  <div align="center">
-    <p align="left" style="padding: 0 20px;">
-      An advanced Network Intrusion Detection System that monitors and responds to 
-      anomalous network behaviors in real time using intelligent detection algorithms. 
-      Built with Rust and Tauri for high performance, system-level security, 
-      and cross-platform compatibility.
-    </p>
-    <p>
-      <a href="https://github.com/ANSHAM1/SentinelAI_Nids" target="_blank">
-        <strong>🔗 View Repository</strong>
-      </a>
-    </p>
+<div style="
+  flex: 1 1 45%;
+  background: linear-gradient(145deg, #020617, #1e293b);
+  border-radius: 16px;
+  padding: 20px;
+  color: #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+">
+  <h3 style="
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #22c55e, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  ">
+    🛡 SentinelAI NIDS
+  </h3>
+
+  <p style="
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cbd5f5;
+    margin-top: 10px;
+  ">
+    An intelligent <b style="color:#22c55e;">Network Intrusion Detection System</b> that monitors and 
+    responds to anomalies in real time. Built with <b>Rust</b> and <b>Tauri</b> for 
+    <b>high-performance system security</b> and cross-platform reliability.
+  </p>
+
+  <div align="center" style="margin-top: 15px;">
+    <a href="https://github.com/ANSHAM1/SentinelAI_Nids" target="_blank" style="
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #22c55e, #06b6d4);
+      color: white;
+      font-weight: 600;
+    ">
+      🔗 View Repository
+    </a>
   </div>
-</td>
-</tr>
-</table>
+</div>
 
----
-
-## 🏆 Competitive Programming Profile
-
-<table align="center" width="100%">
-  <tr>
-    <td align="center" width="100%">
-      <h3>LeetCode</h3>
-      <img 
-        src="https://leetcard.jacoblin.cool/ansham_maurya?theme=dark&font=baloo&ext=activity" 
-        alt="LeetCode Stats"
-        width="100%"
-      >
-    </td>
-  </tr>
-</table>
+</div>
 
 ---
 
