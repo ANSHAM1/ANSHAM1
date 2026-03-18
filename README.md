@@ -5,12 +5,6 @@
 
 ---
 
-## 👨‍💻 Profile Overview
-
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=radical)
-
----
-
 ## 👨‍💻 About Me  
 
 - 🚀 Currently diving deep into **Rust** ⚙️ and **System-Level Programming**, while also exploring how to **bring AI models into real-world production systems**.  
