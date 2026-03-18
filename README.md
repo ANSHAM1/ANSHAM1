@@ -167,11 +167,9 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 ---
 
-## 🧠 Competitive Programming
-
 <div align="center">
 
-| ![LeetCode](https://leetcard.jacoblin.cool/ANSHAM1?theme=dark&font=Baloo&ext=contest) | ![Codeforces](https://codeforces-readme-stats.vercel.app/api/card?username=ANSHAM1&theme=radical) |
+| ![LeetCode](https://leetcard.jacoblin.cool/ansham_maurya?theme=dark&font=Baloo&ext=contest) | ![Codeforces](https://codeforces-readme-stats.vercel.app/api/card?username=Ansham&theme=radical) |
 |:-:|:-:|
 
 </div>
