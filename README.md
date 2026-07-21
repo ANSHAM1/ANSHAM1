@@ -46,12 +46,10 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 <div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
   <img src="https://cdn.simpleicons.org/langchain/1C3C3C" height="40" alt="LangChain logo" />
   <img src="https://cdn.simpleicons.org/langgraph/1C3C3C" height="40" alt="LangGraph logo" />
-  <img src="https://cdn.simpleicons.org/openai/412991" height="40" alt="OpenAI logo" />
   <img src="https://cdn.simpleicons.org/google/4285F4" height="40" alt="Google Gemini logo" />
   <img src="https://cdn.simpleicons.org/anthropic/191919" height="40" alt="Anthropic Claude logo" />
   <img src="https://cdn.simpleicons.org/meta/0467DF" height="40" alt="Meta Llama logo" />
   <img src="https://cdn.simpleicons.org/mistralai/FF7000" height="40" alt="Mistral AI logo" />
-  <img src="https://cdn.simpleicons.org/langchain/1C3C3C" height="40" alt="LangChain logo" />
 </div>
 
 ### Web Development  
