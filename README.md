@@ -46,7 +46,6 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 <div align="center" style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px;">
   <img src="https://cdn.simpleicons.org/langchain/1C3C3C" height="40" alt="LangChain logo" />
   <img src="https://cdn.simpleicons.org/langgraph/1C3C3C" height="40" alt="LangGraph logo" />
-  <img src="https://cdn.simpleicons.org/chromadb/4A90E2" height="40" alt="ChromaDB logo" />
   <img src="https://cdn.simpleicons.org/google/4285F4" height="40" alt="Gemini logo" />
 </div>
 
