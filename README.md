@@ -17,16 +17,17 @@
 `PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA`
 
 **LLM / Agentic AI**  
-`LangChain` • `LangGraph` • `Gemini` • `Claude` • `Llama` • `Mistral`
+`LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `OpenAI API` • `Gemini API` • 
+`Claude API` • `Llama` • `Mistral` • `Groq` • `Vector Databases`
 
 **Backend Development**  
-`FastAPI` • `Node.js` • `Express.js`
+`FastAPI` • `gRPC` • `REST APIs` • `Authentication` • `Authorization` • `JWT` • `OAuth 2.0` •  `Microservices` • `Async Programming` • `Node.js` • `Express.js`
 
 **Databases**  
 `Microsoft SQL Server` • `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite`
 
 **DevOps / Infrastructure**  
-`Git` • `Docker` • `Kubernetes` • `GitHub Actions`
+`Git` • `GitHub Actions` • `Docker` • `Docker Compose` • `Kubernetes` • `Linux`
 #
 
 ### ◈ MODELISE
