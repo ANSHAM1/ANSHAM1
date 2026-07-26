@@ -2,12 +2,11 @@
 
 <h3 align="center">
   AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning
-
-  <p>
-    Building production-grade AI systems focused on autonomous agents, LLM orchestration, backend infrastructure, and scalable software systems.
-    Currently developing production projects in Agentic AI, AI Infrastructure, and Distributed Systems.
-  </p>
 </h3>
+<p>
+  Building production-grade AI systems focused on autonomous agents, LLM orchestration, backend infrastructure, and scalable software systems.
+  Currently developing production projects in Agentic AI, AI Infrastructure, and Distributed Systems.
+</p>
 <h1></h1>
 
 - Building production-ready AI systems with a focus on **Agentic AI**, **LLM orchestration**, and **AI infrastructure**.
