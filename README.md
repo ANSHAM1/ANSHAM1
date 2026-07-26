@@ -14,7 +14,8 @@
 - Strong foundation in **Python**, **C++**, **SQL**, and building scalable backend systems.
 - Currently exploring **AI Infrastructure**, **Cloud-Native Architectures**, **Inference Optimization**, and **Agentic Frameworks**.
 - Open to discussions on **AI Engineering**, **System Design**, **Backend Development**, **Deep Learning**, and **LLM Applications**.
-- Contact: **anshammaurya2291@gmail.com**
+
+<h1></h1>
 
 Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
