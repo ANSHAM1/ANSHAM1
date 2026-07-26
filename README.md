@@ -18,6 +18,25 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 <h1></h1>
 
+## Technical Expertise
+
+**Languages**
+Python • C++ • Rust • Java • SQL
+
+**AI & Machine Learning**
+LLMs • Agentic AI • LangGraph • LangChain • Deep Learning • RAG
+
+**Backend & Systems**
+FastAPI • Distributed Systems • REST APIs • SQL Server • PostgreSQL
+
+**Infrastructure**
+Docker • Kubernetes • GitHub Actions • Linux
+
+**Additional**
+CUDA • PyTorch • TensorFlow
+
+<h1></h1>
+
 ## 🛠 Tech Stack  
 
 ### Core Languages  
