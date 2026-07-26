@@ -3,7 +3,7 @@
   <strong><font size="5">AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</font></strong>
 </p>
 
-<hr width="80%">
+<hr align="center" width="80%">
 
 <p align="center">• • •</p>
 
