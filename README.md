@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm ANSHAM MAURYA</h1>
+<h1 align="center">Hi , I'm ANSHAM MAURYA</h1>
 
 <hr style="width:70%; margin:auto;">
 
