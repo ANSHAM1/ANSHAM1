@@ -1,18 +1,20 @@
 <h1 align="center">Hi 👋, I'm ANSHAM MAURYA</h1>
 <p align="center">
-  <i>Machine Learning / Deep Learning Developer | Passionate about intelligent systems and applied AI.</i>
+  <i>AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</i>
 </p>
 
 ---
 
 ## 👨‍💻 About Me  
 
-- 🚀 Currently diving deep into **Rust** ⚙️ and **System-Level Programming**, while also exploring how to **bring AI models into real-world production systems**.  
-- 🧠 Core expertise in **Machine Learning** & **Deep Learning**, with a strong interest in **low-level systems programming** — I love blending performance with intelligence.  
-- 🌱 Practicing **Data Structures & Algorithms** in **C++** and **Java** to keep sharpening problem-solving skills.  
-- 💬 Always open to chat about **C++**, **Rust**, **CUDA**, **PyTorch**, **TensorFlow**, or even **MERN stack** development.  
-- 📫 Reach me at: [anshammaurya2291@gmail.com](mailto:anshammaurya2291@gmail.com)  
-- ⚡ Fun fact: I enjoy **reverse-engineering intelligent behavior in code** — like peeking into how “thinking” works 🧩🤯.
+- Building production-ready AI systems with a focus on **Agentic AI**, **LLM orchestration**, and **AI infrastructure**.
+- Interested in designing autonomous multi-agent systems, scalable backend architectures, and intelligent workflows for real-world applications.
+- Passionate about **System Design**, **Distributed Systems**, **Backend Engineering**, and taking AI solutions from research to production.
+- Experienced in **Deep Learning**, **Large Language Models (LLMs)**, **Retrieval-Augmented Generation (RAG)**, and AI model deployment.
+- Strong foundation in **Python**, **C++**, **SQL**, and building scalable backend systems.
+- Currently exploring **AI Infrastructure**, **Cloud-Native Architectures**, **Inference Optimization**, and **Agentic Frameworks**.
+- Open to discussions on **AI Engineering**, **System Design**, **Backend Development**, **Deep Learning**, and **LLM Applications**.
+- Contact: **anshammaurya2291@gmail.com**
 
 Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
