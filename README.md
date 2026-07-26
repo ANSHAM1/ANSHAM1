@@ -54,17 +54,17 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 #
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="100%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
 </p>
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="32%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="32%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="32%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="24%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="24%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="24%">
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=ANSHAM1&theme=dracula&hide_border=true" width="60%">
+  <img src="https://streak-stats.demolab.com?user=ANSHAM1&theme=dracula&hide_border=true" width="45%">
 </p>
 
 #
