@@ -18,7 +18,6 @@
 <h1></h1>
 
 Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
-
 <h1></h1>
 
 ## Technical Expertise
