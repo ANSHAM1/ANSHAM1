@@ -29,22 +29,6 @@
 `Git` • `Docker` • `Kubernetes` • `GitHub Actions`
 #
 
-<p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=radical" width="100%">
-</p>
-
-<p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=radical" width="32%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=radical" width="32%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=radical" width="32%">
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=ANSHAM1&theme=tokyonight&hide_border=true" width="60%">
-</p>
-
-#
-
 ### ◈ MODELISE
 
 A production-ready AI model deployment and governance platform designed for secure, scalable, and modular AI infrastructure. It supports custom ML/DL model deployment, LLM orchestration, retrieval-augmented generation, autonomous agent workflows, and distributed backend services through a unified API layer.
@@ -69,8 +53,22 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 
 #
 
-<br/>
+<p align="center">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="100%">
+</p>
+
+<p align="center">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="32%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="32%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="32%">
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user=ANSHAM1&theme=dracula&hide_border=true" width="60%">
+</p>
+
+#
+
 <div align="center">
   <i>“Code is the closest thing we have to magic ✨”</i>
 </div>
-<br/>
