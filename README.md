@@ -1,6 +1,6 @@
 <h1 align="center">Hi 👋, I'm ANSHAM MAURYA</h1>
 <p align="center">
-  <i>AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</i>
+  <h4>AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</h4>
 </p>
 
 ---
