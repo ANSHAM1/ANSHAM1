@@ -17,11 +17,10 @@
 `PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA`
 
 **LLM / Agentic AI**  
-`LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `OpenAI API` • `Gemini API` • 
-`Claude API` • `Llama` • `Mistral` • `Groq` • `Vector Databases`
+`LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases`
 
 **Backend Development**  
-`FastAPI` • `gRPC` • `REST APIs` • `Authentication` • `Authorization` • `JWT` • `OAuth 2.0` •  `Microservices` • `Async Programming` • `Node.js` • `Express.js`
+`FastAPI` • `gRPC` • `REST APIs` • `Node.js` • `Express.js` •  `Microservices` • `Async Programming`
 
 **Databases**  
 `Microsoft SQL Server` • `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite`
