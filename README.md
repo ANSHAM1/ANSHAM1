@@ -3,9 +3,7 @@
   <strong><font size="5">AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</font></strong>
 </p>
 
-<hr align="center" width="80%">
-
-<p align="center">• • •</p>
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 - Building production-ready AI systems with a focus on **Agentic AI**, **LLM orchestration**, and **AI infrastructure**.
 - Interested in designing autonomous multi-agent systems, scalable backend architectures, and intelligent workflows for real-world applications.
@@ -18,7 +16,7 @@
 
 Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
-<p align="center">• • •</p>
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 ## 🛠 Tech Stack  
 
@@ -103,7 +101,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
   <img src="https://skillicons.dev/icons?i=cmake" height="40" alt="cmake logo" /> 
 </div>
 
-...
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 ## 📊 GitHub Stats
 
@@ -117,7 +115,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 </div>
 
-...
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 ## 🚀 Featured Projects  
 
@@ -217,7 +215,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 </div>
 
-...
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 <div align="center">
 
@@ -226,6 +224,7 @@ Portfolio - <a href="https://ansham1-portfolio.vercel.app/" > visit </a>
 
 </div>
 
+<p align="center">◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆ ◆</p>
 
 <div align="center">
   <i>“Code is the closest thing we have to magic ✨”</i>
