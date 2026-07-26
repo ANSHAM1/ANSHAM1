@@ -1,7 +1,8 @@
 <h1 align="center">Hi , I'm ANSHAM MAURYA</h1>
-<p align="center">
-  <strong><font size="5">AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</font></strong>
-</p>
+
+<h3 align="center">
+  AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning
+</h3>
 <h1></h1>
 
 - Building production-ready AI systems with a focus on **Agentic AI**, **LLM orchestration**, and **AI infrastructure**.
