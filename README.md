@@ -1,6 +1,4 @@
-<p align="center">
-  <b><font size="7">Hi, I'm ANSHAM MAURYA</font></b>
-</p>
+<h2 align="center">Hi , I'm ANSHAM MAURYA</h2>
 
 <p align="center">
   <strong><font size="5">AI Systems Engineer | Agentic AI | Backend & Distributed Systems | Deep Learning</font></strong>
