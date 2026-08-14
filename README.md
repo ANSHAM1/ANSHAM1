@@ -7,7 +7,6 @@
 - 🧠 I'm mostly active within **AI Systems**, **Backend Engineering**, and **Agentic AI**
 - 🚀 Building: **MODELISE**, **TorchLessCUDA**, **InsertionAI**, **SentinelAI**
 - 💬 `ping` me about **AI**, **LLMs**, **System Design**, **Backend Engineering**, **Distributed Systems**, and **Software Architecture**
-- 🌐 **Portfolio** → <a href="https://ansham1-portfolio.vercel.app/">ansham1-portfolio.vercel.app</a>
 #
 
 **Languages**  
