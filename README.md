@@ -26,7 +26,7 @@
 `Microsoft SQL Server` • `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite`
 
 **DevOps / Infrastructure**  
-`Git` • `GitHub Actions` • `Docker` • `Docker Compose` • `Kubernetes` • `Linux`
+`Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux`
 #
 
 ### ◈ MODELISE
