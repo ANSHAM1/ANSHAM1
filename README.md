@@ -3,17 +3,17 @@
 #
 #### Building AI Systems, exploring distributed architectures, and turning ambitious ideas into production-ready software.
 
-- ⚙️ I build daily with: `.py` • `.cpp` • `.sql` • `.fastapi` • `.docker` • `.langgraph`
-- 🧠 I'm mostly active within **AI Systems**, **Backend Engineering**, and **Agentic AI**
-- 🚀 Building: **MODELISE**, **TorchLessCUDA**, **InsertionAI**, **SentinelAI**
-- 💬 `ping` me about **AI**, **LLMs**, **System Design**, **Backend Engineering**, **Distributed Systems**, and **Software Architecture**
+-  I build daily with: `[.py]` • `[.cpp]` • `[.sql]` • `[.git]` • `[.docker]`
+-  I'm mostly active within **AI Systems**, **Backend Engineering**, and **Agentic AI**
+-  Built: **TorchLessCUDA**, **InsertionAI**, **SentinelAI** **...**
+-  **`ping`** me about **AI**, **LLMs**, **System Design**, **Backend Engineering**, **Distributed Systems**, and **Software Architecture**
 #
 
 **Languages**  
 `Python` • `C++` • `Rust` • `Java` • `JavaScript`
 
 **AI / Machine Learning**  
-`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA`
+`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA` • `DeepLearning - ANN, RNN, LSTM, CNN, Transformers`
 
 **LLM / Agentic AI**  
 `LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases`
@@ -28,27 +28,27 @@
 `Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux`
 #
 
-### ◈ MODELISE
+### ⌬ Insertion.AI
 
-A production-ready AI model deployment and governance platform designed for secure, scalable, and modular AI infrastructure. It supports custom ML/DL model deployment, LLM orchestration, retrieval-augmented generation, autonomous agent workflows, and distributed backend services through a unified API layer.
+An advanced AI-powered desktop productivity assistant featuring a multi-agent architecture that autonomously handles job applications, smart calendar scheduling, and coding environment automation with a IDE. Built with state-of-the-art LLM orchestration, local state management, and robust tool-calling to adapt seamlessly to daily professional routines.
 
-**Highlights:** `Custom ML/DL Models` • `LLMs` • `LangGraph` • `LangChain` • `RAG` • `Distributed Systems` • `FastAPI` • `gRPC` • `Python` • `SQL Server` • `Docker`
+**Built With:** `Python` • `LLMs` • `LangGraph` • `FastAPI` • `Automation` • `Multi AI Agents` • `Github API` • `Hirebase API` • `Microsoft SQL Server`
 
 #
 
-### ◈ TorchLessCUDA
+### ⌬ TorchLessCUDA
 
 A high-performance deep learning framework built entirely from scratch, implementing a complete Convolutional Neural Network library without external ML frameworks. Includes custom CUDA kernels for forward and backward propagation, GPU memory management, and optimized matrix operations.
 
-**Highlights:** `C++` • `CUDA` • `CMake` • `CNN Library` • `GPU Programming` • `Neural Networks` • `Linear Algebra` • `Performance Optimization`
+**Built With:** `C++` • `CUDA` • `CMake` • `CNN Library` • `GPU Programming` • `Neural Networks` • `Linear Algebra` • `Performance Optimization`
 
 #
 
-### ◈ SentinelAI
+### ⌬ SentinelAI_Nids
 
 An intelligent Network Intrusion Detection System that performs real-time traffic analysis and anomaly detection using a high-performance systems architecture.
 
-**Highlights:** `Rust` • `Tauri` • `Network Security` • `Packet Analysis` • `Concurrency` • `System Programming`
+**Built With:** `Python` • `Npcap` • `Rust` • `Tauri` • `XGBoost` • `LSTM` • `Network Security` • `Packet Analysis` • `Concurrency` • `System Programming`
 
 #
 
@@ -69,5 +69,5 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 #
 
 <div align="center">
-  <i>“Code is the closest thing we have to magic ✨”</i>
+  💀 <i>“We spend our nights speaking to silent silicon, bleeding logic into the void—not because it is easy, but because commanding lightning to think is the only power worth mastering.”</i>
 </div>
