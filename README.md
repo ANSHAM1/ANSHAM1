@@ -69,5 +69,5 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 #
 
 <div align="center">
-  💀 <i>“We spend our nights speaking to silent silicon, bleeding logic into the void—not because it is easy, but because commanding lightning to think is the only power worth mastering.”</i>
+  <i>“Chaos is the default state of the universe; every clean line of architecture is a deliberate act of defiance.”</i>
 </div>
