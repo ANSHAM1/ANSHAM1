@@ -44,14 +44,6 @@ A high-performance deep learning framework built entirely from scratch, implemen
 
 #
 
-### ⌬ SentinelAI_Nids
-
-An intelligent Network Intrusion Detection System that performs real-time traffic analysis and anomaly detection using a high-performance systems architecture.
-
-**Built With:** `Python` • `Npcap` • `Rust` • `Tauri` • `XGBoost` • `LSTM` • `Network Security` • `Packet Analysis` • `Concurrency` • `System Programming`
-
-#
-
 <p align="center">
   <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
 </p>
