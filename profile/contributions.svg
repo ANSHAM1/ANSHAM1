@@ -569,120 +569,120 @@ viewBox="0 0 1100 760">
 
         <circle
           cx="135"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#ff79c6"
-          stroke-width="12"
-          stroke-dasharray="136.43 238.76"
+          stroke-width="10"
+          stroke-dasharray="114.89 201.06"
           stroke-dashoffset="0.00"
-          transform="rotate(-90 135 683)"/>
+          transform="rotate(-90 135 694)"/>
 
         
 
         <circle
           cx="135"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#bd93f9"
-          stroke-width="12"
-          stroke-dasharray="68.22 238.76"
-          stroke-dashoffset="-136.43"
-          transform="rotate(-90 135 683)"/>
+          stroke-width="10"
+          stroke-dasharray="57.45 201.06"
+          stroke-dashoffset="-114.89"
+          transform="rotate(-90 135 694)"/>
 
         
 
         <circle
           cx="135"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#8be9fd"
-          stroke-width="12"
-          stroke-dasharray="17.05 238.76"
-          stroke-dashoffset="-204.65"
-          transform="rotate(-90 135 683)"/>
+          stroke-width="10"
+          stroke-dasharray="14.36 201.06"
+          stroke-dashoffset="-172.34"
+          transform="rotate(-90 135 694)"/>
 
         
 
         <circle
           cx="135"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#50fa7b"
-          stroke-width="12"
-          stroke-dasharray="17.05 238.76"
-          stroke-dashoffset="-221.71"
-          transform="rotate(-90 135 683)"/>
+          stroke-width="10"
+          stroke-dasharray="14.36 201.06"
+          stroke-dashoffset="-186.70"
+          transform="rotate(-90 135 694)"/>
 
         
 
     <circle
       cx="135"
-      cy="683"
-      r="32.0"
+      cy="694"
+      r="27.0"
       fill="#21222c"/>
 
     
 
         <circle
           cx="659"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#ff79c6"
-          stroke-width="12"
-          stroke-dasharray="136.43 238.76"
+          stroke-width="10"
+          stroke-dasharray="114.89 201.06"
           stroke-dashoffset="0.00"
-          transform="rotate(-90 659 683)"/>
+          transform="rotate(-90 659 694)"/>
 
         
 
         <circle
           cx="659"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#bd93f9"
-          stroke-width="12"
-          stroke-dasharray="68.22 238.76"
-          stroke-dashoffset="-136.43"
-          transform="rotate(-90 659 683)"/>
+          stroke-width="10"
+          stroke-dasharray="57.45 201.06"
+          stroke-dashoffset="-114.89"
+          transform="rotate(-90 659 694)"/>
 
         
 
         <circle
           cx="659"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#8be9fd"
-          stroke-width="12"
-          stroke-dasharray="17.05 238.76"
-          stroke-dashoffset="-204.65"
-          transform="rotate(-90 659 683)"/>
+          stroke-width="10"
+          stroke-dasharray="14.36 201.06"
+          stroke-dashoffset="-172.34"
+          transform="rotate(-90 659 694)"/>
 
         
 
         <circle
           cx="659"
-          cy="683"
-          r="38"
+          cy="694"
+          r="32"
           fill="none"
           stroke="#50fa7b"
-          stroke-width="12"
-          stroke-dasharray="17.05 238.76"
-          stroke-dashoffset="-221.71"
-          transform="rotate(-90 659 683)"/>
+          stroke-width="10"
+          stroke-dasharray="14.36 201.06"
+          stroke-dashoffset="-186.70"
+          transform="rotate(-90 659 694)"/>
 
         
 
     <circle
       cx="659"
-      cy="683"
-      r="32.0"
+      cy="694"
+      r="27.0"
       fill="#21222c"/>
 
     
