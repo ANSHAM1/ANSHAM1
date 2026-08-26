@@ -45,7 +45,17 @@ A high-performance deep learning framework built entirely from scratch, implemen
 #
 
 <p align="center">
-  <img src="./profile/contributions.svg" width="100%" alt="GitHub Contributions">
+  <img src="./profile/profile-details.svg" width="78%" alt="GitHub Profile Details">
+</p>
+
+<p align="center">
+  <img src="./profile/stats.svg" width="25.7%" alt="GitHub Stats">
+  <img src="./profile/repos-per-language.svg" width="25.7%" alt="Repositories Per Language">
+  <img src="./profile/most-commit-language.svg" width="25.7%" alt="Most Used Languages">
+</p>
+
+<p align="center">
+  <img src="./profile/streak.svg" width="50%" alt="GitHub Streak">
 </p>
 
 #
