@@ -57,9 +57,9 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 </p>
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="26%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="26%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="26%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="25%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="25%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="25%">
 </p>
 
 <p align="center">
