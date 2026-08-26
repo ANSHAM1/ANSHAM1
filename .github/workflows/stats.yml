@@ -1096,17 +1096,17 @@ jobs:
 
           svg += donut(
               135,
-              683,
-              38,
-              12,
+              694,
+              32,
+              10,
               repo_languages_sorted
           )
-
+          
           svg += donut(
               659,
-              683,
-              38,
-              12,
+              694,
+              32,
+              10,
               activity_languages_sorted
           )
 
