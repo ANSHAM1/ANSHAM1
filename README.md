@@ -55,7 +55,7 @@ A high-performance deep learning framework built entirely from scratch, implemen
 </p>
 
 <p align="center">
-  <img src="./profile/streak.svg" width="78%" alt="GitHub Streak">
+  <img src="./profile/streak.svg" width="50%" alt="GitHub Streak">
 </p>
 
 #
