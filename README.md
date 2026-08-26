@@ -45,7 +45,7 @@ A high-performance deep learning framework built entirely from scratch, implemen
 #
 
 <p align="center">
-  <img src="./profile/contributions.svg" width="78%" alt="GitHub Contributions">
+  <img src="./profile/contributions.svg" width="100%" alt="GitHub Contributions">
 </p>
 
 #
