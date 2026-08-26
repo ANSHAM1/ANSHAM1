@@ -63,7 +63,7 @@ An intelligent Network Intrusion Detection System that performs real-time traffi
 </p>
 
 <p align="center">
-  <img src="https://streak-stats.demolab.com?user=ANSHAM1&theme=dracula&hide_border=true" width="45%">
+  <img src="./profile/streak.svg" width="45%" alt="GitHub Streak">
 </p>
 
 #
