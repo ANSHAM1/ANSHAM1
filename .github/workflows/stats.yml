@@ -1,0 +1,1218 @@
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 3 * * *" # 08:30 IST every day
+
+  workflow_dispatch:
+
+  push:
+    paths:
+      - ".github/workflows/streak-stats.yml"
+
+jobs:
+  generate-stats:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate GitHub dashboard SVG
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ANSHAM1
+        run: |
+          mkdir -p profile
+
+          python3 <<'PY'
+          import json
+          import math
+          import os
+          import html
+          import urllib.request
+          from pathlib import Path
+          from collections import defaultdict
+          from datetime import datetime, timezone, timedelta
+
+          USERNAME = os.environ["GITHUB_USERNAME"]
+          TOKEN = os.environ["GH_TOKEN"]
+
+          # ============================================================
+          # Configuration
+          # ============================================================
+
+          WIDTH = 1100
+          HEIGHT = 720
+
+          BG = "#282a36"
+          BG_DARK = "#21222c"
+          TEXT = "#f8f8f2"
+          MUTED = "#6272a4"
+          BORDER = "#44475a"
+
+          PINK = "#ff79c6"
+          PURPLE = "#bd93f9"
+          BLUE = "#8be9fd"
+          GREEN = "#50fa7b"
+          YELLOW = "#f1fa8c"
+
+          FONT = "Arial, Helvetica, sans-serif"
+
+          # ============================================================
+          # GitHub GraphQL
+          # ============================================================
+
+          query = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+
+              login
+              name
+              createdAt
+
+              contributionsCollection(from: $from, to: $to) {
+
+                totalCommitContributions
+                totalPullRequestContributions
+                totalIssueContributions
+                totalRepositoryContributions
+
+                contributionCalendar {
+
+                  totalContributions
+
+                  weeks {
+                    contributionDays {
+                      date
+                      contributionCount
+                    }
+                  }
+                }
+              }
+
+              repositories(
+                first: 100
+                ownerAffiliations: OWNER
+                privacy: PUBLIC
+              ) {
+
+                totalCount
+
+                nodes {
+
+                  name
+                  stargazerCount
+                  forkCount
+
+                  primaryLanguage {
+                    name
+                  }
+
+                  languages(
+                    first: 20
+                    orderBy: {field: SIZE, direction: DESC}
+                  ) {
+
+                    edges {
+
+                      size
+
+                      node {
+                        name
+                      }
+                    }
+                  }
+                }
+              }
+
+              followers {
+                totalCount
+              }
+
+              following {
+                totalCount
+              }
+            }
+          }
+          """
+
+          now = datetime.now(timezone.utc)
+
+          from_date = now - timedelta(days=365)
+
+          variables = {
+              "login": USERNAME,
+              "from": from_date.strftime(
+                  "%Y-%m-%dT00:00:00Z"
+              ),
+              "to": now.strftime(
+                  "%Y-%m-%dT23:59:59Z"
+              ),
+          }
+
+          payload = json.dumps({
+              "query": query,
+              "variables": variables
+          }).encode()
+
+          request = urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {TOKEN}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "ANSHAM1-github-stats"
+              }
+          )
+
+          with urllib.request.urlopen(request) as response:
+              result = json.loads(
+                  response.read()
+              )
+
+          if "errors" in result:
+              print(
+                  json.dumps(
+                      result["errors"],
+                      indent=2
+                  )
+              )
+              raise SystemExit(
+                  "GitHub GraphQL request failed"
+              )
+
+          user = result["data"]["user"]
+
+          contributions = (
+              user["contributionsCollection"]
+          )
+
+          calendar = (
+              contributions["contributionCalendar"]
+          )
+
+          repositories = (
+              user["repositories"]["nodes"]
+          )
+
+          # ============================================================
+          # Contribution data
+          # ============================================================
+
+          days = []
+
+          for week in calendar["weeks"]:
+              for day in week["contributionDays"]:
+                  days.append(day)
+
+          days.sort(
+              key=lambda item: item["date"]
+          )
+
+          total_contributions = (
+              calendar["totalContributions"]
+          )
+
+          total_commits = (
+              contributions["totalCommitContributions"]
+          )
+
+          total_prs = (
+              contributions[
+                  "totalPullRequestContributions"
+              ]
+          )
+
+          total_issues = (
+              contributions[
+                  "totalIssueContributions"
+              ]
+          )
+
+          # ============================================================
+          # Current streak
+          # ============================================================
+
+          current_streak = 0
+
+          streak_days = days[:]
+
+          today = datetime.now(
+              timezone.utc
+          ).date().isoformat()
+
+          if streak_days:
+
+              last_day = streak_days[-1]
+
+              if (
+                  last_day["date"] == today
+                  and last_day["contributionCount"] == 0
+              ):
+                  streak_days = streak_days[:-1]
+
+          for day in reversed(streak_days):
+
+              if day["contributionCount"] > 0:
+                  current_streak += 1
+              else:
+                  break
+
+          # ============================================================
+          # Longest streak
+          # ============================================================
+
+          longest_streak = 0
+          running_streak = 0
+
+          longest_start = None
+          longest_end = None
+
+          temp_start = None
+
+          for day in days:
+
+              if day["contributionCount"] > 0:
+
+                  if temp_start is None:
+                      temp_start = day["date"]
+
+                  running_streak += 1
+
+                  if running_streak > longest_streak:
+
+                      longest_streak = (
+                          running_streak
+                      )
+
+                      longest_start = (
+                          temp_start
+                      )
+
+                      longest_end = (
+                          day["date"]
+                      )
+
+              else:
+
+                  running_streak = 0
+                  temp_start = None
+
+          # ============================================================
+          # Contribution date range
+          # ============================================================
+
+          graph_days = days[-365:]
+
+          graph_from = (
+              graph_days[0]["date"]
+              if graph_days
+              else from_date.strftime("%Y-%m-%d")
+          )
+
+          graph_to = (
+              graph_days[-1]["date"]
+              if graph_days
+              else now.strftime("%Y-%m-%d")
+          )
+
+          # ============================================================
+          # Language by repository
+          # ============================================================
+
+          language_repo_count = defaultdict(int)
+
+          for repo in repositories:
+
+              language = repo["primaryLanguage"]
+
+              if language and language["name"]:
+
+                  language_repo_count[
+                      language["name"]
+                  ] += 1
+
+          # ============================================================
+          # Language by code size
+          # ============================================================
+
+          language_bytes = defaultdict(int)
+
+          for repo in repositories:
+
+              for edge in repo["languages"]["edges"]:
+
+                  language = edge["node"]["name"]
+
+                  if language:
+
+                      language_bytes[
+                          language
+                      ] += edge["size"]
+
+          # ============================================================
+          # Language by contribution / commit
+          #
+          # GitHub's contribution calendar does not expose the
+          # programming language of each commit.
+          #
+          # Therefore we use repository language contribution
+          # weighted by the repository's contribution presence.
+          #
+          # This is explicitly labeled "commit activity by language".
+          # ============================================================
+
+          language_commit_score = defaultdict(float)
+
+          for repo in repositories:
+
+              repo_languages = repo["languages"]["edges"]
+
+              if not repo_languages:
+                  continue
+
+              repo_total = sum(
+                  edge["size"]
+                  for edge in repo_languages
+              )
+
+              if repo_total <= 0:
+                  continue
+
+              primary = repo["primaryLanguage"]
+
+              if primary and primary["name"]:
+
+                  language_commit_score[
+                      primary["name"]
+                  ] += 1
+
+          # ============================================================
+          # Normalize language data
+          # ============================================================
+
+          def percentages(values):
+
+              total = sum(values.values())
+
+              if total <= 0:
+                  return {}
+
+              return {
+                  key: (
+                      value / total
+                  ) * 100
+                  for key, value in values.items()
+              }
+
+          repo_language_percent = percentages(
+              language_repo_count
+          )
+
+          commit_language_percent = percentages(
+              language_commit_score
+          )
+
+          # ============================================================
+          # Top languages
+          # ============================================================
+
+          repo_languages = sorted(
+              repo_language_percent.items(),
+              key=lambda item: item[1],
+              reverse=True
+          )[:5]
+
+          commit_languages = sorted(
+              commit_language_percent.items(),
+              key=lambda item: item[1],
+              reverse=True
+          )[:5]
+
+          # ============================================================
+          # Helpers
+          # ============================================================
+
+          def esc(value):
+
+              return html.escape(
+                  str(value)
+              )
+
+          def fmt_date(value):
+
+              if not value:
+                  return "N/A"
+
+              date = datetime.strptime(
+                  value,
+                  "%Y-%m-%d"
+              )
+
+              return date.strftime(
+                  "%d %b %Y"
+              )
+
+          def fmt_number(value):
+
+              return f"{value:,}"
+
+          # ============================================================
+          # SVG header
+          # ============================================================
+
+          svg = f'''<svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="{WIDTH}"
+          height="{HEIGHT}"
+          viewBox="0 0 {WIDTH} {HEIGHT}">
+
+          <defs>
+
+            <linearGradient
+              id="lineGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%">
+
+              <stop
+                offset="0%"
+                stop-color="{PINK}"/>
+
+              <stop
+                offset="50%"
+                stop-color="{PURPLE}"/>
+
+              <stop
+                offset="100%"
+                stop-color="{BLUE}"/>
+
+            </linearGradient>
+
+            <linearGradient
+              id="mountainGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%">
+
+              <stop
+                offset="0%"
+                stop-color="{PINK}"
+                stop-opacity="0.12"/>
+
+              <stop
+                offset="50%"
+                stop-color="{PURPLE}"
+                stop-opacity="0.32"/>
+
+              <stop
+                offset="100%"
+                stop-color="{BLUE}"
+                stop-opacity="0.12"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- Main background -->
+
+          <rect
+            x="0"
+            y="0"
+            width="{WIDTH}"
+            height="{HEIGHT}"
+            rx="18"
+            fill="{BG}"/>
+
+          <!-- ===================================================== -->
+          <!-- Header -->
+          <!-- ===================================================== -->
+
+          <text
+            x="42"
+            y="43"
+            fill="{PINK}"
+            font-family="{FONT}"
+            font-size="25"
+            font-weight="700">
+
+            {esc(user["name"] or USERNAME)}
+
+          </text>
+
+          <text
+            x="42"
+            y="68"
+            fill="{BLUE}"
+            font-family="{FONT}"
+            font-size="13">
+
+            @{esc(USERNAME)}
+
+          </text>
+
+          <text
+            x="1055"
+            y="43"
+            fill="{TEXT}"
+            font-family="{FONT}"
+            font-size="22"
+            font-weight="700"
+            text-anchor="end">
+
+            {fmt_number(total_contributions)}
+
+          </text>
+
+          <text
+            x="1055"
+            y="65"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10"
+            text-anchor="end">
+
+            TOTAL CONTRIBUTIONS
+
+          </text>
+
+          <line
+            x1="42"
+            y1="88"
+            x2="1058"
+            y2="88"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          <!-- ===================================================== -->
+          <!-- Graph -->
+          <!-- ===================================================== -->
+
+          <text
+            x="42"
+            y="116"
+            fill="{TEXT}"
+            font-family="{FONT}"
+            font-size="13"
+            font-weight="700">
+
+            CONTRIBUTION ACTIVITY
+
+          </text>
+
+          <text
+            x="1058"
+            y="116"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10"
+            text-anchor="end">
+
+            {fmt_date(graph_from)} — {fmt_date(graph_to)}
+
+          </text>
+          '''
+
+          # ============================================================
+          # Graph
+          # ============================================================
+
+          GRAPH_X = 42
+          GRAPH_Y = 132
+          GRAPH_WIDTH = 1016
+          GRAPH_HEIGHT = 180
+
+          values = [
+              day["contributionCount"]
+              for day in graph_days
+          ]
+
+          maximum = max(
+              values
+          ) if values else 1
+
+          points = []
+
+          for index, value in enumerate(values):
+
+              x = (
+                  GRAPH_X
+                  + (
+                      index
+                      / max(
+                          1,
+                          len(values) - 1
+                      )
+                  )
+                  * GRAPH_WIDTH
+              )
+
+              normalized = (
+                  value / maximum
+              )
+
+              y = (
+                  GRAPH_Y
+                  + GRAPH_HEIGHT
+                  - normalized * GRAPH_HEIGHT
+              )
+
+              points.append(
+                  (x, y)
+              )
+
+          line_points = " ".join(
+              f"{x:.2f},{y:.2f}"
+              for x, y in points
+          )
+
+          polygon_points = (
+              f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
+              + line_points
+              + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
+          )
+
+          svg += f'''
+
+          <polygon
+            points="{polygon_points}"
+            fill="url(#mountainGradient)"/>
+
+          <polyline
+            points="{line_points}"
+            fill="none"
+            stroke="url(#lineGradient)"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-linecap="round"/>
+
+          <line
+            x1="{GRAPH_X}"
+            y1="{GRAPH_Y + GRAPH_HEIGHT}"
+            x2="{GRAPH_X + GRAPH_WIDTH}"
+            y2="{GRAPH_Y + GRAPH_HEIGHT}"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          '''
+
+          # ============================================================
+          # Graph date labels
+          # ============================================================
+
+          if graph_days:
+
+              label_indexes = [
+                  0,
+                  len(graph_days) // 4,
+                  len(graph_days) // 2,
+                  (len(graph_days) * 3) // 4,
+                  len(graph_days) - 1
+              ]
+
+              for index in label_indexes:
+
+                  index = max(
+                      0,
+                      min(
+                          index,
+                          len(graph_days) - 1
+                      )
+                  )
+
+                  x = (
+                      GRAPH_X
+                      + (
+                          index
+                          / max(
+                              1,
+                              len(graph_days) - 1
+                          )
+                      )
+                      * GRAPH_WIDTH
+                  )
+
+                  date_text = fmt_date(
+                      graph_days[index]["date"]
+                  )
+
+                  svg += f'''
+
+                  <text
+                    x="{x:.2f}"
+                    y="{GRAPH_Y + GRAPH_HEIGHT + 22}"
+                    fill="{MUTED}"
+                    font-family="{FONT}"
+                    font-size="9"
+                    text-anchor="middle">
+
+                    {date_text}
+
+                  </text>
+
+                  '''
+
+          # ============================================================
+          # Streak / contribution stats
+          # ============================================================
+
+          svg += f'''
+
+          <line
+            x1="42"
+            y1="342"
+            x2="1058"
+            y2="342"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          '''
+
+          stats = [
+              (
+                  "CURRENT STREAK",
+                  current_streak,
+                  "days",
+                  PINK
+              ),
+              (
+                  "LONGEST STREAK",
+                  longest_streak,
+                  "days",
+                  PURPLE
+              ),
+              (
+                  "COMMITS",
+                  total_commits,
+                  "",
+                  BLUE
+              ),
+              (
+                  "PULL REQUESTS",
+                  total_prs,
+                  "",
+                  GREEN
+              ),
+              (
+                  "ISSUES",
+                  total_issues,
+                  "",
+                  YELLOW
+              ),
+          ]
+
+          stat_width = 203
+
+          for index, (
+              label,
+              value,
+              suffix,
+              color
+          ) in enumerate(stats):
+
+              x = (
+                  42
+                  + index * stat_width
+                  + stat_width / 2
+              )
+
+              svg += f'''
+
+              <text
+                x="{x}"
+                y="375"
+                fill="{color}"
+                font-family="{FONT}"
+                font-size="23"
+                font-weight="700"
+                text-anchor="middle">
+
+                {fmt_number(value)}
+
+              </text>
+
+              <text
+                x="{x}"
+                y="395"
+                fill="{MUTED}"
+                font-family="{FONT}"
+                font-size="9"
+                text-anchor="middle">
+
+                {label}
+
+              </text>
+
+              '''
+
+          # ============================================================
+          # Longest streak date
+          # ============================================================
+
+          if longest_start and longest_end:
+
+              longest_date_text = (
+                  f"{fmt_date(longest_start)} — "
+                  f"{fmt_date(longest_end)}"
+              )
+
+          else:
+
+              longest_date_text = "N/A"
+
+          svg += f'''
+
+          <text
+            x="42"
+            y="425"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10">
+
+            LONGEST STREAK PERIOD
+
+          </text>
+
+          <text
+            x="42"
+            y="444"
+            fill="{TEXT}"
+            font-family="{FONT}"
+            font-size="12"
+            font-weight="700">
+
+            {longest_date_text}
+
+          </text>
+
+          <!-- ===================================================== -->
+          <!-- Language section -->
+          <!-- ===================================================== -->
+
+          <line
+            x1="42"
+            y1="470"
+            x2="1058"
+            y2="470"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          <text
+            x="42"
+            y="496"
+            fill="{TEXT}"
+            font-family="{FONT}"
+            font-size="13"
+            font-weight="700">
+
+            LANGUAGE DISTRIBUTION
+
+          </text>
+
+          <text
+            x="305"
+            y="496"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10"
+            text-anchor="middle">
+
+            BY REPOSITORY
+
+          </text>
+
+          <text
+            x="795"
+            y="496"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10"
+            text-anchor="middle">
+
+            BY COMMIT ACTIVITY
+
+          </text>
+
+          '''
+
+          # ============================================================
+          # Pie chart helper
+          # ============================================================
+
+          palette = [
+              PINK,
+              PURPLE,
+              BLUE,
+              GREEN,
+              YELLOW
+          ]
+
+          def pie_chart(
+              center_x,
+              center_y,
+              radius,
+              values
+          ):
+
+              result = ""
+
+              if not values:
+                  return result
+
+              start_angle = -90
+
+              for index, (
+                  language,
+                  percentage
+              ) in enumerate(values):
+
+                  angle = (
+                      percentage
+                      / 100
+                  ) * 360
+
+                  end_angle = (
+                      start_angle
+                      + angle
+                  )
+
+                  start_rad = math.radians(
+                      start_angle
+                  )
+
+                  end_rad = math.radians(
+                      end_angle
+                  )
+
+                  x1 = (
+                      center_x
+                      + radius
+                      * math.cos(start_rad)
+                  )
+
+                  y1 = (
+                      center_y
+                      + radius
+                      * math.sin(start_rad)
+                  )
+
+                  x2 = (
+                      center_x
+                      + radius
+                      * math.cos(end_rad)
+                  )
+
+                  y2 = (
+                      center_y
+                      + radius
+                      * math.sin(end_rad)
+                  )
+
+                  large_arc = (
+                      1
+                      if angle > 180
+                      else 0
+                  )
+
+                  path = (
+                      f"M {center_x} {center_y} "
+                      f"L {x1:.2f} {y1:.2f} "
+                      f"A {radius} {radius} "
+                      f"0 {large_arc} 1 "
+                      f"{x2:.2f} {y2:.2f} Z"
+                  )
+
+                  color = palette[
+                      index % len(palette)
+                  ]
+
+                  result += f'''
+
+                  <path
+                    d="{path}"
+                    fill="{color}"
+                    stroke="{BG}"
+                    stroke-width="2"/>
+
+                  '''
+
+                  start_angle = end_angle
+
+              return result
+
+          # ============================================================
+          # Repository language pie
+          # ============================================================
+
+          svg += pie_chart(
+              305,
+              575,
+              67,
+              repo_languages
+          )
+
+          # ============================================================
+          # Commit language pie
+          # ============================================================
+
+          svg += pie_chart(
+              795,
+              575,
+              67,
+              commit_languages
+          )
+
+          # ============================================================
+          # Language legends
+          # ============================================================
+
+          def language_legend(
+              center_x,
+              values
+          ):
+
+              output = ""
+
+              start_y = 520
+
+              for index, (
+                  language,
+                  percentage
+              ) in enumerate(values):
+
+                  color = palette[
+                      index % len(palette)
+                  ]
+
+                  y = (
+                      start_y
+                      + index * 22
+                  )
+
+                  output += f'''
+
+                  <circle
+                    cx="{center_x}"
+                    cy="{y}"
+                    r="4"
+                    fill="{color}"/>
+
+                  <text
+                    x="{center_x + 10}"
+                    y="{y + 4}"
+                    fill="{TEXT}"
+                    font-family="{FONT}"
+                    font-size="10">
+
+                    {esc(language)}
+
+                  </text>
+
+                  <text
+                    x="{center_x + 115}"
+                    y="{y + 4}"
+                    fill="{MUTED}"
+                    font-family="{FONT}"
+                    font-size="10"
+                    text-anchor="end">
+
+                    {percentage:.1f}%
+
+                  </text>
+
+                  '''
+
+              return output
+
+          svg += language_legend(
+              400,
+              repo_languages
+          )
+
+          svg += language_legend(
+              890,
+              commit_languages
+          )
+
+          # ============================================================
+          # Footer
+          # ============================================================
+
+          svg += f'''
+
+          <text
+            x="1058"
+            y="690"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="9"
+            text-anchor="end">
+
+            DATA FROM GITHUB API • UPDATED DAILY
+
+          </text>
+
+          </svg>
+          '''
+
+          # ============================================================
+          # Write SVG
+          # ============================================================
+
+          Path(
+              "profile/contributions.svg"
+          ).write_text(
+              svg,
+              encoding="utf-8"
+          )
+
+          print()
+          print("==============================================")
+          print(" GitHub Dashboard Generated")
+          print("==============================================")
+          print(
+              f"Contributions : {total_contributions:,}"
+          )
+          print(
+              f"Current streak: {current_streak}"
+          )
+          print(
+              f"Longest streak: {longest_streak}"
+          )
+          print(
+              f"Commits       : {total_commits:,}"
+          )
+          print(
+              f"Pull requests : {total_prs:,}"
+          )
+          print(
+              f"Issues        : {total_issues:,}"
+          )
+          print(
+              f"Graph         : {graph_from} -> {graph_to}"
+          )
+          print()
+          print(
+              "profile/contributions.svg generated."
+          )
+          print("==============================================")
+          PY
+
+      - name: Commit generated SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add profile/contributions.svg
+
+          git commit \
+            -m "Update GitHub contribution dashboard" \
+            || exit 0
+
+          git push
