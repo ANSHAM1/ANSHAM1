@@ -45,17 +45,7 @@ A high-performance deep learning framework built entirely from scratch, implemen
 #
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
-</p>
-
-<p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="25.7%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="25.7%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="25.7%">
-</p>
-
-<p align="center">
-  <img src="./profile/streak.svg" width="50%" alt="GitHub Streak">
+  <img src="./profile/contributions.svg" width="78%" alt="GitHub Contributions">
 </p>
 
 #
