@@ -2,7 +2,7 @@ name: Update GitHub Stats
 
 on:
   schedule:
-    - cron: "0 3 * * *" # 08:30 IST
+    - cron: "0 3 * * *" # 08:30 IST every day
 
   workflow_dispatch:
 
@@ -21,84 +21,161 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Fetch GitHub contribution data
+      - name: Generate GitHub statistics
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_USERNAME: ANSHAM1
         run: |
           mkdir -p profile
 
-          START_DATE=$(date -u -d "1 year ago" +"%Y-%m-%dT00:00:00Z")
-          END_DATE=$(date -u +"%Y-%m-%dT23:59:59Z")
+          python3 <<'PY'
+          import json
+          import os
+          import html
+          import urllib.request
+          from pathlib import Path
+          from collections import Counter, defaultdict
+          from datetime import datetime, timezone, timedelta
 
-          curl -s \
-            -H "Authorization: Bearer $GH_TOKEN" \
-            -H "Content-Type: application/json" \
-            https://api.github.com/graphql \
-            -d "$(jq -n \
-              --arg login "ANSHAM1" \
-              --arg from "$START_DATE" \
-              --arg to "$END_DATE" \
-              '{
-                query: "query($login:String!, $from:DateTime!, $to:DateTime!) {
-                  user(login:$login) {
+          USERNAME = os.environ["GITHUB_USERNAME"]
+          TOKEN = os.environ["GH_TOKEN"]
+
+          API_URL = "https://api.github.com/graphql"
+
+          # ============================================================
+          # GitHub GraphQL
+          # ============================================================
+
+          query = """
+          query($login: String!, $from: DateTime!, $to: DateTime!) {
+            user(login: $login) {
+
+              login
+              name
+              createdAt
+
+              followers {
+                totalCount
+              }
+
+              following {
+                totalCount
+              }
+
+              repositories(
+                first: 100
+                ownerAffiliations: OWNER
+                privacy: PUBLIC
+                orderBy: {field: UPDATED_AT, direction: DESC}
+              ) {
+                totalCount
+
+                nodes {
+                  name
+                  stargazerCount
+                  forkCount
+
+                  primaryLanguage {
                     name
-                    login
-                    createdAt
-                    followers {
-                      totalCount
-                    }
-                    following {
-                      totalCount
-                    }
-                    repositories(ownerAffiliations:OWNER, first:100) {
-                      totalCount
-                      nodes {
+                  }
+
+                  languages(first: 10, orderBy: {field: SIZE, direction: DESC}) {
+                    edges {
+                      size
+                      node {
                         name
-                        stargazerCount
-                        forkCount
-                        primaryLanguage {
-                          name
-                        }
-                      }
-                    }
-                    contributionsCollection(from:$from, to:$to) {
-                      contributionCalendar {
-                        totalContributions
-                        weeks {
-                          contributionDays {
-                            date
-                            contributionCount
-                            weekday
-                          }
-                        }
                       }
                     }
                   }
-                }",
-                variables: {
-                  login: $login,
-                  from: $from,
-                  to: $to
                 }
-              }')" \
-            > profile/github-data.json
+              }
 
-          echo "GitHub data fetched."
+              contributionsCollection(from: $from, to: $to) {
 
-      - name: Generate custom SVG
-        run: |
-          python3 <<'PY'
-          import json
-          from pathlib import Path
-          from datetime import datetime
+                totalCommitContributions
 
-          data = json.loads(
-              Path("profile/github-data.json").read_text()
+                totalPullRequestContributions
+
+                totalIssueContributions
+
+                totalRepositoryContributions
+
+                contributionCalendar {
+                  totalContributions
+
+                  weeks {
+                    contributionDays {
+                      date
+                      contributionCount
+                    }
+                  }
+                }
+              }
+
+              pullRequests: repositories(
+                first: 1
+              ) {
+                totalCount
+              }
+            }
+
+            authoredPRs: search(
+              query: "author:$login type:pr"
+              type: ISSUE
+              first: 1
+            ) {
+              issueCount
+            }
+
+            authoredIssues: search(
+              query: "author:$login type:issue"
+              type: ISSUE
+              first: 1
+            ) {
+              issueCount
+            }
+          }
+          """
+
+          now = datetime.now(timezone.utc)
+
+          from_date = now - timedelta(days=365)
+
+          variables = {
+              "login": USERNAME,
+              "from": from_date.strftime("%Y-%m-%dT00:00:00Z"),
+              "to": now.strftime("%Y-%m-%dT23:59:59Z"),
+          }
+
+          payload = json.dumps({
+              "query": query,
+              "variables": variables
+          }).encode()
+
+          request = urllib.request.Request(
+              API_URL,
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {TOKEN}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "github-stats-generator"
+              }
           )
 
-          user = data["data"]["user"]
+          with urllib.request.urlopen(request) as response:
+              result = json.loads(response.read())
 
-          calendar = user["contributionsCollection"]["contributionCalendar"]
+          if "errors" in result:
+              print(json.dumps(result["errors"], indent=2))
+              raise SystemExit("GitHub GraphQL request failed")
+
+          data = result["data"]
+
+          user = data["user"]
+          repos = user["repositories"]["nodes"]
+
+          contributions = user["contributionsCollection"]
+          calendar = contributions["contributionCalendar"]
 
           days = []
 
@@ -108,60 +185,258 @@ jobs:
 
           days.sort(key=lambda x: x["date"])
 
-          total = calendar["totalContributions"]
+          # ============================================================
+          # Basic statistics
+          # ============================================================
 
-          # ---------------------------------------------------------
-          # Calculate current streak
-          # ---------------------------------------------------------
+          total_contributions = calendar["totalContributions"]
+
+          followers = user["followers"]["totalCount"]
+          following = user["following"]["totalCount"]
+
+          public_repos = user["repositories"]["totalCount"]
+
+          total_stars = sum(
+              repo["stargazerCount"]
+              for repo in repos
+          )
+
+          total_forks = sum(
+              repo["forkCount"]
+              for repo in repos
+          )
+
+          authored_prs = data["authoredPRs"]["issueCount"]
+          authored_issues = data["authoredIssues"]["issueCount"]
+
+          commits = contributions["totalCommitContributions"]
+          contributed_prs = contributions["totalPullRequestContributions"]
+          contributed_issues = contributions["totalIssueContributions"]
+
+          # ============================================================
+          # Streak calculation
+          # ============================================================
 
           current_streak = 0
 
-          for day in reversed(days):
+          # GitHub streak convention:
+          # If today has no contribution, start from yesterday.
+          streak_days = days[:]
+
+          if streak_days:
+              today = datetime.now(timezone.utc).date().isoformat()
+
+              if (
+                  streak_days[-1]["date"] == today
+                  and streak_days[-1]["contributionCount"] == 0
+              ):
+                  streak_days = streak_days[:-1]
+
+          for day in reversed(streak_days):
               if day["contributionCount"] > 0:
                   current_streak += 1
               else:
                   break
 
-          # ---------------------------------------------------------
-          # Calculate longest streak
-          # ---------------------------------------------------------
-
           longest_streak = 0
-          streak = 0
+          running = 0
 
           for day in days:
               if day["contributionCount"] > 0:
-                  streak += 1
-                  longest_streak = max(longest_streak, streak)
+                  running += 1
+                  longest_streak = max(longest_streak, running)
               else:
-                  streak = 0
+                  running = 0
 
-          # ---------------------------------------------------------
-          # Graph dimensions
-          # ---------------------------------------------------------
+          # ============================================================
+          # Language statistics
+          # ============================================================
+
+          language_sizes = defaultdict(int)
+
+          for repo in repos:
+              for edge in repo["languages"]["edges"]:
+                  language = edge["node"]["name"]
+                  size = edge["size"]
+
+                  if language:
+                      language_sizes[language] += size
+
+          total_language_size = sum(language_sizes.values())
+
+          language_stats = []
+
+          if total_language_size:
+              for language, size in sorted(
+                  language_sizes.items(),
+                  key=lambda x: x[1],
+                  reverse=True
+              ):
+                  percentage = (
+                      size / total_language_size
+                  ) * 100
+
+                  language_stats.append(
+                      (language, percentage)
+                  )
+
+          language_stats = language_stats[:5]
+
+          # ============================================================
+          # SVG helpers
+          # ============================================================
+
+          BG = "#282a36"
+          BG_DARK = "#21222c"
+
+          PINK = "#ff79c6"
+          PURPLE = "#bd93f9"
+          BLUE = "#8be9fd"
+
+          TEXT = "#f8f8f2"
+          MUTED = "#6272a4"
+          BORDER = "#44475a"
 
           WIDTH = 1100
           HEIGHT = 430
 
-          GRAPH_X = 80
-          GRAPH_Y = 150
+          FONT = "Arial, Helvetica, sans-serif"
 
-          GRAPH_WIDTH = 950
-          GRAPH_HEIGHT = 190
+          def esc(value):
+              return html.escape(str(value))
 
-          # ---------------------------------------------------------
-          # Graph points
-          # ---------------------------------------------------------
+          def base_svg(title, subtitle=""):
+              return f'''<svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="{WIDTH}"
+              height="{HEIGHT}"
+              viewBox="0 0 {WIDTH} {HEIGHT}">
 
-          values = [d["contributionCount"] for d in days]
+              <defs>
 
-          # Downsample if required
-          MAX_POINTS = 365
+                <linearGradient
+                  id="gradient"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%">
 
-          if len(values) > MAX_POINTS:
-              values = values[-MAX_POINTS:]
+                  <stop offset="0%" stop-color="{PINK}"/>
+                  <stop offset="50%" stop-color="{PURPLE}"/>
+                  <stop offset="100%" stop-color="{BLUE}"/>
+
+                </linearGradient>
+
+                <linearGradient
+                  id="mountain"
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="0%">
+
+                  <stop
+                    offset="0%"
+                    stop-color="{PINK}"
+                    stop-opacity="0.18"/>
+
+                  <stop
+                    offset="50%"
+                    stop-color="{PURPLE}"
+                    stop-opacity="0.42"/>
+
+                  <stop
+                    offset="100%"
+                    stop-color="{BLUE}"
+                    stop-opacity="0.18"/>
+
+                </linearGradient>
+
+                <filter
+                  id="glow"
+                  x="-20%"
+                  y="-20%"
+                  width="140%"
+                  height="140%">
+
+                  <feGaussianBlur
+                    stdDeviation="5"
+                    result="blur"/>
+
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+
+                </filter>
+
+              </defs>
+
+              <rect
+                width="100%"
+                height="100%"
+                rx="18"
+                fill="{BG}"/>
+
+              <text
+                x="45"
+                y="52"
+                fill="{PINK}"
+                font-size="27"
+                font-family="{FONT}"
+                font-weight="700">
+
+                {esc(title)}
+
+              </text>
+
+              <text
+                x="45"
+                y="80"
+                fill="{BLUE}"
+                font-size="14"
+                font-family="{FONT}">
+
+                @{esc(USERNAME)}
+
+              </text>
+
+              <line
+                x1="45"
+                y1="105"
+                x2="1055"
+                y2="105"
+                stroke="{BORDER}"
+                stroke-width="1"/>
+
+              '''
+
+          def finish_svg():
+              return "</svg>"
+
+          def write_svg(filename, content):
+              Path(f"profile/{filename}").write_text(
+                  content,
+                  encoding="utf-8"
+              )
+
+          # ============================================================
+          # 1. CONTRIBUTIONS SVG
+          # ============================================================
+
+          graph_days = days[-365:]
+
+          values = [
+              d["contributionCount"]
+              for d in graph_days
+          ]
 
           maximum = max(values) if values else 1
+
+          GRAPH_X = 65
+          GRAPH_Y = 135
+
+          GRAPH_WIDTH = 970
+          GRAPH_HEIGHT = 185
 
           points = []
 
@@ -186,340 +461,632 @@ jobs:
               for x, y in points
           )
 
-          # ---------------------------------------------------------
-          # Mountain fill
-          # ---------------------------------------------------------
-
           polygon_points = (
               f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
               + line_points
               + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
           )
 
-          # ---------------------------------------------------------
-          # SVG
-          # ---------------------------------------------------------
-
-          svg = f'''<svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="{WIDTH}"
-            height="{HEIGHT}"
-            viewBox="0 0 {WIDTH} {HEIGHT}">
-
-            <defs>
-
-              <linearGradient
-                id="mountain"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%">
-
-                <stop
-                  offset="0%"
-                  stop-color="#ff79c6"
-                  stop-opacity="0.20"/>
-
-                <stop
-                  offset="50%"
-                  stop-color="#bd93f9"
-                  stop-opacity="0.45"/>
-
-                <stop
-                  offset="100%"
-                  stop-color="#8be9fd"
-                  stop-opacity="0.25"/>
-
-              </linearGradient>
-
-              <linearGradient
-                id="line"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%">
-
-                <stop
-                  offset="0%"
-                  stop-color="#ff79c6"/>
-
-                <stop
-                  offset="50%"
-                  stop-color="#bd93f9"/>
-
-                <stop
-                  offset="100%"
-                  stop-color="#8be9fd"/>
-
-              </linearGradient>
-
-              <filter
-                id="glow"
-                x="-20%"
-                y="-20%"
-                width="140%"
-                height="140%">
-
-                <feGaussianBlur
-                  stdDeviation="4"
-                  result="blur"/>
-
-                <feMerge>
-                  <feMergeNode in="blur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-
-              </filter>
-
-            </defs>
-
-            <!-- Background -->
-
-            <rect
-              width="100%"
-              height="100%"
-              rx="18"
-              fill="#282a36"/>
-
-            <!-- Header -->
-
-            <text
-              x="45"
-              y="55"
-              fill="#ff79c6"
-              font-size="27"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700">
-
-              {user["name"] or user["login"]}
-
-            </text>
-
-            <text
-              x="45"
-              y="84"
-              fill="#8be9fd"
-              font-size="15"
-              font-family="Arial, Helvetica, sans-serif">
-
-              @{user["login"]}
-
-            </text>
-
-            <!-- Total -->
-
-            <text
-              x="850"
-              y="55"
-              fill="#f8f8f2"
-              font-size="25"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700"
-              text-anchor="end">
-
-              {total}
-
-            </text>
-
-            <text
-              x="850"
-              y="79"
-              fill="#6272a4"
-              font-size="13"
-              font-family="Arial, Helvetica, sans-serif"
-              text-anchor="end">
-
-              contributions / year
-
-            </text>
-
-            <!-- Divider -->
-
-            <line
-              x1="45"
-              y1="105"
-              x2="1055"
-              y2="105"
-              stroke="#44475a"
-              stroke-width="1"/>
-
-            <!-- Mountain glow -->
-
-            <polyline
-              points="{line_points}"
-              fill="none"
-              stroke="#bd93f9"
-              stroke-width="8"
-              opacity="0.15"
-              filter="url(#glow)"/>
-
-            <!-- Mountain -->
-
-            <polygon
-              points="{polygon_points}"
-              fill="url(#mountain)"/>
-
-            <!-- Graph line -->
-
-            <polyline
-              points="{line_points}"
-              fill="none"
-              stroke="url(#line)"
-              stroke-width="3"
-              stroke-linejoin="round"
-              stroke-linecap="round"/>
-
-            <!-- Baseline -->
-
-            <line
-              x1="{GRAPH_X}"
-              y1="{GRAPH_Y + GRAPH_HEIGHT}"
-              x2="{GRAPH_X + GRAPH_WIDTH}"
-              y2="{GRAPH_Y + GRAPH_HEIGHT}"
-              stroke="#44475a"
-              stroke-width="1"/>
-
-            <!-- Stats -->
-
-            <line
-              x1="300"
-              y1="365"
-              x2="300"
-              y2="405"
-              stroke="#44475a"/>
-
-            <line
-              x1="550"
-              y1="365"
-              x2="550"
-              y2="405"
-              stroke="#44475a"/>
-
-            <line
-              x1="800"
-              y1="365"
-              x2="800"
-              y2="405"
-              stroke="#44475a"/>
-
-            <text
-              x="175"
-              y="385"
-              fill="#ff79c6"
-              font-size="20"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700"
-              text-anchor="middle">
-
-              {current_streak}
-
-            </text>
-
-            <text
-              x="175"
-              y="402"
-              fill="#6272a4"
-              font-size="11"
-              font-family="Arial, Helvetica, sans-serif"
-              text-anchor="middle">
-
-              CURRENT STREAK
-
-            </text>
-
-            <text
-              x="425"
-              y="385"
-              fill="#bd93f9"
-              font-size="20"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700"
-              text-anchor="middle">
-
-              {longest_streak}
-
-            </text>
-
-            <text
-              x="425"
-              y="402"
-              fill="#6272a4"
-              font-size="11"
-              font-family="Arial, Helvetica, sans-serif"
-              text-anchor="middle">
-
-              LONGEST STREAK
-
-            </text>
-
-            <text
-              x="675"
-              y="385"
-              fill="#8be9fd"
-              font-size="20"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700"
-              text-anchor="middle">
-
-              {user["followers"]["totalCount"]}
-
-            </text>
-
-            <text
-              x="675"
-              y="402"
-              fill="#6272a4"
-              font-size="11"
-              font-family="Arial, Helvetica, sans-serif"
-              text-anchor="middle">
-
-              FOLLOWERS
-
-            </text>
-
-            <text
-              x="925"
-              y="385"
-              fill="#f8f8f2"
-              font-size="20"
-              font-family="Arial, Helvetica, sans-serif"
-              font-weight="700"
-              text-anchor="middle">
-
-              {user["repositories"]["totalCount"]}
-
-            </text>
-
-            <text
-              x="925"
-              y="402"
-              fill="#6272a4"
-              font-size="11"
-              font-family="Arial, Helvetica, sans-serif"
-              text-anchor="middle">
-
-              PUBLIC REPOS
-
-            </text>
-
-          </svg>
+          svg = base_svg(
+              user["name"] or USERNAME,
+              f"@{USERNAME}"
+          )
+
+          svg += f'''
+
+          <text
+            x="1050"
+            y="55"
+            fill="{TEXT}"
+            font-size="25"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="end">
+
+            {total_contributions}
+
+          </text>
+
+          <text
+            x="1050"
+            y="79"
+            fill="{MUTED}"
+            font-size="12"
+            font-family="{FONT}"
+            text-anchor="end">
+
+            CONTRIBUTIONS / YEAR
+
+          </text>
+
+          <polygon
+            points="{polygon_points}"
+            fill="url(#mountain)"/>
+
+          <polyline
+            points="{line_points}"
+            fill="none"
+            stroke="{PURPLE}"
+            stroke-width="8"
+            opacity="0.15"
+            filter="url(#glow)"/>
+
+          <polyline
+            points="{line_points}"
+            fill="none"
+            stroke="url(#gradient)"
+            stroke-width="3"
+            stroke-linejoin="round"
+            stroke-linecap="round"/>
+
+          <line
+            x1="{GRAPH_X}"
+            y1="{GRAPH_Y + GRAPH_HEIGHT}"
+            x2="{GRAPH_X + GRAPH_WIDTH}"
+            y2="{GRAPH_Y + GRAPH_HEIGHT}"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          <line x1="275" y1="355" x2="275" y2="405"
+                stroke="{BORDER}"/>
+
+          <line x1="525" y1="355" x2="525" y2="405"
+                stroke="{BORDER}"/>
+
+          <line x1="775" y1="355" x2="775" y2="405"
+                stroke="{BORDER}"/>
+
+          <text
+            x="150"
+            y="378"
+            fill="{PINK}"
+            font-size="22"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {current_streak}
+
+          </text>
+
+          <text
+            x="150"
+            y="398"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            CURRENT STREAK
+
+          </text>
+
+          <text
+            x="400"
+            y="378"
+            fill="{PURPLE}"
+            font-size="22"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {longest_streak}
+
+          </text>
+
+          <text
+            x="400"
+            y="398"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            LONGEST STREAK
+
+          </text>
+
+          <text
+            x="650"
+            y="378"
+            fill="{BLUE}"
+            font-size="22"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {followers}
+
+          </text>
+
+          <text
+            x="650"
+            y="398"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            FOLLOWERS
+
+          </text>
+
+          <text
+            x="900"
+            y="378"
+            fill="{TEXT}"
+            font-size="22"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {public_repos}
+
+          </text>
+
+          <text
+            x="900"
+            y="398"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            PUBLIC REPOS
+
+          </text>
+
           '''
 
-          Path("profile/contributions.svg").write_text(
-              svg,
+          svg += finish_svg()
+
+          write_svg(
+              "contributions.svg",
+              svg
+          )
+
+          # ============================================================
+          # 2. PROFILE SVG
+          # ============================================================
+
+          joined = datetime.fromisoformat(
+              user["createdAt"].replace("Z", "+00:00")
+          )
+
+          joined_text = joined.strftime("%B %Y")
+
+          svg = base_svg(
+              "GitHub Profile",
+              f"@{USERNAME}"
+          )
+
+          svg += f'''
+
+          <text
+            x="60"
+            y="150"
+            fill="{TEXT}"
+            font-size="32"
+            font-family="{FONT}"
+            font-weight="700">
+
+            {esc(user["name"] or USERNAME)}
+
+          </text>
+
+          <text
+            x="60"
+            y="180"
+            fill="{MUTED}"
+            font-size="14"
+            font-family="{FONT}">
+
+            @{esc(USERNAME)}
+
+          </text>
+
+          <line
+            x1="60"
+            y1="205"
+            x2="1040"
+            y2="205"
+            stroke="{BORDER}"/>
+
+          '''
+
+          profile_stats = [
+              ("PUBLIC REPOS", public_repos, PINK),
+              ("FOLLOWERS", followers, PURPLE),
+              ("FOLLOWING", following, BLUE),
+              ("STARS", total_stars, PINK),
+          ]
+
+          x_positions = [170, 410, 650, 890]
+
+          for (label, value, color), x in zip(
+              profile_stats,
+              x_positions
+          ):
+
+              svg += f'''
+
+              <text
+                x="{x}"
+                y="265"
+                fill="{color}"
+                font-size="28"
+                font-family="{FONT}"
+                font-weight="700"
+                text-anchor="middle">
+
+                {value}
+
+              </text>
+
+              <text
+                x="{x}"
+                y="290"
+                fill="{MUTED}"
+                font-size="11"
+                font-family="{FONT}"
+                text-anchor="middle">
+
+                {label}
+
+              </text>
+
+              '''
+
+          svg += f'''
+
+          <line
+            x1="60"
+            y1="325"
+            x2="1040"
+            y2="325"
+            stroke="{BORDER}"/>
+
+          <text
+            x="60"
+            y="365"
+            fill="{MUTED}"
+            font-size="12"
+            font-family="{FONT}">
+
+            GITHUB MEMBER SINCE
+
+          </text>
+
+          <text
+            x="60"
+            y="393"
+            fill="{TEXT}"
+            font-size="20"
+            font-family="{FONT}"
+            font-weight="700">
+
+            {joined_text}
+
+          </text>
+
+          '''
+
+          svg += finish_svg()
+
+          write_svg(
+              "profile.svg",
+              svg
+          )
+
+          # ============================================================
+          # 3. REPOSITORY STATISTICS SVG
+          # ============================================================
+
+          svg = base_svg(
+              "Repository Statistics",
+              f"@{USERNAME}"
+          )
+
+          repo_stats = [
+              ("REPOSITORIES", public_repos, PINK),
+              ("STARS", total_stars, PURPLE),
+              ("FORKS", total_forks, BLUE),
+              ("AUTHORED PRs", authored_prs, PINK),
+              ("AUTHORED ISSUES", authored_issues, PURPLE),
+              ("COMMITS", commits, BLUE),
+          ]
+
+          positions = [
+              (200, 175),
+              (550, 175),
+              (900, 175),
+              (200, 315),
+              (550, 315),
+              (900, 315),
+          ]
+
+          for (label, value, color), (x, y) in zip(
+              repo_stats,
+              positions
+          ):
+
+              svg += f'''
+
+              <text
+                x="{x}"
+                y="{y}"
+                fill="{color}"
+                font-size="30"
+                font-family="{FONT}"
+                font-weight="700"
+                text-anchor="middle">
+
+                {value}
+
+              </text>
+
+              <text
+                x="{x}"
+                y="{y + 27}"
+                fill="{MUTED}"
+                font-size="11"
+                font-family="{FONT}"
+                text-anchor="middle">
+
+                {label}
+
+              </text>
+
+              '''
+
+          svg += finish_svg()
+
+          write_svg(
+              "repositories.svg",
+              svg
+          )
+
+          # ============================================================
+          # 4. LANGUAGES SVG
+          # ============================================================
+
+          svg = base_svg(
+              "Top Languages",
+              f"@{USERNAME}"
+          )
+
+          y = 145
+
+          for index, (language, percentage) in enumerate(
+              language_stats
+          ):
+
+              bar_width = 680
+              actual_width = (
+                  bar_width * percentage / 100
+              )
+
+              svg += f'''
+
+              <text
+                x="70"
+                y="{y}"
+                fill="{TEXT}"
+                font-size="15"
+                font-family="{FONT}"
+                font-weight="700">
+
+                {esc(language)}
+
+              </text>
+
+              <text
+                x="1030"
+                y="{y}"
+                fill="{MUTED}"
+                font-size="13"
+                font-family="{FONT}"
+                text-anchor="end">
+
+                {percentage:.1f}%
+
+              </text>
+
+              <rect
+                x="70"
+                y="{y + 15}"
+                width="{bar_width}"
+                height="13"
+                rx="6"
+                fill="{BG_DARK}"/>
+
+              <rect
+                x="70"
+                y="{y + 15}"
+                width="{actual_width:.2f}"
+                height="13"
+                rx="6"
+                fill="url(#gradient)"/>
+
+              '''
+
+              y += 52
+
+          svg += f'''
+
+          <text
+            x="70"
+            y="405"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}">
+
+            BASED ON GITHUB REPOSITORY LANGUAGE BYTES
+
+          </text>
+
+          '''
+
+          svg += finish_svg()
+
+          write_svg(
+              "languages.svg",
+              svg
+          )
+
+          # ============================================================
+          # 5. STREAK SVG
+          # ============================================================
+
+          svg = base_svg(
+              "Contribution Streak",
+              f"@{USERNAME}"
+          )
+
+          svg += f'''
+
+          <text
+            x="550"
+            y="165"
+            fill="{PINK}"
+            font-size="52"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {current_streak}
+
+          </text>
+
+          <text
+            x="550"
+            y="195"
+            fill="{MUTED}"
+            font-size="12"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            CURRENT STREAK
+
+          </text>
+
+          <line
+            x1="250"
+            y1="230"
+            x2="850"
+            y2="230"
+            stroke="{BORDER}"/>
+
+          <text
+            x="370"
+            y="285"
+            fill="{PURPLE}"
+            font-size="30"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {longest_streak}
+
+          </text>
+
+          <text
+            x="370"
+            y="310"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            LONGEST STREAK
+
+          </text>
+
+          <text
+            x="730"
+            y="285"
+            fill="{BLUE}"
+            font-size="30"
+            font-family="{FONT}"
+            font-weight="700"
+            text-anchor="middle">
+
+            {total_contributions}
+
+          </text>
+
+          <text
+            x="730"
+            y="310"
+            fill="{MUTED}"
+            font-size="11"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            CONTRIBUTIONS / YEAR
+
+          </text>
+
+          <text
+            x="550"
+            y="370"
+            fill="{TEXT}"
+            font-size="15"
+            font-family="{FONT}"
+            text-anchor="middle">
+
+            {commits} commits  •  {contributed_prs} PRs  •  {contributed_issues} issues
+
+          </text>
+
+          '''
+
+          svg += finish_svg()
+
+          write_svg(
+              "streak.svg",
+              svg
+          )
+
+          # ============================================================
+          # Save raw data outside profile/
+          # ============================================================
+
+          Path("github-data.json").write_text(
+              json.dumps(data, indent=2),
               encoding="utf-8"
           )
 
-          print("Generated profile/contributions.svg")
+          print()
+          print("========================================")
+          print(" GitHub Stats Generated")
+          print("========================================")
+          print(f"Contributions : {total_contributions}")
+          print(f"Current streak: {current_streak}")
+          print(f"Longest streak: {longest_streak}")
+          print(f"Repositories  : {public_repos}")
+          print(f"Stars         : {total_stars}")
+          print(f"Forks         : {total_forks}")
+          print(f"Followers     : {followers}")
+          print()
+          print("Generated:")
+          print("  profile/contributions.svg")
+          print("  profile/profile.svg")
+          print("  profile/repositories.svg")
+          print("  profile/languages.svg")
+          print("  profile/streak.svg")
+          print("========================================")
           PY
 
-      - name: Commit generated SVG
+          rm -f github-data.json
+
+      - name: Commit generated SVGs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add profile/contributions.svg
+          git add profile/*.svg
 
-          git commit -m "Update GitHub contribution stats" || exit 0
+          git commit -m "Update GitHub stats" || exit 0
 
           git push
