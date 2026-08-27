@@ -55,7 +55,7 @@ A high-performance deep learning framework built entirely from scratch, implemen
 </p>
 
 <p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
+  <img src="./profile/streak.svg" width="50%" alt="GitHub Streak">
 </p>
 
 #
