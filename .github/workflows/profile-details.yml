@@ -1,4 +1,4 @@
-name: Update GitHub Profile Cards
+name: Update GitHub Profile Details
 
 on:
   schedule:
@@ -11,7 +11,7 @@ on:
       - ".github/workflows/profile-details.yml"
 
 jobs:
-  generate-profile-card:
+  generate-profile-details:
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,710 +22,85 @@ jobs:
         uses: actions/checkout@v4
 
       # ============================================================
-      # Generate custom Profile Details card
+      # 1. Download ORIGINAL Vercel card
       # ============================================================
 
-      - name: Generate Profile Details
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USERNAME: ANSHAM1
+      - name: Download Vercel Profile Details
         run: |
           mkdir -p profile
 
+          curl -L \
+            "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" \
+            -o profile/profile-details.svg
+
+      # ============================================================
+      # 2. Replace ONLY the title
+      # ============================================================
+
+      - name: Fix Profile Name
+        run: |
           python3 <<'PY'
-          import json
-          import html
-          import math
-          import os
-          import urllib.request
-          from datetime import datetime, timezone, timedelta
           from pathlib import Path
+          import re
 
-          USERNAME = os.environ["USERNAME"]
-          TOKEN = os.environ["GITHUB_TOKEN"]
+          path = Path("profile/profile-details.svg")
 
-          # ==========================================================
-          # DRACULA THEME
-          # ==========================================================
+          svg = path.read_text(encoding="utf-8")
 
-          BG = "#282a36"
-          TEXT = "#f8f8f2"
-          MUTED = "#f1fa8c"
+          # Replace the title text inside the first text element.
+          #
+          # Vercel generates something similar to:
+          #
+          # ANSHAM1 (ANSHAM MAURY...
+          #
+          # We replace ONLY that displayed title with:
+          #
+          # ANSHAM1
 
-          PINK = "#ff79c6"
-          PURPLE = "#bd93f9"
-          BLUE = "#8be9fd"
-
-          BORDER = "#44475a"
-
-          FONT = "Arial, Helvetica, sans-serif"
-
-          WIDTH = 1100
-          HEIGHT = 270
-
-          # ==========================================================
-          # GITHUB GRAPHQL
-          # ==========================================================
-
-          query = """
-          query(
-            $login: String!,
-            $from: DateTime!,
-            $to: DateTime!
-          ) {
-
-            user(login: $login) {
-
-              login
-              name
-              createdAt
-
-              repositories(
-                first: 1
-                ownerAffiliations: OWNER
-                privacy: PUBLIC
-              ) {
-                totalCount
-              }
-
-              contributionsCollection(
-                from: $from
-                to: $to
-              ) {
-
-                contributionCalendar {
-
-                  totalContributions
-
-                  weeks {
-
-                    contributionDays {
-                      date
-                      contributionCount
-                    }
-
-                  }
-                }
-              }
-
-              repositoriesContributedTo(
-                first: 100
-                contributionTypes: [
-                  COMMIT
-                  ISSUE
-                  PULL_REQUEST
-                  REPOSITORY
-                ]
-                includeUserRepositories: false
-              ) {
-
-                nodes {
-
-                  owner {
-                    login
-                    __typename
-                  }
-
-                }
-
-              }
-
-            }
-
-          }
-          """
-
-          now = datetime.now(timezone.utc)
-          from_date = now - timedelta(days=365)
-
-          variables = {
-              "login": USERNAME,
-              "from": from_date.strftime(
-                  "%Y-%m-%dT00:00:00Z"
-              ),
-              "to": now.strftime(
-                  "%Y-%m-%dT23:59:59Z"
-              ),
-          }
-
-          payload = json.dumps({
-              "query": query,
-              "variables": variables,
-          }).encode()
-
-          request = urllib.request.Request(
-              "https://api.github.com/graphql",
-              data=payload,
-              headers={
-                  "Authorization": f"Bearer {TOKEN}",
-                  "Content-Type": "application/json",
-                  "User-Agent": "ANSHAM1-profile-details",
-              },
+          pattern = re.compile(
+              r'(<text[^>]*>)(.*?)(</text>)',
+              re.DOTALL
           )
 
-          with urllib.request.urlopen(request) as response:
-              result = json.loads(
-                  response.read()
-              )
+          matches = list(pattern.finditer(svg))
 
-          if "errors" in result:
-
-              print(
-                  json.dumps(
-                      result["errors"],
-                      indent=2
-                  )
-              )
-
+          if not matches:
               raise SystemExit(
-                  "GitHub GraphQL request failed"
+                  "Could not find any <text> elements in SVG"
               )
 
-          user = result["data"]["user"]
+          # The first text element is the profile title
+          # in the profile-details card.
 
-          contributions = (
-              user["contributionsCollection"]
+          first = matches[0]
+
+          replacement = (
+              first.group(1)
+              + "ANSHAM1"
+              + first.group(3)
           )
 
-          calendar = (
-              contributions["contributionCalendar"]
+          svg = (
+              svg[:first.start()]
+              + replacement
+              + svg[first.end():]
           )
 
-          # ==========================================================
-          # DATA
-          # ==========================================================
-
-          total_contributions = (
-              calendar["totalContributions"]
-          )
-
-          public_repositories = (
-              user["repositories"]["totalCount"]
-          )
-
-          created_at = datetime.fromisoformat(
-              user["createdAt"].replace(
-                  "Z",
-                  "+00:00"
-              )
-          )
-
-          # ==========================================================
-          # JOINED GITHUB
-          # ==========================================================
-
-          years = now.year - created_at.year
-
-          if (
-              now.month,
-              now.day
-          ) < (
-              created_at.month,
-              created_at.day
-          ):
-              years -= 1
-
-          if years <= 0:
-
-              joined_text = (
-                  "Joined GitHub less than a year ago"
-              )
-
-          elif years == 1:
-
-              joined_text = (
-                  "Joined GitHub 1 year ago"
-              )
-
-          else:
-
-              joined_text = (
-                  f"Joined GitHub {years} years ago"
-              )
-
-          # ==========================================================
-          # ORGANIZATIONS CONTRIBUTED TO
-          # ==========================================================
-
-          organizations = set()
-
-          for repo in (
-              user[
-                  "repositoriesContributedTo"
-              ]["nodes"]
-          ):
-
-              owner = repo["owner"]
-
-              if (
-                  owner
-                  and owner["__typename"]
-                  == "Organization"
-              ):
-
-                  organizations.add(
-                      owner["login"]
-                  )
-
-          if organizations:
-
-              contributed_text = " • ".join(
-                  f"@{org}"
-                  for org in sorted(
-                      organizations,
-                      key=str.lower
-                  )[:3]
-              )
-
-          else:
-
-              contributed_text = "—"
-
-          # ==========================================================
-          # CONTRIBUTION DAYS
-          # ==========================================================
-
-          days = []
-
-          for week in calendar["weeks"]:
-
-              for day in week[
-                  "contributionDays"
-              ]:
-
-                  days.append(day)
-
-          days.sort(
-              key=lambda x: x["date"]
-          )
-
-          days = days[-365:]
-
-          values = [
-              day["contributionCount"]
-              for day in days
-          ]
-
-          maximum = (
-              max(values)
-              if values
-              else 1
-          )
-
-          def esc(value):
-              return html.escape(
-                  str(value)
-              )
-
-          # ==========================================================
-          # SVG
-          # ==========================================================
-
-          svg = f'''<svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="{WIDTH}"
-          height="{HEIGHT}"
-          viewBox="0 0 {WIDTH} {HEIGHT}">
-
-          <defs>
-
-            <!-- Dracula mountain fill -->
-
-            <linearGradient
-              id="mountainGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%">
-
-              <stop
-                offset="0%"
-                stop-color="{PINK}"
-                stop-opacity="0.16"/>
-
-              <stop
-                offset="50%"
-                stop-color="{PURPLE}"
-                stop-opacity="0.32"/>
-
-              <stop
-                offset="100%"
-                stop-color="{PURPLE}"
-                stop-opacity="0.20"/>
-
-            </linearGradient>
-
-            <!-- Dracula graph line -->
-
-            <linearGradient
-              id="lineGradient"
-              x1="0%"
-              y1="0%"
-              x2="100%"
-              y2="0%">
-
-              <stop
-                offset="0%"
-                stop-color="{PINK}"/>
-
-              <stop
-                offset="55%"
-                stop-color="{PURPLE}"/>
-
-              <stop
-                offset="100%"
-                stop-color="{BLUE}"/>
-
-            </linearGradient>
-
-          </defs>
-
-          <!-- ====================================================== -->
-          <!-- BACKGROUND -->
-          <!-- ====================================================== -->
-
-          <rect
-            width="{WIDTH}"
-            height="{HEIGHT}"
-            rx="8"
-            fill="{BG}"/>
-
-          <!-- ====================================================== -->
-          <!-- NAME -->
-          <!-- ====================================================== -->
-
-          <text
-            x="35"
-            y="48"
-            fill="{PINK}"
-            font-family="{FONT}"
-            font-size="22"
-            font-weight="600">
-
-            {esc(USERNAME)} ({esc(user["name"] or USERNAME)})
-
-          </text>
-
-          <!-- ====================================================== -->
-          <!-- LEFT INFORMATION -->
-          <!-- ====================================================== -->
-
-          <text
-            x="35"
-            y="92"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            ♧
-
-          </text>
-
-          <text
-            x="55"
-            y="92"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            {total_contributions:,} Contributions on GitHub
-
-          </text>
-
-          <text
-            x="35"
-            y="123"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            ▣
-
-          </text>
-
-          <text
-            x="55"
-            y="123"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            {public_repositories:,} Public Repos
-
-          </text>
-
-          <text
-            x="35"
-            y="154"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            ◷
-
-          </text>
-
-          <text
-            x="55"
-            y="154"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            {esc(joined_text)}
-
-          </text>
-
-          <text
-            x="35"
-            y="185"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            ▦
-
-          </text>
-
-          <text
-            x="55"
-            y="185"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="13">
-
-            {esc(contributed_text)}
-
-          </text>
-
-          <!-- ====================================================== -->
-          <!-- GRAPH TITLE -->
-          <!-- ====================================================== -->
-
-          <text
-            x="1060"
-            y="34"
-            fill="{MUTED}"
-            font-family="{FONT}"
-            font-size="10"
-            text-anchor="end">
-
-            contributions in the last year
-
-          </text>
-          '''
-
-          # ==========================================================
-          # GRAPH
-          # ==========================================================
-
-          # Approximately 3% larger than the original version.
-
-          GRAPH_X = 340
-          GRAPH_Y = 43
-          GRAPH_WIDTH = 710
-          GRAPH_HEIGHT = 150
-
-          points = []
-
-          for index, value in enumerate(values):
-
-              x = (
-                  GRAPH_X
-                  + (
-                      index
-                      / max(
-                          1,
-                          len(values) - 1
-                      )
-                  )
-                  * GRAPH_WIDTH
-              )
-
-              y = (
-                  GRAPH_Y
-                  + GRAPH_HEIGHT
-                  - (
-                      value
-                      / maximum
-                      * GRAPH_HEIGHT
-                  )
-              )
-
-              points.append(
-                  (x, y)
-              )
-
-          line_points = " ".join(
-              f"{x:.2f},{y:.2f}"
-              for x, y in points
-          )
-
-          # ==========================================================
-          # MOUNTAIN FILL
-          #
-          # The polygon is allowed to reach the zero level.
-          # It has NO stroke, so there is no visible horizontal
-          # zero-contribution line.
-          # ==========================================================
-
-          polygon_points = (
-              f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
-              + line_points
-              + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
-          )
-
-          svg += f'''
-
-          <polygon
-            points="{polygon_points}"
-            fill="url(#mountainGradient)"/>
-
-          '''
-
-          # ==========================================================
-          # GRAPH LINE
-          #
-          # IMPORTANT:
-          #
-          # Do NOT use one <polyline> for the complete graph.
-          #
-          # A single polyline creates:
-          #
-          #     0 ───────────────────── 0
-          #
-          # across every long period with no contributions.
-          #
-          # Instead, zero -> zero segments are completely skipped.
-          # ==========================================================
-
-          for i in range(
-              len(points) - 1
-          ):
-
-              value1 = values[i]
-              value2 = values[i + 1]
-
-              # Completely ignore zero -> zero segments.
-
-              if (
-                  value1 == 0
-                  and value2 == 0
-              ):
-                  continue
-
-              x1, y1 = points[i]
-              x2, y2 = points[i + 1]
-
-              svg += f'''
-
-              <line
-                x1="{x1:.2f}"
-                y1="{y1:.2f}"
-                x2="{x2:.2f}"
-                y2="{y2:.2f}"
-                stroke="url(#lineGradient)"
-                stroke-width="2.5"
-                stroke-linecap="round"/>
-
-              '''
-
-          # ==========================================================
-          # Y AXIS
-          # ==========================================================
-
-          step = max(
-              1,
-              math.ceil(
-                  maximum / 8
-              )
-          )
-
-          for value in range(
-              0,
-              maximum + 1,
-              step
-          ):
-
-              normalized = (
-                  value / maximum
-              )
-
-              y = (
-                  GRAPH_Y
-                  + GRAPH_HEIGHT
-                  - (
-                      normalized
-                      * GRAPH_HEIGHT
-                  )
-              )
-
-              svg += f'''
-
-              <text
-                x="1055"
-                y="{y + 3:.2f}"
-                fill="{MUTED}"
-                font-family="{FONT}"
-                font-size="9">
-
-                {value}
-
-              </text>
-
-              '''
-
-          # ==========================================================
-          # X-AXIS LABELS
-          #
-          # Intentionally removed.
-          # ==========================================================
-
-          svg += """
-
-          </svg>
-          """
-
-          # ==========================================================
-          # WRITE FILE
-          # ==========================================================
-
-          output = Path(
-              "profile/profile-details.svg"
-          )
-
-          output.write_text(
+          path.write_text(
               svg,
               encoding="utf-8"
           )
 
           print(
-              "Generated profile/profile-details.svg"
+              "Profile name changed to: ANSHAM1"
           )
-
-          print(
-              f"Contributions: {total_contributions:,}"
-          )
-
-          print(
-              f"Public repos: {public_repositories:,}"
-          )
-
-          print(
-              f"Organizations: {contributed_text}"
-          )
-
-          print(
-              f"Graph: {days[0]['date']} -> {days[-1]['date']}"
-          )
-
           PY
 
       # ============================================================
-      # Commit ONLY profile-details.svg
+      # 3. Commit modified Vercel SVG
       # ============================================================
 
-      - name: Commit generated profile card
+      - name: Commit Profile Details
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
