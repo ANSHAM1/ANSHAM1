@@ -559,7 +559,6 @@ jobs:
           BASELINE_Y = (
               GRAPH_Y
               + GRAPH_HEIGHT
-              - 6
           )
 
           polygon_points = (
