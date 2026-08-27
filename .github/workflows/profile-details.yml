@@ -11,7 +11,7 @@ on:
       - ".github/workflows/profile-details.yml"
 
 jobs:
-  generate-profile-cards:
+  generate-profile-card:
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
 
       # ============================================================
-      # 1. PROFILE DETAILS
+      # Generate custom Profile Details card
       # ============================================================
 
       - name: Generate Profile Details
@@ -45,7 +45,7 @@ jobs:
           TOKEN = os.environ["GITHUB_TOKEN"]
 
           # ==========================================================
-          # DRACULA
+          # DRACULA THEME
           # ==========================================================
 
           BG = "#282a36"
@@ -55,6 +55,7 @@ jobs:
           PINK = "#ff79c6"
           PURPLE = "#bd93f9"
           BLUE = "#8be9fd"
+
           BORDER = "#44475a"
 
           FONT = "Arial, Helvetica, sans-serif"
@@ -166,7 +167,13 @@ jobs:
               result = json.loads(response.read())
 
           if "errors" in result:
-              print(json.dumps(result["errors"], indent=2))
+              print(
+                  json.dumps(
+                      result["errors"],
+                      indent=2
+                  )
+              )
+
               raise SystemExit(
                   "GitHub GraphQL request failed"
               )
@@ -200,6 +207,10 @@ jobs:
               )
           )
 
+          # ==========================================================
+          # JOINED GITHUB
+          # ==========================================================
+
           years = now.year - created_at.year
 
           if (
@@ -215,17 +226,19 @@ jobs:
               joined_text = (
                   "Joined GitHub less than a year ago"
               )
+
           elif years == 1:
               joined_text = (
                   "Joined GitHub 1 year ago"
               )
+
           else:
               joined_text = (
                   f"Joined GitHub {years} years ago"
               )
 
           # ==========================================================
-          # ORGANIZATIONS
+          # ORGANIZATIONS CONTRIBUTED TO
           # ==========================================================
 
           organizations = set()
@@ -243,6 +256,7 @@ jobs:
                   and owner["__typename"]
                   == "Organization"
               ):
+
                   organizations.add(
                       owner["login"]
                   )
@@ -267,7 +281,11 @@ jobs:
           days = []
 
           for week in calendar["weeks"]:
-              for day in week["contributionDays"]:
+
+              for day in week[
+                  "contributionDays"
+              ]:
+
                   days.append(day)
 
           days.sort(
@@ -281,17 +299,16 @@ jobs:
               for day in days
           ]
 
-          maximum = max(values) if values else 1
+          maximum = (
+              max(values)
+              if values
+              else 1
+          )
 
           def esc(value):
-              return html.escape(str(value))
-
-          def month_label(value):
-              date = datetime.strptime(
-                  value,
-                  "%Y-%m-%d"
+              return html.escape(
+                  str(value)
               )
-              return date.strftime("%y/%m")
 
           # ==========================================================
           # SVG
@@ -304,6 +321,8 @@ jobs:
           viewBox="0 0 {WIDTH} {HEIGHT}">
 
           <defs>
+
+            <!-- Dracula mountain fill -->
 
             <linearGradient
               id="mountainGradient"
@@ -329,6 +348,8 @@ jobs:
 
             </linearGradient>
 
+            <!-- Dracula graph line -->
+
             <linearGradient
               id="lineGradient"
               x1="0%"
@@ -352,13 +373,19 @@ jobs:
 
           </defs>
 
+          <!-- ====================================================== -->
+          <!-- BACKGROUND -->
+          <!-- ====================================================== -->
+
           <rect
             width="{WIDTH}"
             height="{HEIGHT}"
             rx="8"
             fill="{BG}"/>
 
+          <!-- ====================================================== -->
           <!-- NAME -->
+          <!-- ====================================================== -->
 
           <text
             x="35"
@@ -372,7 +399,9 @@ jobs:
 
           </text>
 
+          <!-- ====================================================== -->
           <!-- LEFT INFORMATION -->
+          <!-- ====================================================== -->
 
           <text
             x="35"
@@ -462,7 +491,9 @@ jobs:
 
           </text>
 
+          <!-- ====================================================== -->
           <!-- GRAPH TITLE -->
+          <!-- ====================================================== -->
 
           <text
             x="1060"
@@ -481,10 +512,11 @@ jobs:
           # GRAPH
           # ==========================================================
 
-          GRAPH_X = 350
-          GRAPH_Y = 47
-          GRAPH_WIDTH = 690
-          GRAPH_HEIGHT = 145
+          # ~3% larger than previous version
+          GRAPH_X = 340
+          GRAPH_Y = 43
+          GRAPH_WIDTH = 710
+          GRAPH_HEIGHT = 150
 
           points = []
 
@@ -512,24 +544,39 @@ jobs:
                   )
               )
 
-              points.append((x, y))
+              points.append(
+                  (x, y)
+              )
 
           line_points = " ".join(
               f"{x:.2f},{y:.2f}"
               for x, y in points
           )
 
+          # Baseline is intentionally above
+          # the bottom of the graph/card.
+
+          BASELINE_Y = (
+              GRAPH_Y
+              + GRAPH_HEIGHT
+              - 6
+          )
+
           polygon_points = (
-              f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
+              f"{GRAPH_X},{BASELINE_Y} "
               + line_points
-              + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
+              + f" {GRAPH_X + GRAPH_WIDTH},{BASELINE_Y}"
           )
 
           svg += f'''
 
+          <!-- mountain -->
+
           <polygon
             points="{polygon_points}"
             fill="url(#mountainGradient)"/>
+
+          <!-- graph line -->
 
           <polyline
             points="{line_points}"
@@ -539,21 +586,27 @@ jobs:
             stroke-linejoin="round"
             stroke-linecap="round"/>
 
+          <!-- graph baseline -->
+
           <line
             x1="{GRAPH_X}"
-            y1="{GRAPH_Y + GRAPH_HEIGHT}"
+            y1="{BASELINE_Y}"
             x2="{GRAPH_X + GRAPH_WIDTH}"
-            y2="{GRAPH_Y + GRAPH_HEIGHT}"
+            y2="{BASELINE_Y}"
             stroke="{BORDER}"
             stroke-width="1"/>
 
           '''
 
-          # Y axis
+          # ==========================================================
+          # Y AXIS
+          # ==========================================================
 
           step = max(
               1,
-              math.ceil(maximum / 8)
+              math.ceil(
+                  maximum / 8
+              )
           )
 
           for value in range(
@@ -562,12 +615,17 @@ jobs:
               step
           ):
 
-              normalized = value / maximum
+              normalized = (
+                  value / maximum
+              )
 
               y = (
                   GRAPH_Y
                   + GRAPH_HEIGHT
-                  - normalized * GRAPH_HEIGHT
+                  - (
+                      normalized
+                      * GRAPH_HEIGHT
+                  )
               )
 
               svg += f'''
@@ -585,52 +643,28 @@ jobs:
 
               '''
 
-          # Month labels
+          # ==========================================================
+          # NO X-AXIS / MONTH LABELS
+          # ==========================================================
+          #
+          # Intentionally removed.
+          #
+          # ==========================================================
 
-          seen_months = set()
+          svg += """
 
-          for index, day in enumerate(days):
+          </svg>
+          """
 
-              month = day["date"][:7]
+          # ==========================================================
+          # WRITE FILE
+          # ==========================================================
 
-              if month in seen_months:
-                  continue
-
-              seen_months.add(month)
-
-              x = (
-                  GRAPH_X
-                  + (
-                      index
-                      / max(
-                          1,
-                          len(days) - 1
-                      )
-                  )
-                  * GRAPH_WIDTH
-              )
-
-              svg += f'''
-
-              <text
-                x="{x:.2f}"
-                y="212"
-                fill="{MUTED}"
-                font-family="{FONT}"
-                font-size="9"
-                text-anchor="middle">
-
-                {month_label(day["date"])}
-
-              </text>
-
-              '''
-
-          svg += "</svg>"
-
-          Path(
+          output = Path(
               "profile/profile-details.svg"
-          ).write_text(
+          )
+
+          output.write_text(
               svg,
               encoding="utf-8"
           )
@@ -638,33 +672,38 @@ jobs:
           print(
               "Generated profile/profile-details.svg"
           )
+
+          print(
+              f"Contributions: {total_contributions:,}"
+          )
+
+          print(
+              f"Public repos: {public_repositories:,}"
+          )
+
+          print(
+              f"Organizations: {contributed_text}"
+          )
+
+          print(
+              f"Graph: {days[0]['date']} -> {days[-1]['date']}"
+          )
+
           PY
 
       # ============================================================
-      # 2. STREAK CARD
+      # Commit ONLY profile-details.svg
       # ============================================================
 
-      - name: Generate Streak Stats
-        uses: DenverCoder1/github-readme-streak-stats@main
-        with:
-          options: user=ANSHAM1&theme=dracula&hide_border=true
-          path: profile/streak.svg
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      # ============================================================
-      # 3. COMMIT BOTH
-      # ============================================================
-
-      - name: Commit generated cards
+      - name: Commit generated profile card
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add profile/profile-details.svg
-          git add profile/streak.svg
 
           git commit \
-            -m "Update GitHub profile cards" \
+            -m "Update GitHub profile details" \
             || exit 0
 
           git push
