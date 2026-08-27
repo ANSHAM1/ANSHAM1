@@ -164,9 +164,12 @@ jobs:
           )
 
           with urllib.request.urlopen(request) as response:
-              result = json.loads(response.read())
+              result = json.loads(
+                  response.read()
+              )
 
           if "errors" in result:
+
               print(
                   json.dumps(
                       result["errors"],
@@ -223,16 +226,19 @@ jobs:
               years -= 1
 
           if years <= 0:
+
               joined_text = (
                   "Joined GitHub less than a year ago"
               )
 
           elif years == 1:
+
               joined_text = (
                   "Joined GitHub 1 year ago"
               )
 
           else:
+
               joined_text = (
                   f"Joined GitHub {years} years ago"
               )
@@ -272,6 +278,7 @@ jobs:
               )
 
           else:
+
               contributed_text = "—"
 
           # ==========================================================
@@ -512,7 +519,8 @@ jobs:
           # GRAPH
           # ==========================================================
 
-          # ~3% larger than previous version
+          # Approximately 3% larger than the original version.
+
           GRAPH_X = 340
           GRAPH_Y = 43
           GRAPH_WIDTH = 710
@@ -553,49 +561,74 @@ jobs:
               for x, y in points
           )
 
-          # Baseline is intentionally above
-          # the bottom of the graph/card.
-
-          BASELINE_Y = (
-              GRAPH_Y
-              + GRAPH_HEIGHT
-          )
+          # ==========================================================
+          # MOUNTAIN FILL
+          #
+          # The polygon is allowed to reach the zero level.
+          # It has NO stroke, so there is no visible horizontal
+          # zero-contribution line.
+          # ==========================================================
 
           polygon_points = (
-              f"{GRAPH_X},{BASELINE_Y} "
+              f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
               + line_points
-              + f" {GRAPH_X + GRAPH_WIDTH},{BASELINE_Y}"
+              + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
           )
 
           svg += f'''
-
-          <!-- mountain -->
 
           <polygon
             points="{polygon_points}"
             fill="url(#mountainGradient)"/>
 
-          <!-- graph line -->
-
-          <polyline
-            points="{line_points}"
-            fill="none"
-            stroke="url(#lineGradient)"
-            stroke-width="2.5"
-            stroke-linejoin="round"
-            stroke-linecap="round"/>
-
-          <!-- graph baseline -->
-
-          <line
-            x1="{GRAPH_X}"
-            y1="{BASELINE_Y}"
-            x2="{GRAPH_X + GRAPH_WIDTH}"
-            y2="{BASELINE_Y}"
-            stroke="{BORDER}"
-            stroke-width="1"/>
-
           '''
+
+          # ==========================================================
+          # GRAPH LINE
+          #
+          # IMPORTANT:
+          #
+          # Do NOT use one <polyline> for the complete graph.
+          #
+          # A single polyline creates:
+          #
+          #     0 ───────────────────── 0
+          #
+          # across every long period with no contributions.
+          #
+          # Instead, zero -> zero segments are completely skipped.
+          # ==========================================================
+
+          for i in range(
+              len(points) - 1
+          ):
+
+              value1 = values[i]
+              value2 = values[i + 1]
+
+              # Completely ignore zero -> zero segments.
+
+              if (
+                  value1 == 0
+                  and value2 == 0
+              ):
+                  continue
+
+              x1, y1 = points[i]
+              x2, y2 = points[i + 1]
+
+              svg += f'''
+
+              <line
+                x1="{x1:.2f}"
+                y1="{y1:.2f}"
+                x2="{x2:.2f}"
+                y2="{y2:.2f}"
+                stroke="url(#lineGradient)"
+                stroke-width="2.5"
+                stroke-linecap="round"/>
+
+              '''
 
           # ==========================================================
           # Y AXIS
@@ -643,11 +676,9 @@ jobs:
               '''
 
           # ==========================================================
-          # NO X-AXIS / MONTH LABELS
-          # ==========================================================
+          # X-AXIS LABELS
           #
           # Intentionally removed.
-          #
           # ==========================================================
 
           svg += """
