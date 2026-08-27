@@ -3,6 +3,8 @@ name: Update GitHub Profile Details
 on:
   schedule:
     - cron: "0 3 * * *"
+    - cron: "0 11 * * *"
+    - cron: "0 19 * * *"
 
   workflow_dispatch:
 
@@ -21,86 +23,100 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # ============================================================
-      # 1. Download ORIGINAL Vercel card
-      # ============================================================
-
-      - name: Download Vercel Profile Details
+      - name: Fetch original Vercel card and fix title
         run: |
           mkdir -p profile
 
-          curl -L \
-            "https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" \
-            -o profile/profile-details.svg
-
-      # ============================================================
-      # 2. Replace ONLY the title
-      # ============================================================
-
-      - name: Fix Profile Name
-        run: |
           python3 <<'PY'
-          from pathlib import Path
+          import urllib.request
           import re
+          from pathlib import Path
 
-          path = Path("profile/profile-details.svg")
-
-          svg = path.read_text(encoding="utf-8")
-
-          # Replace the title text inside the first text element.
-          #
-          # Vercel generates something similar to:
-          #
-          # ANSHAM1 (ANSHAM MAURY...
-          #
-          # We replace ONLY that displayed title with:
-          #
-          # ANSHAM1
-
-          pattern = re.compile(
-              r'(<text[^>]*>)(.*?)(</text>)',
-              re.DOTALL
+          url = (
+              "https://github-profile-summary-cards.vercel.app/"
+              "api/cards/profile-details"
+              "?username=ANSHAM1&theme=dracula"
           )
 
-          matches = list(pattern.finditer(svg))
+          output = Path("profile/profile-details.svg")
 
-          if not matches:
-              raise SystemExit(
-                  "Could not find any <text> elements in SVG"
+          # ----------------------------------------------------------
+          # Fetch the ORIGINAL Vercel SVG
+          # ----------------------------------------------------------
+
+          request = urllib.request.Request(
+              url,
+              headers={
+                  "User-Agent": "Mozilla/5.0"
+              }
+          )
+
+          with urllib.request.urlopen(request) as response:
+              svg = response.read().decode("utf-8")
+
+          # ----------------------------------------------------------
+          # Replace ONLY the profile title.
+          #
+          # Original:
+          #
+          #   ANSHAM1 (ANSHAM MAURY...)
+          #
+          # Desired:
+          #
+          #   ANSHAM1
+          #
+          # Everything else in the SVG remains untouched.
+          # ----------------------------------------------------------
+
+          pattern = r'(>ANSHAM1\s*\([^<]*\)</text>)'
+
+          replacement = '>ANSHAM1</text>'
+
+          modified, count = re.subn(
+              pattern,
+              replacement,
+              svg,
+              count=1
+          )
+
+          if count == 0:
+              print(
+                  "WARNING: Original title was not found."
+              )
+              print(
+                  "The Vercel SVG structure may have changed."
               )
 
-          # The first text element is the profile title
-          # in the profile-details card.
+              raise SystemExit(1)
 
-          first = matches[0]
+          # ----------------------------------------------------------
+          # Write the modified Vercel SVG
+          # ----------------------------------------------------------
 
-          replacement = (
-              first.group(1)
-              + "ANSHAM1"
-              + first.group(3)
-          )
-
-          svg = (
-              svg[:first.start()]
-              + replacement
-              + svg[first.end():]
-          )
-
-          path.write_text(
-              svg,
+          output.write_text(
+              modified,
               encoding="utf-8"
           )
 
           print(
-              "Profile name changed to: ANSHAM1"
+              "Successfully generated:"
           )
+
+          print(
+              "profile/profile-details.svg"
+          )
+
+          print(
+              "Changed: profile title only"
+          )
+
+          print(
+              "Graph/theme/layout: unchanged"
+          )
+
           PY
 
-      # ============================================================
-      # 3. Commit modified Vercel SVG
-      # ============================================================
-
-      - name: Commit Profile Details
+      - name: Commit updated profile card
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
