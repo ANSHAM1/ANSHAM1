@@ -647,12 +647,7 @@ jobs:
       - name: Generate Streak Stats
         uses: DenverCoder1/github-readme-streak-stats@main
         with:
-          options: >-
-            user=ANSHAM1
-            &theme=dracula
-            &hide_border=true
-            &disable_animations=true
-            &timezone=Asia/Kolkata
+          options: user=ANSHAM1&theme=dracula&hide_border=true
           path: profile/streak.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
