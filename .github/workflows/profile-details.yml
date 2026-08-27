@@ -1,4 +1,4 @@
-name: Generate Profile Details
+name: Update GitHub Profile Cards
 
 on:
   schedule:
@@ -11,7 +11,7 @@ on:
       - ".github/workflows/profile-details.yml"
 
 jobs:
-  generate-profile-details:
+  generate-profile-cards:
     runs-on: ubuntu-latest
 
     permissions:
@@ -21,7 +21,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Generate profile details SVG
+      # ============================================================
+      # 1. PROFILE DETAILS
+      # ============================================================
+
+      - name: Generate Profile Details
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ANSHAM1
@@ -40,9 +44,9 @@ jobs:
           USERNAME = os.environ["USERNAME"]
           TOKEN = os.environ["GITHUB_TOKEN"]
 
-          # ============================================================
-          # DRACULA THEME
-          # ============================================================
+          # ==========================================================
+          # DRACULA
+          # ==========================================================
 
           BG = "#282a36"
           TEXT = "#f8f8f2"
@@ -51,7 +55,6 @@ jobs:
           PINK = "#ff79c6"
           PURPLE = "#bd93f9"
           BLUE = "#8be9fd"
-
           BORDER = "#44475a"
 
           FONT = "Arial, Helvetica, sans-serif"
@@ -59,9 +62,9 @@ jobs:
           WIDTH = 1100
           HEIGHT = 270
 
-          # ============================================================
+          # ==========================================================
           # GITHUB GRAPHQL
-          # ============================================================
+          # ==========================================================
 
           query = """
           query(
@@ -88,11 +91,6 @@ jobs:
                 from: $from
                 to: $to
               ) {
-
-                totalCommitContributions
-                totalPullRequestContributions
-                totalIssueContributions
-                totalRepositoryContributions
 
                 contributionCalendar {
 
@@ -137,7 +135,6 @@ jobs:
           """
 
           now = datetime.now(timezone.utc)
-
           from_date = now - timedelta(days=365)
 
           variables = {
@@ -166,19 +163,10 @@ jobs:
           )
 
           with urllib.request.urlopen(request) as response:
-              result = json.loads(
-                  response.read()
-              )
+              result = json.loads(response.read())
 
           if "errors" in result:
-
-              print(
-                  json.dumps(
-                      result["errors"],
-                      indent=2
-                  )
-              )
-
+              print(json.dumps(result["errors"], indent=2))
               raise SystemExit(
                   "GitHub GraphQL request failed"
               )
@@ -193,9 +181,9 @@ jobs:
               contributions["contributionCalendar"]
           )
 
-          # ============================================================
-          # EXACT CARD DATA
-          # ============================================================
+          # ==========================================================
+          # DATA
+          # ==========================================================
 
           total_contributions = (
               calendar["totalContributions"]
@@ -212,16 +200,7 @@ jobs:
               )
           )
 
-          # ============================================================
-          # "Joined GitHub X years ago"
-          #
-          # Match the human-readable behavior of the original card.
-          # ============================================================
-
-          years = (
-              now.year
-              - created_at.year
-          )
+          years = now.year - created_at.year
 
           if (
               now.month,
@@ -233,29 +212,21 @@ jobs:
               years -= 1
 
           if years <= 0:
-
               joined_text = (
                   "Joined GitHub less than a year ago"
               )
-
           elif years == 1:
-
               joined_text = (
                   "Joined GitHub 1 year ago"
               )
-
           else:
-
               joined_text = (
                   f"Joined GitHub {years} years ago"
               )
 
-          # ============================================================
-          # CONTRIBUTED ORGANIZATION
-          #
-          # Find organizations from repositories the user contributed
-          # to during GitHub's recent contribution window.
-          # ============================================================
+          # ==========================================================
+          # ORGANIZATIONS
+          # ==========================================================
 
           organizations = set()
 
@@ -272,46 +243,31 @@ jobs:
                   and owner["__typename"]
                   == "Organization"
               ):
-
                   organizations.add(
                       owner["login"]
                   )
 
-          # Prefer the organization with the most likely relevance.
-          #
-          # If several exist, display them comma-separated.
-          # This keeps the card honest instead of hardcoding
-          # @MODELise-ORG forever.
-          # ============================================================
-
           if organizations:
-
-              sorted_orgs = sorted(
-                  organizations,
-                  key=str.lower
-              )
 
               contributed_text = " • ".join(
                   f"@{org}"
-                  for org in sorted_orgs[:3]
+                  for org in sorted(
+                      organizations,
+                      key=str.lower
+                  )[:3]
               )
 
           else:
-
               contributed_text = "—"
 
-          # ============================================================
+          # ==========================================================
           # CONTRIBUTION DAYS
-          # ============================================================
+          # ==========================================================
 
           days = []
 
           for week in calendar["weeks"]:
-
-              for day in week[
-                  "contributionDays"
-              ]:
-
+              for day in week["contributionDays"]:
                   days.append(day)
 
           days.sort(
@@ -325,34 +281,21 @@ jobs:
               for day in days
           ]
 
-          maximum = max(
-              values
-          ) if values else 1
-
-          # ============================================================
-          # SVG HELPERS
-          # ============================================================
+          maximum = max(values) if values else 1
 
           def esc(value):
+              return html.escape(str(value))
 
-              return html.escape(
-                  str(value)
-              )
-
-          def month_label(date_string):
-
+          def month_label(value):
               date = datetime.strptime(
-                  date_string,
+                  value,
                   "%Y-%m-%d"
               )
+              return date.strftime("%y/%m")
 
-              return date.strftime(
-                  "%y/%m"
-              )
-
-          # ============================================================
+          # ==========================================================
           # SVG
-          # ============================================================
+          # ==========================================================
 
           svg = f'''<svg
           xmlns="http://www.w3.org/2000/svg"
@@ -361,8 +304,6 @@ jobs:
           viewBox="0 0 {WIDTH} {HEIGHT}">
 
           <defs>
-
-            <!-- Dracula mountain gradient -->
 
             <linearGradient
               id="mountainGradient"
@@ -377,7 +318,7 @@ jobs:
                 stop-opacity="0.16"/>
 
               <stop
-                offset="45%"
+                offset="50%"
                 stop-color="{PURPLE}"
                 stop-opacity="0.32"/>
 
@@ -387,8 +328,6 @@ jobs:
                 stop-opacity="0.20"/>
 
             </linearGradient>
-
-            <!-- Graph line -->
 
             <linearGradient
               id="lineGradient"
@@ -413,21 +352,13 @@ jobs:
 
           </defs>
 
-          <!-- ====================================================== -->
-          <!-- CARD -->
-          <!-- ====================================================== -->
-
           <rect
-            x="0"
-            y="0"
             width="{WIDTH}"
             height="{HEIGHT}"
             rx="8"
             fill="{BG}"/>
 
-          <!-- ====================================================== -->
           <!-- NAME -->
-          <!-- ====================================================== -->
 
           <text
             x="35"
@@ -441,9 +372,7 @@ jobs:
 
           </text>
 
-          <!-- ====================================================== -->
           <!-- LEFT INFORMATION -->
-          <!-- ====================================================== -->
 
           <text
             x="35"
@@ -533,9 +462,7 @@ jobs:
 
           </text>
 
-          <!-- ====================================================== -->
           <!-- GRAPH TITLE -->
-          <!-- ====================================================== -->
 
           <text
             x="1060"
@@ -548,16 +475,14 @@ jobs:
             contributions in the last year
 
           </text>
-
           '''
 
-          # ============================================================
+          # ==========================================================
           # GRAPH
-          # ============================================================
+          # ==========================================================
 
           GRAPH_X = 350
           GRAPH_Y = 47
-
           GRAPH_WIDTH = 690
           GRAPH_HEIGHT = 145
 
@@ -577,22 +502,17 @@ jobs:
                   * GRAPH_WIDTH
               )
 
-              normalized = (
-                  value / maximum
-              )
-
               y = (
                   GRAPH_Y
                   + GRAPH_HEIGHT
                   - (
-                      normalized
+                      value
+                      / maximum
                       * GRAPH_HEIGHT
                   )
               )
 
-              points.append(
-                  (x, y)
-              )
+              points.append((x, y))
 
           line_points = " ".join(
               f"{x:.2f},{y:.2f}"
@@ -607,13 +527,9 @@ jobs:
 
           svg += f'''
 
-          <!-- mountain -->
-
           <polygon
             points="{polygon_points}"
             fill="url(#mountainGradient)"/>
-
-          <!-- graph line -->
 
           <polyline
             points="{line_points}"
@@ -622,8 +538,6 @@ jobs:
             stroke-width="2.5"
             stroke-linejoin="round"
             stroke-linecap="round"/>
-
-          <!-- baseline -->
 
           <line
             x1="{GRAPH_X}"
@@ -635,32 +549,25 @@ jobs:
 
           '''
 
-          # ============================================================
-          # Y AXIS
-          # ============================================================
+          # Y axis
+
+          step = max(
+              1,
+              math.ceil(maximum / 8)
+          )
 
           for value in range(
               0,
               maximum + 1,
-              max(
-                  1,
-                  math.ceil(
-                      maximum / 8
-                  )
-              )
+              step
           ):
 
-              normalized = (
-                  value / maximum
-              )
+              normalized = value / maximum
 
               y = (
                   GRAPH_Y
                   + GRAPH_HEIGHT
-                  - (
-                      normalized
-                      * GRAPH_HEIGHT
-                  )
+                  - normalized * GRAPH_HEIGHT
               )
 
               svg += f'''
@@ -678,9 +585,7 @@ jobs:
 
               '''
 
-          # ============================================================
-          # MONTH LABELS
-          # ============================================================
+          # Month labels
 
           seen_months = set()
 
@@ -721,66 +626,50 @@ jobs:
 
               '''
 
-          # ============================================================
-          # CLOSE SVG
-          # ============================================================
+          svg += "</svg>"
 
-          svg += """
-
-          </svg>
-          """
-
-          # ============================================================
-          # WRITE
-          # ============================================================
-
-          output = Path(
+          Path(
               "profile/profile-details.svg"
-          )
-
-          output.write_text(
+          ).write_text(
               svg,
               encoding="utf-8"
           )
 
-          print()
-          print("========================================")
-          print(" Profile Details generated")
-          print("========================================")
           print(
-              f"Name           : {user['name']}"
+              "Generated profile/profile-details.svg"
           )
-          print(
-              f"Contributions  : {total_contributions:,}"
-          )
-          print(
-              f"Public repos   : {public_repositories:,}"
-          )
-          print(
-              f"Joined         : {created_at.date()}"
-          )
-          print(
-              f"Organizations  : {contributed_text}"
-          )
-          print(
-              f"Graph range    : {days[0]['date']} -> {days[-1]['date']}"
-          )
-          print(
-              "Output         : profile/profile-details.svg"
-          )
-          print("========================================")
-
           PY
 
-      - name: Commit generated SVG
+      # ============================================================
+      # 2. STREAK CARD
+      # ============================================================
+
+      - name: Generate Streak Stats
+        uses: DenverCoder1/github-readme-streak-stats@main
+        with:
+          options: >-
+            user=ANSHAM1
+            &theme=dracula
+            &hide_border=true
+            &disable_animations=true
+            &timezone=Asia/Kolkata
+          path: profile/streak.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ============================================================
+      # 3. COMMIT BOTH
+      # ============================================================
+
+      - name: Commit generated cards
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add profile/profile-details.svg
+          git add profile/streak.svg
 
           git commit \
-            -m "Update GitHub profile details" \
+            -m "Update GitHub profile cards" \
             || exit 0
 
           git push
