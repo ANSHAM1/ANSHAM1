@@ -1,0 +1,786 @@
+name: Generate Profile Details
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+
+  workflow_dispatch:
+
+  push:
+    paths:
+      - ".github/workflows/profile-details.yml"
+
+jobs:
+  generate-profile-details:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate profile details SVG
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ANSHAM1
+        run: |
+          mkdir -p profile
+
+          python3 <<'PY'
+          import json
+          import html
+          import math
+          import os
+          import urllib.request
+          from datetime import datetime, timezone, timedelta
+          from pathlib import Path
+
+          USERNAME = os.environ["USERNAME"]
+          TOKEN = os.environ["GITHUB_TOKEN"]
+
+          # ============================================================
+          # DRACULA THEME
+          # ============================================================
+
+          BG = "#282a36"
+          TEXT = "#f8f8f2"
+          MUTED = "#f1fa8c"
+
+          PINK = "#ff79c6"
+          PURPLE = "#bd93f9"
+          BLUE = "#8be9fd"
+
+          BORDER = "#44475a"
+
+          FONT = "Arial, Helvetica, sans-serif"
+
+          WIDTH = 1100
+          HEIGHT = 270
+
+          # ============================================================
+          # GITHUB GRAPHQL
+          # ============================================================
+
+          query = """
+          query(
+            $login: String!,
+            $from: DateTime!,
+            $to: DateTime!
+          ) {
+
+            user(login: $login) {
+
+              login
+              name
+              createdAt
+
+              repositories(
+                first: 1
+                ownerAffiliations: OWNER
+                privacy: PUBLIC
+              ) {
+                totalCount
+              }
+
+              contributionsCollection(
+                from: $from
+                to: $to
+              ) {
+
+                totalCommitContributions
+                totalPullRequestContributions
+                totalIssueContributions
+                totalRepositoryContributions
+
+                contributionCalendar {
+
+                  totalContributions
+
+                  weeks {
+
+                    contributionDays {
+                      date
+                      contributionCount
+                    }
+
+                  }
+                }
+              }
+
+              repositoriesContributedTo(
+                first: 100
+                contributionTypes: [
+                  COMMIT
+                  ISSUE
+                  PULL_REQUEST
+                  REPOSITORY
+                ]
+                includeUserRepositories: false
+              ) {
+
+                nodes {
+
+                  owner {
+                    login
+                    __typename
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+          """
+
+          now = datetime.now(timezone.utc)
+
+          from_date = now - timedelta(days=365)
+
+          variables = {
+              "login": USERNAME,
+              "from": from_date.strftime(
+                  "%Y-%m-%dT00:00:00Z"
+              ),
+              "to": now.strftime(
+                  "%Y-%m-%dT23:59:59Z"
+              ),
+          }
+
+          payload = json.dumps({
+              "query": query,
+              "variables": variables,
+          }).encode()
+
+          request = urllib.request.Request(
+              "https://api.github.com/graphql",
+              data=payload,
+              headers={
+                  "Authorization": f"Bearer {TOKEN}",
+                  "Content-Type": "application/json",
+                  "User-Agent": "ANSHAM1-profile-details",
+              },
+          )
+
+          with urllib.request.urlopen(request) as response:
+              result = json.loads(
+                  response.read()
+              )
+
+          if "errors" in result:
+
+              print(
+                  json.dumps(
+                      result["errors"],
+                      indent=2
+                  )
+              )
+
+              raise SystemExit(
+                  "GitHub GraphQL request failed"
+              )
+
+          user = result["data"]["user"]
+
+          contributions = (
+              user["contributionsCollection"]
+          )
+
+          calendar = (
+              contributions["contributionCalendar"]
+          )
+
+          # ============================================================
+          # EXACT CARD DATA
+          # ============================================================
+
+          total_contributions = (
+              calendar["totalContributions"]
+          )
+
+          public_repositories = (
+              user["repositories"]["totalCount"]
+          )
+
+          created_at = datetime.fromisoformat(
+              user["createdAt"].replace(
+                  "Z",
+                  "+00:00"
+              )
+          )
+
+          # ============================================================
+          # "Joined GitHub X years ago"
+          #
+          # Match the human-readable behavior of the original card.
+          # ============================================================
+
+          years = (
+              now.year
+              - created_at.year
+          )
+
+          if (
+              now.month,
+              now.day
+          ) < (
+              created_at.month,
+              created_at.day
+          ):
+              years -= 1
+
+          if years <= 0:
+
+              joined_text = (
+                  "Joined GitHub less than a year ago"
+              )
+
+          elif years == 1:
+
+              joined_text = (
+                  "Joined GitHub 1 year ago"
+              )
+
+          else:
+
+              joined_text = (
+                  f"Joined GitHub {years} years ago"
+              )
+
+          # ============================================================
+          # CONTRIBUTED ORGANIZATION
+          #
+          # Find organizations from repositories the user contributed
+          # to during GitHub's recent contribution window.
+          # ============================================================
+
+          organizations = set()
+
+          for repo in (
+              user[
+                  "repositoriesContributedTo"
+              ]["nodes"]
+          ):
+
+              owner = repo["owner"]
+
+              if (
+                  owner
+                  and owner["__typename"]
+                  == "Organization"
+              ):
+
+                  organizations.add(
+                      owner["login"]
+                  )
+
+          # Prefer the organization with the most likely relevance.
+          #
+          # If several exist, display them comma-separated.
+          # This keeps the card honest instead of hardcoding
+          # @MODELise-ORG forever.
+          # ============================================================
+
+          if organizations:
+
+              sorted_orgs = sorted(
+                  organizations,
+                  key=str.lower
+              )
+
+              contributed_text = " • ".join(
+                  f"@{org}"
+                  for org in sorted_orgs[:3]
+              )
+
+          else:
+
+              contributed_text = "—"
+
+          # ============================================================
+          # CONTRIBUTION DAYS
+          # ============================================================
+
+          days = []
+
+          for week in calendar["weeks"]:
+
+              for day in week[
+                  "contributionDays"
+              ]:
+
+                  days.append(day)
+
+          days.sort(
+              key=lambda x: x["date"]
+          )
+
+          days = days[-365:]
+
+          values = [
+              day["contributionCount"]
+              for day in days
+          ]
+
+          maximum = max(
+              values
+          ) if values else 1
+
+          # ============================================================
+          # SVG HELPERS
+          # ============================================================
+
+          def esc(value):
+
+              return html.escape(
+                  str(value)
+              )
+
+          def month_label(date_string):
+
+              date = datetime.strptime(
+                  date_string,
+                  "%Y-%m-%d"
+              )
+
+              return date.strftime(
+                  "%y/%m"
+              )
+
+          # ============================================================
+          # SVG
+          # ============================================================
+
+          svg = f'''<svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="{WIDTH}"
+          height="{HEIGHT}"
+          viewBox="0 0 {WIDTH} {HEIGHT}">
+
+          <defs>
+
+            <!-- Dracula mountain gradient -->
+
+            <linearGradient
+              id="mountainGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%">
+
+              <stop
+                offset="0%"
+                stop-color="{PINK}"
+                stop-opacity="0.16"/>
+
+              <stop
+                offset="45%"
+                stop-color="{PURPLE}"
+                stop-opacity="0.32"/>
+
+              <stop
+                offset="100%"
+                stop-color="{PURPLE}"
+                stop-opacity="0.20"/>
+
+            </linearGradient>
+
+            <!-- Graph line -->
+
+            <linearGradient
+              id="lineGradient"
+              x1="0%"
+              y1="0%"
+              x2="100%"
+              y2="0%">
+
+              <stop
+                offset="0%"
+                stop-color="{PINK}"/>
+
+              <stop
+                offset="55%"
+                stop-color="{PURPLE}"/>
+
+              <stop
+                offset="100%"
+                stop-color="{BLUE}"/>
+
+            </linearGradient>
+
+          </defs>
+
+          <!-- ====================================================== -->
+          <!-- CARD -->
+          <!-- ====================================================== -->
+
+          <rect
+            x="0"
+            y="0"
+            width="{WIDTH}"
+            height="{HEIGHT}"
+            rx="8"
+            fill="{BG}"/>
+
+          <!-- ====================================================== -->
+          <!-- NAME -->
+          <!-- ====================================================== -->
+
+          <text
+            x="35"
+            y="48"
+            fill="{PINK}"
+            font-family="{FONT}"
+            font-size="22"
+            font-weight="600">
+
+            {esc(USERNAME)} ({esc(user["name"] or USERNAME)})
+
+          </text>
+
+          <!-- ====================================================== -->
+          <!-- LEFT INFORMATION -->
+          <!-- ====================================================== -->
+
+          <text
+            x="35"
+            y="92"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            ♧
+
+          </text>
+
+          <text
+            x="55"
+            y="92"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            {total_contributions:,} Contributions on GitHub
+
+          </text>
+
+          <text
+            x="35"
+            y="123"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            ▣
+
+          </text>
+
+          <text
+            x="55"
+            y="123"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            {public_repositories:,} Public Repos
+
+          </text>
+
+          <text
+            x="35"
+            y="154"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            ◷
+
+          </text>
+
+          <text
+            x="55"
+            y="154"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            {esc(joined_text)}
+
+          </text>
+
+          <text
+            x="35"
+            y="185"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            ▦
+
+          </text>
+
+          <text
+            x="55"
+            y="185"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="13">
+
+            {esc(contributed_text)}
+
+          </text>
+
+          <!-- ====================================================== -->
+          <!-- GRAPH TITLE -->
+          <!-- ====================================================== -->
+
+          <text
+            x="1060"
+            y="34"
+            fill="{MUTED}"
+            font-family="{FONT}"
+            font-size="10"
+            text-anchor="end">
+
+            contributions in the last year
+
+          </text>
+
+          '''
+
+          # ============================================================
+          # GRAPH
+          # ============================================================
+
+          GRAPH_X = 350
+          GRAPH_Y = 47
+
+          GRAPH_WIDTH = 690
+          GRAPH_HEIGHT = 145
+
+          points = []
+
+          for index, value in enumerate(values):
+
+              x = (
+                  GRAPH_X
+                  + (
+                      index
+                      / max(
+                          1,
+                          len(values) - 1
+                      )
+                  )
+                  * GRAPH_WIDTH
+              )
+
+              normalized = (
+                  value / maximum
+              )
+
+              y = (
+                  GRAPH_Y
+                  + GRAPH_HEIGHT
+                  - (
+                      normalized
+                      * GRAPH_HEIGHT
+                  )
+              )
+
+              points.append(
+                  (x, y)
+              )
+
+          line_points = " ".join(
+              f"{x:.2f},{y:.2f}"
+              for x, y in points
+          )
+
+          polygon_points = (
+              f"{GRAPH_X},{GRAPH_Y + GRAPH_HEIGHT} "
+              + line_points
+              + f" {GRAPH_X + GRAPH_WIDTH},{GRAPH_Y + GRAPH_HEIGHT}"
+          )
+
+          svg += f'''
+
+          <!-- mountain -->
+
+          <polygon
+            points="{polygon_points}"
+            fill="url(#mountainGradient)"/>
+
+          <!-- graph line -->
+
+          <polyline
+            points="{line_points}"
+            fill="none"
+            stroke="url(#lineGradient)"
+            stroke-width="2.5"
+            stroke-linejoin="round"
+            stroke-linecap="round"/>
+
+          <!-- baseline -->
+
+          <line
+            x1="{GRAPH_X}"
+            y1="{GRAPH_Y + GRAPH_HEIGHT}"
+            x2="{GRAPH_X + GRAPH_WIDTH}"
+            y2="{GRAPH_Y + GRAPH_HEIGHT}"
+            stroke="{BORDER}"
+            stroke-width="1"/>
+
+          '''
+
+          # ============================================================
+          # Y AXIS
+          # ============================================================
+
+          for value in range(
+              0,
+              maximum + 1,
+              max(
+                  1,
+                  math.ceil(
+                      maximum / 8
+                  )
+              )
+          ):
+
+              normalized = (
+                  value / maximum
+              )
+
+              y = (
+                  GRAPH_Y
+                  + GRAPH_HEIGHT
+                  - (
+                      normalized
+                      * GRAPH_HEIGHT
+                  )
+              )
+
+              svg += f'''
+
+              <text
+                x="1055"
+                y="{y + 3:.2f}"
+                fill="{MUTED}"
+                font-family="{FONT}"
+                font-size="9">
+
+                {value}
+
+              </text>
+
+              '''
+
+          # ============================================================
+          # MONTH LABELS
+          # ============================================================
+
+          seen_months = set()
+
+          for index, day in enumerate(days):
+
+              month = day["date"][:7]
+
+              if month in seen_months:
+                  continue
+
+              seen_months.add(month)
+
+              x = (
+                  GRAPH_X
+                  + (
+                      index
+                      / max(
+                          1,
+                          len(days) - 1
+                      )
+                  )
+                  * GRAPH_WIDTH
+              )
+
+              svg += f'''
+
+              <text
+                x="{x:.2f}"
+                y="212"
+                fill="{MUTED}"
+                font-family="{FONT}"
+                font-size="9"
+                text-anchor="middle">
+
+                {month_label(day["date"])}
+
+              </text>
+
+              '''
+
+          # ============================================================
+          # CLOSE SVG
+          # ============================================================
+
+          svg += """
+
+          </svg>
+          """
+
+          # ============================================================
+          # WRITE
+          # ============================================================
+
+          output = Path(
+              "profile/profile-details.svg"
+          )
+
+          output.write_text(
+              svg,
+              encoding="utf-8"
+          )
+
+          print()
+          print("========================================")
+          print(" Profile Details generated")
+          print("========================================")
+          print(
+              f"Name           : {user['name']}"
+          )
+          print(
+              f"Contributions  : {total_contributions:,}"
+          )
+          print(
+              f"Public repos   : {public_repositories:,}"
+          )
+          print(
+              f"Joined         : {created_at.date()}"
+          )
+          print(
+              f"Organizations  : {contributed_text}"
+          )
+          print(
+              f"Graph range    : {days[0]['date']} -> {days[-1]['date']}"
+          )
+          print(
+              "Output         : profile/profile-details.svg"
+          )
+          print("========================================")
+
+          PY
+
+      - name: Commit generated SVG
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add profile/profile-details.svg
+
+          git commit \
+            -m "Update GitHub profile details" \
+            || exit 0
+
+          git push
