@@ -45,17 +45,17 @@ A high-performance deep learning framework built entirely from scratch, implemen
 #
 
 <p align="center">
-  <img src="./profile/profile-details.svg" width="78%" alt="GitHub Profile Details">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
 </p>
 
 <p align="center">
-  <img src="./profile/stats.svg" width="25.7%" alt="GitHub Stats">
-  <img src="./profile/repos-per-language.svg" width="25.7%" alt="Repositories Per Language">
-  <img src="./profile/most-commit-language.svg" width="25.7%" alt="Most Used Languages">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="25.7%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="25.7%">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="25.7%">
 </p>
 
 <p align="center">
-  <img src="./profile/streak.svg" width="50%" alt="GitHub Streak">
+  <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ANSHAM1&theme=dracula" width="78%">
 </p>
 
 #
