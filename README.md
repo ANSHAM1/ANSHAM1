@@ -25,7 +25,7 @@
 `Microsoft SQL Server` • `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite`
 
 **DevOps / Infrastructure**  
-`Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux`
+`Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux` • `Temporal`
 #
 
 ### ⌬ Insertion.AI
