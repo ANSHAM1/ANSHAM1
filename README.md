@@ -44,22 +44,6 @@ A high-performance deep learning framework built entirely from scratch, implemen
 
 #
 
-<p align="center">
-  <img src="./profile/profile-details.svg" width="78%" alt="GitHub Profile Details">
-</p>
-
-<p align="center">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ANSHAM1&theme=dracula" width="25.7%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=ANSHAM1&theme=dracula" width="25.7%">
-  <img src="http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=ANSHAM1&theme=dracula" width="25.7%">
-</p>
-
-<p align="center">
-  <img src="https://streak-stats.vercel.app/api?user=ANSHAM1&theme=dracula&hide_border=true" width="50%" alt="GitHub Streak">
-</p>
-
-#
-
 <div align="center">
   <i>“Chaos is the default state of the universe; every clean line of architecture is a deliberate act of defiance.”</i>
 </div>
