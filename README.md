@@ -19,7 +19,7 @@
 `LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases`
 
 **Backend Development**  
-`FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Async Programming` • `OOPs` • `HLD/LLD` 
+`FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Async Programming` • `OOPs` • `HLD` • `LLD` 
 
 **Databases**  
 `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite` • `Microsoft SQL Server`
