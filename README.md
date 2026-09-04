@@ -26,8 +26,3 @@
 
 **DevOps / Infrastructure**  
 `Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux` • `Temporal`• `Kafka` • `RabbitMQ`
-#
-
-<div align="center">
-  <i>“Chaos is the default state of the universe; every clean line of architecture is a deliberate act of defiance.”</i>
-</div>
