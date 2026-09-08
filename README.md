@@ -13,10 +13,10 @@
 `Python` • `C++` • `Rust` • `Java` • `JavaScript`
 
 **AI / Machine Learning**  
-`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA` • `DeepLearning - ANN, RNN, LSTM, CNN, Transformers`
+`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA` • `DeepLearning - ANN, RNN, LSTM, CNN, Transformers` • `Data Preprocessing` • `Model Training` • `Model Evaluation`
 
-**LLM / Agentic AI**  
-`LangChain` • `LangGraph` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases`
+**LLM / Agentic AI**
+`LangChain` • `LangGraph` • `LCEL` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases` • `Structured Output` • `LLM Workflows` • `Multi-Agent Systems` • `AI Pipelines`
 
 **Backend / Software Development**  
 `FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Async Programming` • `OOPs` • `HLD` • `LLD` 
