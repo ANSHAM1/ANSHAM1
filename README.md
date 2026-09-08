@@ -22,7 +22,10 @@
 `FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Event-Driven Architecture` • `Distributed Systems` • `Message Queues` • `RabbitMQ` • `Caching` • `Async Programming`
 
 **Databases**  
-`PostgreSQL` • `MySQL` • `MongoDB` • `SQLite` • `Microsoft SQL Server`
+`PostgreSQL` • `MySQL` • `MongoDB` • `SQLite` • `Microsoft SQL Server` • `Database Design` • `Database Indexing`
 
-**DevOps / Infrastructure**  
-`Git` • `Github` • `Docker` • `Docker Compose` • `Redis` • `Linux` • `Temporal`• `Kafka` • `RabbitMQ`
+**DevOps / Infrastructure**
+`Git` • `GitHub` • `Docker` • `Docker Compose` • `Redis` • `Linux` • `Temporal` • `Kafka`
+
+**Software Architecture / Engineering**
+`Design Patterns` • `Object-Oriented Design` • `LLD` • `HLD`
