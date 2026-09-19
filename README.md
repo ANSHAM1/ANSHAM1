@@ -1,5 +1,5 @@
 ## ANSHAM MAURYA
-### AI Systems Engineer  •  Agentic AI  •  Backend & Distributed Systems  •  Deep Learning
+### AI Systems • Agentic AI • Backend & Distributed Systems • Deep Learning
 #
 #### Building AI Systems, exploring distributed architectures, and turning ambitious ideas into production-ready software.
 
