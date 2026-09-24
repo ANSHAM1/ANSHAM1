@@ -13,13 +13,19 @@
 `Python` • `C++` • `Rust` • `Java` • `JavaScript`
 
 **AI / Machine Learning**    
-`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA` • `DeepLearning - ANN, RNN, LSTM, CNN, Transformers` • `Data Preprocessing` • `Model Training` • `Model Evaluation`
+`PyTorch` • `Keras` • `NumPy` • `Pandas` • `CUDA` • `DeepLearning - ANN, RNN, LSTM, CNN, Transformers` • 
+
+`Data Preprocessing` • `Model Training` • `Model Evaluation`
 
 **LLM / Agentic AI**  
-`LangChain` • `LangGraph` • `LCEL` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases` • `Structured Output` • `LLM Workflows` • `Multi-Agent Systems` • `AI Pipelines`
+`LangChain` • `LangGraph` • `LCEL` • `RAG` • `AI Agents` • `Tool Calling` • `Prompt Engineering` • `Vector Databases` • 
+
+`Structured Output` • `LLM Workflows` • `Multi-Agent Systems` • `AI Pipelines`
 
 **Backend / Software Development**  
-`FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Event-Driven Architecture` • `Distributed Systems` • `Message Queues` • `RabbitMQ` • `Caching` • `Async Programming`
+`FastAPI` • `gRPC` • `Rest APIs` • `Node.js` • `Express.js` • `Microservices-architecture` • `Event-Driven Architecture` • 
+
+`Distributed Systems` • `Message Queues` • `RabbitMQ` • `Caching` • `Async Programming`
 
 **Databases**      
 `PostgreSQL` • `MySQL` • `MongoDB` • `SQLite` • `Microsoft SQL Server` • `Database Design` • `Database Indexing`
